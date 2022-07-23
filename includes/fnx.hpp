@@ -6,12 +6,12 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/23 16:52:02 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/23 17:25:16 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FNX_HPP
-# define FNX_HPP
+#ifndef FNX_CPP_FNX_HPP
+# define FNX_CPP_FNX_HPP
 
 # include <iostream>
 

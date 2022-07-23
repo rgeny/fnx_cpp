@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/23 15:14:03 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/23 16:58:01 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,15 @@ FUNCTIONS_DIR		= $(INCLUDES_DIR)functions/
 OBJS_DIR			= objs/
 SRCS_DIR			= srcs/
 C_STR_DIR			= $(SRCS_DIR)c_str/
+EXCEPTIONS_DIR		= $(SRCS_DIR)exceptions/
 
-VPATH				= $(SRCS_DIR) $(C_STR_DIR)
+VPATH				= $(SRCS_DIR) $(C_STR_DIR) $(EXCEPTIONS_DIR)
 
 
 DEFAULT_FILES		= operator structor member accessor
-SRCS				= $(addsuffix .cpp,		strllen)
+SRCS				= $(addsuffix .cpp,		strllen \
+											wrong_number_of_arguments \
+											wrong_parameters)
 OBJS				= $(patsubst %.cpp, $(OBJS_DIR)%.o, $(SRCS))
 DEPS				= $(OBJS:.o=.d)
 

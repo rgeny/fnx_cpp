@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fnx.hpp                                            :+:      :+:    :+:   */
+/*   wrong_parameters.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/23 16:52:02 by rgeny            ###   ########.fr       */
+/*   Created: 2022/07/23 16:56:46 by rgeny             #+#    #+#             */
+/*   Updated: 2022/07/23 17:05:28 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FNX_HPP
-# define FNX_HPP
+#include "Exceptions.hpp"
 
-# include <iostream>
-
-# include "functions/c_str.hpp"
-# include "defines/colors.hpp"
-# include "class/Exceptions.hpp"
-
-#endif
-
+char const *	fnx::wrong_parameters::what	() const throw()
+{
+	return (WRONG_PARAMETERS);
+}

@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/23 14:20:33 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/23 14:29:58 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,30 +15,31 @@ DEL_DIR				= rm -rf
 
 CC					= c++
 VALGRIND			= valgrind
-COMPILE_FLAG		= $(DEPS_FLAG) -std=c++98 -Wall -Werror -Wextra
-DEPS_FLAG			= -MMD
+COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra
+DEPS_FLAG			= -MMD -MP
 INCLUDES_FLAG		= -I$(INCLUDES_DIR) -I$(CLASS_DIR)
-VALGRIND_FLAG		= --leak-check=full --show-leak-kinds=all --track-fds=yes
 
 INCLUDES_DIR		= includes/
 CLASS_DIR			= class/
 OBJS_DIR			= objs/
 SRCS_DIR			= srcs/
+C_STR_DIR			= $(SRCS_DIR)c_str/
 
-VPATH				= $(SRCS_DIR)
+VPATH				= $(SRCS_DIR) $(C_STR_DIR)
 
 
 DEFAULT_FILES		= operator structor member accessor
-SRCS				= $(addsuffix .cpp,		main)
+SRCS				= $(addsuffix .cpp,		strllen)
 OBJS				= $(patsubst %.cpp, $(OBJS_DIR)%.o, $(SRCS))
 DEPS				= $(OBJS:.o=.d)
 
-EXE					= exe
+LIB					= fnxlib.a
 
-all					: $(EXE)
+all					: $(LIB)
 
-$(EXE)				: $(OBJS)
-					$(CC) $(COMPILE_FLAG) $^ -o $@
+$(LIB)				: $(OBJS)
+					ar -rc $@ $^
+					ranlib $@
 
 $(OBJS_DIR)%.o		: %.cpp
 					$(NEW_DIR) $(OBJS_DIR)
@@ -48,12 +49,9 @@ clean				:
 					$(DEL_DIR) $(OBJS_DIR)
 
 fclean				: clean
-					$(DEL_DIR) $(EXE)
+					$(DEL_DIR) $(LIB)
 
 re					: fclean all
-
-valgrind			: all
-					$(VALGRIND) $(VALGRIND_FLAG) ./$(EXE) $(ARG)
 
 -include			$(DEPS)
 

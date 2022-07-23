@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/23 15:00:41 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/23 15:14:03 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,15 @@ CC					= c++
 VALGRIND			= valgrind
 COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra
 DEPS_FLAG			= -MMD -MP
-INCLUDES_FLAG		= -I$(INCLUDES_DIR) -I$(CLASS_DIR) -I$(FUNCTIONS_DIR)
+INCLUDES_FLAG		= $(addprefix -I,	$(INCLUDES_DIR) \
+										$(CLASS_DIR) \
+										$(DEFINES_DIR) \
+										$(FUNCTIONS_DIR))
 
 INCLUDES_DIR		= includes/
-CLASS_DIR			= class/
-FUNCTIONS_DIR		= functions/
+CLASS_DIR			= $(INCLUDES_DIR)class/
+DEFINES_DIR			= $(INCLUDES_DIR)defines/
+FUNCTIONS_DIR		= $(INCLUDES_DIR)functions/
 OBJS_DIR			= objs/
 SRCS_DIR			= srcs/
 C_STR_DIR			= $(SRCS_DIR)c_str/

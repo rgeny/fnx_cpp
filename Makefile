@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/23 16:58:01 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/24 13:29:08 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,14 @@ DEPS_FLAG			= -MMD -MP
 INCLUDES_FLAG		= $(addprefix -I,	$(INCLUDES_DIR) \
 										$(CLASS_DIR) \
 										$(DEFINES_DIR) \
-										$(FUNCTIONS_DIR))
+										$(FUNCTIONS_DIR) \
+										$(TEMPLATES_DIR))
 
 INCLUDES_DIR		= includes/
 CLASS_DIR			= $(INCLUDES_DIR)class/
 DEFINES_DIR			= $(INCLUDES_DIR)defines/
 FUNCTIONS_DIR		= $(INCLUDES_DIR)functions/
+TEMPLATES_DIR		= $(INCLUDES_DIR)templates/
 OBJS_DIR			= objs/
 SRCS_DIR			= srcs/
 C_STR_DIR			= $(SRCS_DIR)c_str/

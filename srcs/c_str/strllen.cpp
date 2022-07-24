@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 14:06:42 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/23 15:00:11 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/24 15:03:35 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,3 @@ namespace fnx
 		return (i);
 	}
 }
-
-
-#ifdef FNX_MAIN
-
-int main	(__attribute((unused)) int argc,
-			 __attribute((unused)) char ** argv,
-			 __attribute((unused)) char ** envp)
-{
-	(void)argc;
-
-	std::cout	<< "test strllen : "
-				<< std::endl
-
-				<< "fnx::strllen(argv) : "
-				<< fnx::strllen(argv)
-				<< std::endl
-
-				<< "fnx::strllen(envp) : "
-				<< fnx::strllen(envp)
-				<< std::endl
-
-				<< "fnx::strllen(NULL) : "
-				<< fnx::strllen(NULL)
-				<< std::endl;
-}
-
-#endif

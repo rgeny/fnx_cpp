@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/24 14:34:47 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/24 14:38:07 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <vector>
 # include <string>
+# include <cstdlib>
 
 //	FUNCTIONS HEADERS
 # include "functions/c_str.hpp"

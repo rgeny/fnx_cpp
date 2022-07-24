@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ptpt_to_vect.hpp                                   :+:      :+:    :+:   */
+/*   ptpt_to_vector.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 13:29:26 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/24 14:30:00 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/24 14:33:44 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PTPT_TO_VECT_HPP
-# define PTPT_TO_VECT_HPP
+#ifndef PTPT_TO_VECTOR_HPP
+# define PTPT_TO_VECTOR_HPP
 
 # include "fnx.hpp"
 
@@ -25,12 +25,12 @@ namespace fnx
 
 		if (src == NULL)
 		{
-	# ifdef FNX_ERROR
+# ifdef FNX_ERROR
 			std::cerr	<< RED_TEXT BRIGHT
 						<< "ptpt_to_vector receive NULL ptpt."
 						<< RESET
 						<< std::endl;
-	# endif
+# endif
 			return ;
 		}
 		for (std::size_t i = 0; src[i] != NULL; i++)
@@ -39,3 +39,4 @@ namespace fnx
 		}
 	}
 }
+#endif

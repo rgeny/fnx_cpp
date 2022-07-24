@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/24 14:31:00 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/24 14:34:47 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,16 @@
 # include <vector>
 # include <string>
 
+//	FUNCTIONS HEADERS
 # include "functions/c_str.hpp"
+
+//	DEFINES HEADERS
 # include "defines/colors.hpp"
+
+//	EXCEPTIONS HEADERS
 # include "class/Exceptions.hpp"
+
+//	TEMPLATES HEADERS
 # include "templates/ptpt_to_vector.hpp"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/24 14:49:01 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/24 16:58:25 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,46 @@ int	main	( __attribute((unused)) int argc
 			, __attribute((unused)) char ** argv
 			, __attribute((unused)) char ** envp)
 {
+//	TEST
+//	template
+//	<
+//		class T1,
+//		class T2,
+//		class T3
+//	>
+//	class trio
+	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
+				<< "TEST trio"
+				<< RESET
+				<< std::endl;
+	{
+		std::cout	<< UNDERSCORE
+					<< "Test dfl constructor :"
+					<< RESET
+					<< std::endl;
+
+		fnx::trio<int, char, float>	t;
+		t.print_data();
+	}
+	{
+		std::cout	<< UNDERSCORE
+					<< "Test parameters constructor :"
+					<< RESET
+					<< std::endl;
+
+		fnx::trio<int, char, float>	t(4, 'w', 17.1798);
+		t.print_data();
+
+		std::cout	<< UNDERSCORE
+					<< "Test cpy constructor :"
+					<< RESET
+					<< std::endl;
+
+		fnx::trio<int, char, float>	t2(t);
+		t2.print_data();
+	}
+
+
 //	TEST
 //	template < class T_SRC, class T_TARGET >
 //	void ptpt_to_vector	(T_SRC ** src,

@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/24 16:58:25 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/25 12:48:49 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,28 @@ int	main	( __attribute((unused)) int argc
 				<< fnx::strllen(NULL)
 				<< std::endl;
 				
+//	TEST
+//	std::vector<std::string>	vslit	( std::string str
+//										, std::string set)
+	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
+				<< "TEST vsplit"
+				<< RESET
+				<< std::endl;
+	{
+		std::string		str ("abc\tdef\tghi\tjkl\tmno\tpqr\tstu\tvwx\tyz."),
+						set ("\tej");
+		std::vector<std::string>	tmp = fnx::vsplit(str, set);
+
+		for (std::size_t i = 0; i < tmp.size(); i++)
+		{
+			std::cout	<< "["
+						<< i
+						<< "] = "
+						<< tmp[i]
+						<< std::endl;
+		}
+	}
+
 
 
 

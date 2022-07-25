@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/25 12:32:18 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/25 12:42:52 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ VPATH				= $(SRCS_DIR) $(STR_DIR) $(EXCEPTIONS_DIR)
 DEFAULT_FILES		= operator structor member accessor
 SRCS				= $(addsuffix .cpp,		main \
 											strllen \
+											split \
 											wrong_number_of_arguments \
 											wrong_parameters)
 MAIN				= srcs/main.cpp

@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/24 15:47:37 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/25 12:30:01 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <cstdlib>
 
 //	FUNCTIONS HEADERS
-# include "functions/c_str.hpp"
+# include "functions/str.hpp"
 
 //	DEFINES HEADERS
 # include "defines/colors.hpp"

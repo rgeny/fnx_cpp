@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/24 15:03:07 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/25 12:32:18 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,10 @@ FUNCTIONS_DIR		= $(INCLUDES_DIR)functions/
 TEMPLATES_DIR		= $(INCLUDES_DIR)templates/
 OBJS_DIR			= objs/
 SRCS_DIR			= srcs/
-C_STR_DIR			= $(SRCS_DIR)c_str/
+STR_DIR				= $(SRCS_DIR)str/
 EXCEPTIONS_DIR		= $(SRCS_DIR)exceptions/
 
-VPATH				= $(SRCS_DIR) $(C_STR_DIR) $(EXCEPTIONS_DIR)
+VPATH				= $(SRCS_DIR) $(STR_DIR) $(EXCEPTIONS_DIR)
 
 
 DEFAULT_FILES		= operator structor member accessor
@@ -52,6 +52,7 @@ EXE					= fnxlib.out
 all					: $(LIB)
 
 exe					:
+					make fclean
 					make LIB="$(EXE)" COMPILE_FLAG="$(COMPILE_EXE_FLAG)"
 					$(CC) $(COMPILE_EXE_FLAG) $(OBJS) -o $(EXE)
 

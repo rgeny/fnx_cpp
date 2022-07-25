@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:33:30 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/25 12:48:19 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/25 12:49:31 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ std::vector<std::string>	fnx::vsplit	( std::string str
 		i = str.find_first_of(set, 0);
 		if (i > 0)
 			to_return.push_back(str.substr(0, i));
-		str.erase(0, i + 1);
 		if (i == std::string::npos)
 			str.clear();
-		std::cout	<< "i = "
-					<< i
-					<< std::endl;
+		else
+			str.erase(0, i + 1);
 	}
 
 	return (to_return);

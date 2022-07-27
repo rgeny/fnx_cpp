@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/25 12:48:49 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/27 10:40:58 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,105 @@ int	main	( __attribute((unused)) int argc
 		}
 	}
 
+//	TEST
+//	std::string fnx::vjoin
+	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
+				<< "TEST vjoin"
+				<< RESET
+				<< std::endl;
+	{
+//	TEST 1
+//	std::string fnx::vjoin	(std::vector<std::string> src)
+		std::cout 	<< UNDERSCORE
+					<< "TEST 1"
+					<< RESET
+					<< std::endl
+					<< "previous : ";
 
+		std::vector<std::string>	tab;
+		fnx::ptpt_to_vector(argv, tab);
+		std::string					str = fnx::vjoin(tab);
+		for (std::size_t i = 0, size = tab.size();
+			 i < size;
+			 i++)
+		{
+			std::cout	<< tab[i];
+		}
+		std::cout	<< std::endl
+					<< "after    : "
+					<< str
+					<< std::endl;
+
+//	TEST 2
+//	std::string fnx::vjoin	( std::vector<std::string> src
+//							, std::string delimiter)
+		std::cout 	<< UNDERSCORE
+					<< "TEST 2"
+					<< RESET
+					<< std::endl
+					<< "previous : ";
+		str = fnx::vjoin(tab, "/+-");
+		for (std::size_t i = 0, size = tab.size();
+			 i < size;
+			 i++)
+		{
+			std::cout	<< tab[i];
+			if (i < size - 1)
+				std::cout	<< "/+-";
+		}
+		std::cout	<< std::endl
+					<< "after    : "
+					<< str
+					<< std::endl;
+
+//	TEST 3
+//	std::string fnx::vjoin	( std::string::iterator it
+//							, std::string::iterator ite
+//							, std::string delimiter)
+		std::cout 	<< UNDERSCORE
+					<< "TEST 3"
+					<< RESET
+					<< std::endl
+					<< "previous : ";
+		fnx::ptpt_to_vector(envp, tab);
+		size_t	len = tab.size();
+		std::vector<std::string>::iterator	it = tab.begin() + 4,
+											ite = tab.end() - (len - 8);
+		str = fnx::vjoin(it, ite);
+		while (it != ite)
+		{
+			std::cout	<< *it;
+			it++;
+		}
+		std::cout	<< std::endl
+					<< "after    : "
+					<< str
+					<< std::endl;
+
+//	TEST 4
+//	std::string fnx::vjoin	( std::string::iterator it
+//							, std::string::iterator ite
+//							, std::string delimiter)
+		std::cout 	<< UNDERSCORE
+					<< "TEST 4"
+					<< RESET
+					<< std::endl
+					<< "previous : ";
+		it = tab.begin() + 8;
+		ite = tab.end() - (len - 11);
+		str = fnx::vjoin(it, ite, "789");
+		while (it != ite)
+		{
+			std::cout	<< *it;
+			it++;
+			if (it != ite)
+				std::cout	<< "789";
+		}
+		std::cout	<< std::endl
+					<< "after    : "
+					<< str
+					<< std::endl;
+	}
 
 
 	return (EXIT_SUCCESS);

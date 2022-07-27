@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/25 12:42:52 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/27 10:25:35 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ DEL_DIR				= rm -rf
 
 CC					= c++
 VALGRIND			= valgrind
-COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra
+COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra -g
 COMPILE_EXE_FLAG	= $(COMPILE_FLAG) -D FNX_MAIN=4
 DEPS_FLAG			= -MMD -MP
 INCLUDES_FLAG		= $(addprefix -I,	$(INCLUDES_DIR) \
@@ -41,6 +41,7 @@ DEFAULT_FILES		= operator structor member accessor
 SRCS				= $(addsuffix .cpp,		main \
 											strllen \
 											split \
+											join \
 											wrong_number_of_arguments \
 											wrong_parameters)
 MAIN				= srcs/main.cpp

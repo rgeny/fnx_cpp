@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 15:06:38 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/27 15:41:25 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/27 15:49:52 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ namespace fnx
 		{
 			prev_t = steady_clock::now();
 			prev_set = true;
-			return (to_return);
+			return (duration_cast<duration<double> >(prev_t - prev_t));
 		}
 		actual_t = steady_clock::now();
 		prev_set = false;

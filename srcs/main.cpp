@@ -6,11 +6,12 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/27 10:40:58 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/27 15:25:37 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib>
+#include <unistd.h>
 #include "fnx.hpp"
 
 #ifdef FNX_MAIN
@@ -222,6 +223,25 @@ int	main	( __attribute((unused)) int argc
 					<< std::endl;
 	}
 
+//	TEST  5
+//	template < class T >
+//	std::chrono::duration<double>	chronometer	(void)
+	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
+				<< "TEST chronometer"
+				<< RESET
+				<< std::endl;
+	{
+		std::cout	<< UNDERSCORE
+					<< "usleep 1.024s"
+					<< RESET
+					<< std::endl;
+		fnx::chronometer<double>();
+		usleep(1024000);
+		std::cout	<< "result: "
+					<< fnx::chronometer<double>().count()
+					<< std::endl;
+	}
+	
 
 	return (EXIT_SUCCESS);
 }

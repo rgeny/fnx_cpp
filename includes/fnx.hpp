@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/25 12:30:01 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/27 15:13:41 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 //	TEMPLATES HEADERS
 # include "templates/ptpt_to_vector.hpp"
 # include "templates/trio.hpp"
+# include "templates/time.hpp"
 
 #endif
 

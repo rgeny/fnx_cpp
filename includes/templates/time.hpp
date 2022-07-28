@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 15:06:38 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/27 15:56:52 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/28 11:22:07 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 namespace fnx
 {
 	template < class T >
-	std::chrono::duration<double>	chronometer	(void)
+	std::chrono::duration<T>	chronometer	(void)
 	{
 		using namespace std::chrono;
 
@@ -33,11 +33,11 @@ namespace fnx
 		{
 			prev_t = steady_clock::now();
 			prev_set = true;
-			return (duration<double>::zero());
+			return (duration<T>::zero());
 		}
 		actual_t = steady_clock::now();
 		prev_set = false;
-		return (duration_cast<duration<double> >(actual_t - prev_t));
+		return (duration_cast<duration<T> >(actual_t - prev_t));
 	}
 }
 

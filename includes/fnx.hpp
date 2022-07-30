@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/30 14:05:02 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/30 14:22:42 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 //	FUNCTIONS HEADERS
 # include "functions/str.hpp"
+# include "functions/print.hpp"
 
 //	DEFINES HEADERS
 # include "defines/colors.hpp"

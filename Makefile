@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/27 10:25:35 by rgeny            ###   ########.fr        #
+#    Updated: 2022/07/30 14:23:12 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ DEL_DIR				= rm -rf
 
 CC					= c++
 VALGRIND			= valgrind
-COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra -g
+COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra -g -std=c++20
 COMPILE_EXE_FLAG	= $(COMPILE_FLAG) -D FNX_MAIN=4
 DEPS_FLAG			= -MMD -MP
 INCLUDES_FLAG		= $(addprefix -I,	$(INCLUDES_DIR) \
@@ -33,8 +33,12 @@ OBJS_DIR			= objs/
 SRCS_DIR			= srcs/
 STR_DIR				= $(SRCS_DIR)str/
 EXCEPTIONS_DIR		= $(SRCS_DIR)exceptions/
+PRINT_DIR			= $(SRCS_DIR)print/
 
-VPATH				= $(SRCS_DIR) $(STR_DIR) $(EXCEPTIONS_DIR)
+VPATH				= $(SRCS_DIR)
+VPATH				+=$(STR_DIR)
+VPATH				+=$(EXCEPTIONS_DIR)
+VPATH				+=$(PRINT_DIR)
 
 
 DEFAULT_FILES		= operator structor member accessor
@@ -43,7 +47,8 @@ SRCS				= $(addsuffix .cpp,		main \
 											split \
 											join \
 											wrong_number_of_arguments \
-											wrong_parameters)
+											wrong_parameters \
+											error)
 MAIN				= srcs/main.cpp
 OBJS				= $(patsubst %.cpp, $(OBJS_DIR)%.o, $(SRCS))
 DEPS				= $(OBJS:.o=.d)

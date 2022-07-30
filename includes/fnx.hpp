@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/27 15:13:41 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/07/30 14:05:02 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 //	DEFINES HEADERS
 # include "defines/colors.hpp"
+# include "defines/compile.hpp"
 
 //	EXCEPTIONS HEADERS
 # include "class/Exceptions.hpp"

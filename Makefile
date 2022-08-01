@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/07/30 14:23:12 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/01 17:28:19 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,21 +34,32 @@ SRCS_DIR			= srcs/
 STR_DIR				= $(SRCS_DIR)str/
 EXCEPTIONS_DIR		= $(SRCS_DIR)exceptions/
 PRINT_DIR			= $(SRCS_DIR)print/
+NOTCASESTRING_DIR	= $(SRCS_DIR)NotCaseString/
 
 VPATH				= $(SRCS_DIR)
 VPATH				+=$(STR_DIR)
 VPATH				+=$(EXCEPTIONS_DIR)
 VPATH				+=$(PRINT_DIR)
+VPATH				+=$(NOTCASESTRING_DIR)
 
 
 DEFAULT_FILES		= operator structor member accessor
-SRCS				= $(addsuffix .cpp,		main \
-											strllen \
-											split \
-											join \
-											wrong_number_of_arguments \
-											wrong_parameters \
-											error)
+SRCS				= $(addsuffix .cpp,					main \
+														strllen \
+														split \
+														join \
+														wrong_number_of_arguments \
+														wrong_parameters \
+														error \
+						$(addprefix NotCaseString.,		$(DEFAULT_FILES) \
+														find_last_of \
+														compare \
+														init_case_off \
+														find \
+														find_first_not_of \
+														find_first_of \
+														find_last_not_of \
+														rfind))
 MAIN				= srcs/main.cpp
 OBJS				= $(patsubst %.cpp, $(OBJS_DIR)%.o, $(SRCS))
 DEPS				= $(OBJS:.o=.d)

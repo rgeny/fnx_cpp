@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/01 17:20:49 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/01 17:29:04 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,6 +283,38 @@ int	main	( __attribute((unused)) int argc
 					<< test
 					<< std::endl;
 
+	}
+
+//	TEST
+//	NotCaseString
+	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
+				<< "TEST NotCaseString"
+				<< RESET
+				<< std::endl;
+	{
+		NotCaseString	a = "aBcDe",
+						b = "AbCdE";
+
+		std::cout	<< "str a : "
+					<< a
+					<< std::endl
+					<< "str b : "
+					<< b
+					<< std::endl
+					<< "a == b ? "
+					<< (int)(a == b)
+					<< std::endl;
+		a += "f";
+
+		std::cout	<< "str a : "
+					<< a
+					<< std::endl
+					<< "str b : "
+					<< b
+					<< std::endl
+					<< "a == b ? "
+					<< (int)(a == b)
+					<< std::endl;
 	}
 
 	return (EXIT_SUCCESS);

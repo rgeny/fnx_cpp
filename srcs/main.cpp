@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/27 15:51:22 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/01 12:10:54 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,30 @@ int	main	( __attribute((unused)) int argc
 					<< std::endl;
 	}
 	
+//	TEST
+//	fnx::vector
+	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
+				<< "TEST fnx::vector"
+				<< RESET
+				<< std::endl;
+	{
+		fnx::vector<int>	v;
+
+		for (int i = 0; i < 100; i++)
+		{
+			v.push_back(i);
+		}
+		fnx::vector<int>::iterator	it = v.find_first_occ(17);
+		std::cout	<< "\"fnx::vector<int>	v\" fill with 0-99 values"
+					<< std::endl
+					<< "v.find_first_occ(17) : "
+					<< *it
+					<< std::endl;
+		it = v.find_first_occ(100);
+		std::cout	<< "v.find_first_occ(100) : "
+					<< *it
+					<< std::endl;
+	}
 
 	return (EXIT_SUCCESS);
 }

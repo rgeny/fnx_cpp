@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/01 12:10:54 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/01 17:20:49 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,6 +265,24 @@ int	main	( __attribute((unused)) int argc
 		std::cout	<< "v.find_first_occ(100) : "
 					<< *it
 					<< std::endl;
+	}
+
+//	TEST
+//	template <class T>
+//	std::string	itoa	(T value,
+//						 typename std::enable_if<std::is_integral<T>::value>::type = 0)
+	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
+				<< "TEST fnx::itoa"
+				<< RESET
+				<< std::endl;
+	{
+		int	x = 7;
+		std::string	test = fnx::itoa(x);
+
+		std::cout	<< "x=7 : "
+					<< test
+					<< std::endl;
+
 	}
 
 	return (EXIT_SUCCESS);

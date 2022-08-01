@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/01 12:01:57 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/01 17:09:42 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@
 # include "defines/colors.hpp"
 # include "defines/compile.hpp"
 
-//	EXCEPTIONS HEADERS
+//	CLASS HEADERS
 # include "class/Exceptions.hpp"
+# include "class/NotCaseString.hpp"
 
 //	TEMPLATES HEADERS
 # include "templates/ptpt_to_vector.hpp"
 # include "templates/trio.hpp"
 # include "templates/time.hpp"
 # include "templates/container.hpp"
+# include "templates/itoa.hpp"
 
 #endif
 

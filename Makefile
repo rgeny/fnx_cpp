@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/01 17:28:19 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/02 11:30:15 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,14 @@ STR_DIR				= $(SRCS_DIR)str/
 EXCEPTIONS_DIR		= $(SRCS_DIR)exceptions/
 PRINT_DIR			= $(SRCS_DIR)print/
 NOTCASESTRING_DIR	= $(SRCS_DIR)NotCaseString/
+STD_DIR				= $(SRCS_DIR)std/
 
 VPATH				= $(SRCS_DIR)
 VPATH				+=$(STR_DIR)
 VPATH				+=$(EXCEPTIONS_DIR)
 VPATH				+=$(PRINT_DIR)
 VPATH				+=$(NOTCASESTRING_DIR)
+VPATH				+=$(STD_DIR)
 
 
 DEFAULT_FILES		= operator structor member accessor
@@ -59,7 +61,8 @@ SRCS				= $(addsuffix .cpp,					main \
 														find_first_not_of \
 														find_first_of \
 														find_last_not_of \
-														rfind))
+														rfind) \
+														filesystem)
 MAIN				= srcs/main.cpp
 OBJS				= $(patsubst %.cpp, $(OBJS_DIR)%.o, $(SRCS))
 DEPS				= $(OBJS:.o=.d)

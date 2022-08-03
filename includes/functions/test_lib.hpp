@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:15 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:30:25 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/03 11:55:44 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ namespace fnx_test
 	void	vector			(void);
 	void	itoa			(void);
 	void	NotCaseString	(void);
+	void	replace_substr	(char ** argv,
+							 char ** envp);
 }
 
 #endif

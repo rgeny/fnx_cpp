@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/03 11:14:43 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/03 12:05:45 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,14 @@ SRCS				= $(addsuffix .cpp,					main \
 														chronometer \
 														vector \
 														itoa \
-														NotCaseString) \
-															 \
+														NotCaseString \
+														replace_substr) \
+														\
 														strllen \
 														split \
 														join \
+														replace_substr \
+														\
 														wrong_number_of_arguments \
 														wrong_parameters \
 														error \

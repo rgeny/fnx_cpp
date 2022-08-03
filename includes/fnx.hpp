@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/02 11:29:37 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/03 11:17:13 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "functions/str.hpp"
 # include "functions/print.hpp"
 # include "functions/std.hpp"
+# include "functions/test_lib.hpp"
 
 //	DEFINES HEADERS
 # include "defines/colors.hpp"

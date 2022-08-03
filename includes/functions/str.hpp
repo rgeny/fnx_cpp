@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 14:59:18 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/27 10:42:20 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/03 10:25:28 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ namespace fnx
 	std::string					vjoin	( std::vector<std::string>::iterator it
 										, std::vector<std::string>::iterator ite
 										, std::string delimiter = "");
+	void						replace_substr	(std::string & str,
+												 std::string const last,
+												 std::string const next);
 }
 
 #endif

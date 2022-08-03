@@ -12,21 +12,21 @@
 
 #include "NotCaseString.hpp"
 
-int		NotCaseString::compare	(const NotCaseString & str) const
+int		fnx::NotCaseString::compare	(const fnx::NotCaseString & str) const
 {
 	return (this->compare(0, this->size(), str, 0, str.size()));
 }
 
-int		NotCaseString::compare	(size_t pos
+int		fnx::NotCaseString::compare	(size_t pos
 						,size_t len
-						,const NotCaseString & str) const
+						,const fnx::NotCaseString & str) const
 {
 	return (this->compare(pos, len, str, 0, str.size()));
 }
 
-int	NotCaseString::compare	(size_t pos
+int	fnx::NotCaseString::compare	(size_t pos
 					,size_t len
-					,const NotCaseString & str
+					,const fnx::NotCaseString & str
 					,size_t subpos
 					,size_t sublen) const
 {
@@ -42,26 +42,26 @@ int	NotCaseString::compare	(size_t pos
 	return ((len - pos) - (sublen - subpos));
 }
 
-int		NotCaseString::compare	(const char * s) const
+int		fnx::NotCaseString::compare	(const char * s) const
 {
-	NotCaseString	tmp(s);
+	fnx::NotCaseString	tmp(s);
 	return (this->compare(0, this->size(), tmp, 0, tmp.size()));
 }
 
-int		NotCaseString::compare	(size_t pos
+int		fnx::NotCaseString::compare	(size_t pos
 						,size_t len
 						,const char * s) const
 {
-	NotCaseString	tmp(s);
+	fnx::NotCaseString	tmp(s);
 	return (this->compare(pos, len, tmp, 0, tmp.size()));
 
 }
 
-int	NotCaseString::compare	(size_t pos
+int	fnx::NotCaseString::compare	(size_t pos
 					,size_t len
 					,const char * s
 					,size_t n) const
 {
-	NotCaseString	tmp(s);
+	fnx::NotCaseString	tmp(s);
 	return (this->compare(pos, len, tmp, 0, n));
 }

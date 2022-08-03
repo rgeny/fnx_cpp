@@ -12,12 +12,12 @@
 
 #include "NotCaseString.hpp"
 
-NotCaseString::CASE_OFF_TYPE	NotCaseString::_init_case_off	(void)
+fnx::NotCaseString::CASE_OFF_TYPE	fnx::NotCaseString::_init_case_off	(void)
 {
-	NotCaseString::CASE_OFF_TYPE	tmp;
+	fnx::NotCaseString::CASE_OFF_TYPE	tmp;
 	int	diff_low_up = 'a' - 'A';
 
-	NotCaseString::_case_off.resize(256);
+	fnx::NotCaseString::_case_off.resize(256);
 	for (int i = 0; i < 256; i++)
 	{
 		if (i >= 'a' && i <= '~')

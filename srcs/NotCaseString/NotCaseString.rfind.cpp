@@ -12,20 +12,20 @@
 
 #include "NotCaseString.hpp"
 
-size_t	NotCaseString::rfind	(const NotCaseString & str
+size_t	fnx::NotCaseString::rfind	(const fnx::NotCaseString & str
 						,size_t pos) const
 {
 	return (this->rfind(str.c_str(), pos, str.size()));
 }
 
 
-size_t	NotCaseString::rfind	(const char * s
+size_t	fnx::NotCaseString::rfind	(const char * s
 						,size_t pos) const
 {
 	return (this->rfind(s, pos, strlen(s)));
 }
 
-size_t	NotCaseString::rfind	(const char * s
+size_t	fnx::NotCaseString::rfind	(const char * s
 						,size_t pos
 						,size_t n) const
 {
@@ -41,9 +41,9 @@ size_t	NotCaseString::rfind	(const char * s
 	return (std::string::npos);
 }
 
-size_t	NotCaseString::rfind	(char c
+size_t	fnx::NotCaseString::rfind	(char c
 						,size_t pos) const
 {
-	NotCaseString	tmp(1, c);
+	fnx::NotCaseString	tmp(1, c);
 	return (this->rfind(tmp.c_str(), pos, 1));
 }

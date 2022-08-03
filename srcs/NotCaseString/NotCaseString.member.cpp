@@ -12,7 +12,7 @@
 
 #include "NotCaseString.hpp"
 
-unsigned char	NotCaseString::_cast	(char c) const
+unsigned char	fnx::NotCaseString::_cast	(char c) const
 {
-	return (NotCaseString::_case_off[static_cast<unsigned char>(c)]);
+	return (fnx::NotCaseString::_case_off[static_cast<unsigned char>(c)]);
 }

@@ -12,20 +12,20 @@
 
 #include "NotCaseString.hpp"
 
-size_t	NotCaseString::find_first_of	(const NotCaseString & str
+size_t	fnx::NotCaseString::find_first_of	(const fnx::NotCaseString & str
 								,size_t pos) const
 {
 	return (this->find_first_of(str.c_str(), pos, str.size()));
 }
 
-size_t	NotCaseString::find_first_of	(const char * s
+size_t	fnx::NotCaseString::find_first_of	(const char * s
 								,size_t pos) const
 {
 	return (this->find_first_of(s, pos, strlen(s)));
 }
 
 
-size_t	NotCaseString::find_first_of	(const char * s
+size_t	fnx::NotCaseString::find_first_of	(const char * s
 								,size_t pos
 								,size_t n) const
 {
@@ -43,9 +43,9 @@ size_t	NotCaseString::find_first_of	(const char * s
 	return (std::string::npos);
 }
 
-size_t	NotCaseString::find_first_of	(char c
+size_t	fnx::NotCaseString::find_first_of	(char c
 								,size_t pos) const
 {
-	NotCaseString	tmp(1, c);
+	fnx::NotCaseString	tmp(1, c);
 	return (this->find_first_of(tmp.c_str(), pos, 1));
 }

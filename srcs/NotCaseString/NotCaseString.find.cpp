@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   String.find.cpp                                    :+:      :+:    :+:   */
+/*   NotCaseString.find.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 15:36:06 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/01 17:02:41 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:53:42 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "NotCaseString.hpp"
+#include "fnx.hpp"
 
 size_t	fnx::NotCaseString::find	(const fnx::NotCaseString & str
 						,size_t pos) const

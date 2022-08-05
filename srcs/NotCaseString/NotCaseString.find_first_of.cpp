@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   String.find_first_of.cpp                           :+:      :+:    :+:   */
+/*   NotCaseString.find_first_of.cpp                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 17:23:03 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/01 17:02:49 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:54:01 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "NotCaseString.hpp"
+#include "fnx.hpp"
 
 size_t	fnx::NotCaseString::find_first_of	(const fnx::NotCaseString & str
 								,size_t pos) const

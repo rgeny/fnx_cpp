@@ -6,14 +6,12 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 13:29:26 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/24 14:33:44 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:51:36 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PTPT_TO_VECTOR_HPP
 # define PTPT_TO_VECTOR_HPP
-
-# include "fnx.hpp"
 
 namespace fnx
 {

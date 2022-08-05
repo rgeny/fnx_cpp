@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   String.find_last_not_of.cpp                        :+:      :+:    :+:   */
+/*   NotCaseString.find_last_not_of.cpp                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 17:22:10 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/01 17:02:13 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:55:04 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "NotCaseString.hpp"
+#include "fnx.hpp"
 
 size_t	fnx::NotCaseString::find_last_not_of	(const fnx::NotCaseString & str
 									,size_t pos) const

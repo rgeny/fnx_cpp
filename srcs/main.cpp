@@ -6,13 +6,14 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:55:15 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:53:06 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib>
 #include <unistd.h>
-#include "fnx.hpp"
+
+#include "fnx_test.hpp"
 
 #ifdef FNX_TEST
 
@@ -30,5 +31,6 @@ int	main	( __attribute((unused)) int argc
 	fnx_test::itoa();
 	fnx_test::NotCaseString();
 	fnx_test::replace_substr(argv, envp);
+	fnx_test::get_list(argv);
 }
 #endif

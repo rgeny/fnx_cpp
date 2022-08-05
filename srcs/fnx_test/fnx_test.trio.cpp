@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_lib.test.cpp                                  :+:      :+:    :+:   */
+/*   fnx_test.trio.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 10:58:32 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:20:58 by rgeny            ###   ########.fr       */
+/*   Created: 2022/08/03 11:01:01 by rgeny             #+#    #+#             */
+/*   Updated: 2022/08/05 10:57:14 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fnx.hpp"
+#include "fnx_test.hpp"
 
 #ifdef FNX_TEST
-void	fnx_test::print_category	(std::string const	msg)
+void	fnx_test::trio	(void)
 {
-	std::cout	<< BLUE_TEXT BLACK_BACK BRIGHT
-				<< "TEST "
-				<< msg
-				<< " :"
-				<< RESET
-				<< std::endl;
-}
+	print_category	("trio");
+	{
+		print_test("dfl constructor");
 
-void	fnx_test::print_test	(std::string const msg)
-{
-	std::cout	<< UNDERSCORE BLACK_BACK WHITE_TEXT
-				<< "Test "
-				<< msg
-				<< RESET
-				<< std::endl;
+		fnx::trio<int, char, float>	t;
+		t.print_data();
+	}
+	{
+		print_test("parameters constructor");
+
+		fnx::trio<int, char, float>	t(4, 'w', 17.1798);
+		t.print_data();
+
+		print_test("cpy constructor");
+
+		fnx::trio<int, char, float>	t2(t);
+		t2.print_data();
+	}
+	
 }
 #endif

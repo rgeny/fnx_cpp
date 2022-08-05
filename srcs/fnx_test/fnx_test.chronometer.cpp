@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_lib.vsplit.cpp                                :+:      :+:    :+:   */
+/*   fnx_test.chronometer.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 11:05:20 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:21:02 by rgeny            ###   ########.fr       */
+/*   Created: 2022/08/03 11:10:07 by rgeny             #+#    #+#             */
+/*   Updated: 2022/08/05 10:56:39 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fnx.hpp"
+#include "fnx_test.hpp"
 
 #ifdef FNX_TEST
-void	fnx_test::vsplit	(void)
-{
-	print_category("vsplit");
-	{
-		std::string		str ("abc\tdef\tghi\tjkl\tmno\tpqr\tstu\tvwx\tyz."),
-						set ("\tej");
-		std::vector<std::string>	tmp = fnx::vsplit(str, set);
+#include <unistd.h>
 
-		for (std::size_t i = 0; i < tmp.size(); i++)
-		{
-			std::cout	<< "["
-						<< i
-						<< "] = "
-						<< tmp[i]
-						<< std::endl;
-		}
-	}	
+void	fnx_test::chronometer	(void)
+{
+	print_category("chronometer");
+	{
+		print_test("usleep 0,137s");
+		fnx::chronometer<double>();
+		usleep(137000);
+		std::cout	<< "result: "
+					<< fnx::chronometer<double>().count()
+					<< std::endl;
+	}
 }
 #endif

@@ -6,11 +6,11 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:06:11 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:44:43 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:55:21 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "NotCaseString.hpp"
+#include "fnx.hpp"
 
 bool	fnx::operator==	(const fnx::NotCaseString & lhs
 					,const fnx::NotCaseString & rhs)

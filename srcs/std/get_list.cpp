@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_lib.chronometer.cpp                           :+:      :+:    :+:   */
+/*   get_list.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 11:10:07 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 13:54:26 by rgeny            ###   ########.fr       */
+/*   Created: 2022/08/04 16:09:57 by rgeny             #+#    #+#             */
+/*   Updated: 2022/08/05 10:55:58 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fnx.hpp"
 
-#ifdef FNX_TEST
-#include <unistd.h>
-
-void	fnx_test::chronometer	(void)
+std::vector<std::string>	fnx::get_files	(fs::path path,
+											 fnx::vector<std::string>	ign_list)
 {
-	print_category("chronometer");
+	std::vector<std::string>			to_return;
+	std::filesystem::directory_entry	dir(path);
+
+	fs::recursive_directory_iterator	it(dir);
+	while (it != fs::end(it))
 	{
-		print_test("usleep 0,137s");
-		fnx::chronometer<double>();
-		usleep(137000);
-		std::cout	<< "result: "
-					<< fnx::chronometer<double>().count()
+		std::cout	<< it->path()
 					<< std::endl;
+		if (it->is_regular_file() &&
+			ign_list.find_first_occ(it->path().c_str()) == ign_list.end())
+			to_return.push_back(it->path().c_str());
+		it++;
 	}
+	return (to_return);
 }
-#endif

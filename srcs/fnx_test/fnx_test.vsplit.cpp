@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_lib.strllen.cpp                               :+:      :+:    :+:   */
+/*   fnx_test.vsplit.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 11:04:10 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:24:21 by rgeny            ###   ########.fr       */
+/*   Created: 2022/08/03 11:05:20 by rgeny             #+#    #+#             */
+/*   Updated: 2022/08/05 10:58:20 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fnx.hpp"
+#include "fnx_test.hpp"
 
 #ifdef FNX_TEST
-void	fnx_test::strllen	(char ** argv,
-							 char ** envp)
+void	fnx_test::vsplit	(void)
 {
-	print_category("strllen");
-	std::cout	<< "fnx::strllen(argv) : "
-				<< fnx::strllen(argv)
-				<< std::endl
+	print_category("vsplit");
+	{
+		std::string		str ("abc\tdef\tghi\tjkl\tmno\tpqr\tstu\tvwx\tyz."),
+						set ("\tej");
+		std::vector<std::string>	tmp = fnx::vsplit(str, set);
 
-				<< "fnx::strllen(envp) : "
-				<< fnx::strllen(envp)
-				<< std::endl
-
-				<< "fnx::strllen(NULL) : "
-				<< fnx::strllen(NULL)
-				<< std::endl;
-
+		for (std::size_t i = 0; i < tmp.size(); i++)
+		{
+			std::cout	<< "["
+						<< i
+						<< "] = "
+						<< tmp[i]
+						<< std::endl;
+		}
+	}	
 }
 #endif

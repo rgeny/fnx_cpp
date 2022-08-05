@@ -6,11 +6,11 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:15:38 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/30 14:18:44 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:55:41 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.hpp"
+#include "fnx.hpp"
 
 int	print_error	(std::exception const & err)
 {

@@ -6,11 +6,11 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 17:30:14 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/27 10:42:11 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:56:06 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.hpp"
+#include "fnx.hpp"
 
 std::string	fnx::vjoin	( std::vector<std::string> src
 						, std::string delimiter)

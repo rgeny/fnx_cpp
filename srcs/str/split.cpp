@@ -6,11 +6,11 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:33:30 by rgeny             #+#    #+#             */
-/*   Updated: 2022/07/25 12:49:31 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:56:19 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.hpp"
+#include "fnx.hpp"
 
 std::vector<std::string>	fnx::vsplit	( std::string str
 										, std::string set)

@@ -6,11 +6,11 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:00:24 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:43:43 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:55:31 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "NotCaseString.hpp"
+#include "fnx.hpp"
 
 std::vector<unsigned char>  fnx::NotCaseString::_case_off = NotCaseString::_init_case_off();
 

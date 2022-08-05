@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/03 12:05:45 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/05 11:07:38 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,14 @@ FUNCTIONS_DIR		= $(INCLUDES_DIR)functions/
 TEMPLATES_DIR		= $(INCLUDES_DIR)templates/
 OBJS_DIR			= objs/
 SRCS_DIR			= srcs/
-TEST_LIB_DIR		= $(SRCS_DIR)test_lib/
+FNX_TEST_DIR		= $(SRCS_DIR)fnx_test/
 STR_DIR				= $(SRCS_DIR)str/
 EXCEPTIONS_DIR		= $(SRCS_DIR)exceptions/
 PRINT_DIR			= $(SRCS_DIR)print/
 NOTCASESTRING_DIR	= $(SRCS_DIR)NotCaseString/
 STD_DIR				= $(SRCS_DIR)std/
 
-VPATH				= $(SRCS_DIR) $(TEST_LIB_DIR)
+VPATH				= $(SRCS_DIR) $(FNX_TEST_DIR)
 VPATH				+=$(STR_DIR)
 VPATH				+=$(EXCEPTIONS_DIR)
 VPATH				+=$(PRINT_DIR)
@@ -48,7 +48,7 @@ VPATH				+=$(STD_DIR)
 
 DEFAULT_FILES		= operator structor member accessor
 SRCS				= $(addsuffix .cpp,					main \
-						$(addprefix test_lib.,			test \
+						$(addprefix fnx_test.,			test \
 														trio \
 														ptpt_to_vector \
 														strllen \
@@ -58,7 +58,8 @@ SRCS				= $(addsuffix .cpp,					main \
 														vector \
 														itoa \
 														NotCaseString \
-														replace_substr) \
+														replace_substr \
+														get_list) \
 														\
 														strllen \
 														split \
@@ -77,7 +78,9 @@ SRCS				= $(addsuffix .cpp,					main \
 														find_first_of \
 														find_last_not_of \
 														rfind) \
-														filesystem)
+														\
+														filesystem \
+														get_list)
 MAIN				= srcs/main.cpp
 OBJS				= $(patsubst %.cpp, $(OBJS_DIR)%.o, $(SRCS))
 DEPS				= $(OBJS:.o=.d)

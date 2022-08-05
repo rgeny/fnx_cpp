@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_lib.hpp                                       :+:      :+:    :+:   */
+/*   fnx_test.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:15 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:55:44 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:50:10 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_LIB_HPP
-# define TEST_LIB_HPP
+#ifndef FNX_TEST_HPP
+# define FNX_TEST_HPP
 
 # include <iostream>
+
+# include "fnx.hpp"
 
 namespace fnx_test
 {
@@ -32,6 +34,7 @@ namespace fnx_test
 	void	NotCaseString	(void);
 	void	replace_substr	(char ** argv,
 							 char ** envp);
+	void	get_list		(char ** argv);
 }
 
 #endif

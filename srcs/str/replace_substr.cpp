@@ -6,11 +6,11 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:19:50 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 14:15:09 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:56:13 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "str.hpp"
+#include "fnx.hpp"
 
 void	fnx::replace_substr	(std::string & str,
 							 std::string const last,

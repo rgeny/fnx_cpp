@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_lib.trio.cpp                                  :+:      :+:    :+:   */
+/*   fnx_test.strllen.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 11:01:01 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 11:21:11 by rgeny            ###   ########.fr       */
+/*   Created: 2022/08/03 11:04:10 by rgeny             #+#    #+#             */
+/*   Updated: 2022/08/05 10:57:08 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fnx.hpp"
+#include "fnx_test.hpp"
 
 #ifdef FNX_TEST
-void	fnx_test::trio	(void)
+void	fnx_test::strllen	(char ** argv,
+							 char ** envp)
 {
-	print_category	("trio");
-	{
-		print_test("dfl constructor");
+	print_category("strllen");
+	std::cout	<< "fnx::strllen(argv) : "
+				<< fnx::strllen(argv)
+				<< std::endl
 
-		fnx::trio<int, char, float>	t;
-		t.print_data();
-	}
-	{
-		print_test("parameters constructor");
+				<< "fnx::strllen(envp) : "
+				<< fnx::strllen(envp)
+				<< std::endl
 
-		fnx::trio<int, char, float>	t(4, 'w', 17.1798);
-		t.print_data();
+				<< "fnx::strllen(NULL) : "
+				<< fnx::strllen(NULL)
+				<< std::endl;
 
-		print_test("cpy constructor");
-
-		fnx::trio<int, char, float>	t2(t);
-		t2.print_data();
-	}
-	
 }
 #endif

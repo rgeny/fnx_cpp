@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_case_off.cpp                                  :+:      :+:    :+:   */
+/*   NotCaseString.init_case_off.cpp                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:45:07 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/01 17:01:48 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/05 10:55:13 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "NotCaseString.hpp"
+#include "fnx.hpp"
 
 fnx::NotCaseString::CASE_OFF_TYPE	fnx::NotCaseString::_init_case_off	(void)
 {

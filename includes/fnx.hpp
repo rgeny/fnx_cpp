@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/05 10:50:16 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/08 12:21:47 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 //	CLASS HEADERS
 # include "class/Exceptions.hpp"
 # include "class/NotCaseString.hpp"
+# include "class/WildcardString.hpp"
 
 //	TEMPLATES HEADERS
 # include "templates/ptpt_to_vector.hpp"

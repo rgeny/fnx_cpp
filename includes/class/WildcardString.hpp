@@ -6,60 +6,136 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/06 11:34:41 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/08 14:02:52 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WILDCARDSTRING_HPP
 # define WILDCARDSTRING_HPP
 
+# define INFINITY_WILDCARD_CHAR '*'
+# define ONE_CHAR_WILDCARD_CHAR '?'
+# define ESCAPE_WILDCARD_CHAR '\\'
+
 # include <iostream>
 
-class WildcardString
+namespace fnx
 {
-	public:
-		WildcardString	(void);
-		WildcardString	(WildcardString const & src);
-		~WildcardString	(void);
+	class WildcardString
+		:public std::string
+	{
+		public:
+			WildcardString		(char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			WildcardString		(const WildcardString & str,
+								 char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			WildcardString		(const WildcardString & str,
+								 size_t pos,
+								 size_t len = std::string::npos,
+								 char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			WildcardString		(const std::string & str,
+								 char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			WildcardString		(const char * s,
+								 char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			WildcardString		(const char * s,
+								 size_t n,
+								 char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			WildcardString		(size_t n,
+								 char c,
+								 char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			template <class InputIterator>
+			WildcardString		(InputIterator first,
+								 InputIterator last,
+								 char const inf_wc = INFINITY_WILDCARD_CHAR,
+								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
+								 char const esc_wc = ESCAPE_WILDCARD_CHAR)
+				:std::string(first, last),
+				 _inf_wc(inf_wc),
+				 _one_wc(one_wc),
+				 _esc_wc(esc_wc)
 
-		WildcardString &	operator=	(WildcardString const & src);
+			{
+				std::cout	<< "WildcardString range constructor."
+							<< std::endl;
+			}
+			~WildcardString		(void);
 
-		void	print_data	(void) const;
+			WildcardString &	operator=	(WildcardString const & src);
 
-	private:
-};
+			void	print_data	(void) const;
 
+		private:
+			char const	_inf_wc;
+			char const	_one_wc;
+			char const	_esc_wc;
+	};
+	bool 	operator==	(const WildcardString & lhs,
+						 const WildcardString & rhs);
+	bool 	operator==	(const char * lhs,
+						 const WildcardString & rhs);
+	bool 	operator==	(const WildcardString & lhs,
+						 const char * rhs);
+
+	bool 	operator!=	(const WildcardString & lhs,
+						 const WildcardString & rhs);
+	bool 	operator!=	(const char * lhs,
+						 const WildcardString & rhs);
+	bool 	operator!=	(const WildcardString & lhs,
+						 const char * rhs);
+
+	bool 	operator<	(const WildcardString & lhs,
+						 const WildcardString & rhs);
+	bool 	operator<	(const char * lhs,
+						 const WildcardString & rhs);
+	bool 	operator<	(const WildcardString & lhs,
+						 const char * rhs);
+
+	bool 	operator<=	(const WildcardString & lhs,
+						 const WildcardString & rhs);
+	bool 	operator<=	(const char * lhs,
+						 const WildcardString & rhs);
+	bool 	operator<=	(const WildcardString & lhs,
+						 const char * rhs);
+
+	bool 	operator>	(const WildcardString & lhs,
+						 const WildcardString & rhs);
+	bool 	operator>	(const char * lhs,
+						 const WildcardString & rhs);
+	bool 	operator>	(const WildcardString & lhs,
+						 const char * rhs);
+
+	bool 	operator>=	(const WildcardString & lhs,
+						 const WildcardString & rhs);
+	bool 	operator>=	(const char * lhs,
+						 const WildcardString & rhs);
+	bool 	operator>=	(const WildcardString & lhs,
+						 const char * rhs);
+}
 #endif
 
 //public:
-//	NotCaseString		(void);
-//	NotCaseString		(const NotCaseString & str);
-//	NotCaseString		(const NotCaseString & str
-//						,size_t pos
-//						,size_t len = std::string::npos);
-//	NotCaseString		(const std::string & str);
-//	NotCaseString		(const char * s);
-//	NotCaseString		(const char * s
-//						,size_t n);
-//	NotCaseString		(size_t n
-//						,char c);
-//	template <class InputIterator>
-//	NotCaseString		(InputIterator first
-//						,InputIterator last)
-//		:std::string(first, last)
-//	{
-//		std::cout	<< "NotCaseString range constructor."
-//					<< std::endl;
-//	}
-//	~NotCaseString		(void);
+
 //
-//	int		compare	(const NotCaseString & str) const;
+//	int		compare	(const WildcardString & str) const;
 //	int		compare	(size_t pos
 //					,size_t len
-//					,const NotCaseString & str) const;
+//					,const WildcardString & str) const;
 //	int		compare (size_t pos
 //					,size_t len
-//					,const NotCaseString & str
+//					,const WildcardString & str
 //					,size_t subpos
 //					,size_t sublen) const;
 //	int		compare (const char * s) const;
@@ -71,7 +147,7 @@ class WildcardString
 //					,const char * s
 //					,size_t n) const;
 //
-//	size_t	find	(const NotCaseString & str
+//	size_t	find	(const WildcardString & str
 //					,size_t pos = 0) const;
 //	size_t	find	(const char * s
 //					,size_t pos = 0) const;
@@ -81,7 +157,7 @@ class WildcardString
 //	size_t	find	(char c
 //					,size_t pos = 0) const;
 //
-//	size_t	rfind	(const NotCaseString & str
+//	size_t	rfind	(const WildcardString & str
 //					,size_t pos = npos) const;
 //	size_t	rfind	(const char * s
 //					,size_t pos = npos) const;
@@ -91,7 +167,7 @@ class WildcardString
 //	size_t	rfind	(char c
 //					,size_t pos = npos) const;
 //
-//	size_t	find_first_of	(const NotCaseString & str
+//	size_t	find_first_of	(const WildcardString & str
 //							,size_t pos = 0) const;
 //	size_t	find_first_of	(const char * s
 //							,size_t pos = 0) const;
@@ -101,7 +177,7 @@ class WildcardString
 //	size_t	find_first_of	(char c
 //							,size_t pos = 0) const;
 //
-//	size_t	find_last_of	(const NotCaseString & str
+//	size_t	find_last_of	(const WildcardString & str
 //							,size_t pos = npos) const;
 //	size_t	find_last_of	(const char * s
 //							,size_t pos = npos) const;
@@ -111,7 +187,7 @@ class WildcardString
 //	size_t	find_last_of	(char c
 //							,size_t pos = npos) const;
 //
-//	size_t	find_first_not_of	(const NotCaseString & str
+//	size_t	find_first_not_of	(const WildcardString & str
 //								,size_t pos = 0) const;
 //	size_t	find_first_not_of	(const char * s
 //								,size_t pos = 0) const;
@@ -121,7 +197,7 @@ class WildcardString
 //	size_t	find_first_not_of	(char c
 //								,size_t pos = 0) const;
 //
-//	size_t	find_last_not_of	(const NotCaseString & str
+//	size_t	find_last_not_of	(const WildcardString & str
 //								,size_t pos = npos) const;
 //	size_t	find_last_not_of	(const char * s
 //								,size_t pos = npos) const;
@@ -132,52 +208,7 @@ class WildcardString
 //								,size_t pos = npos) const;
 //
 //private:
-//	typedef std::vector<unsigned char>	CASE_OFF_TYPE;
-//	static CASE_OFF_TYPE	 			_case_off;
-//
-//	static CASE_OFF_TYPE	_init_case_off	(void);
-//	unsigned char			_cast	(char c) const;
 //	std::string				_out_of_range	(size_t pos
 //											,size_t this_size) const;
 //};
-//bool 	operator==	(const NotCaseString & lhs
-//				,const NotCaseString & rhs);
-//bool 	operator==	(const char * lhs
-//				,const NotCaseString & rhs);
-//bool 	operator==	(const NotCaseString & lhs
-//				,const char * rhs);
-//
-//bool 	operator!=	(const NotCaseString & lhs
-//				,const NotCaseString & rhs);
-//bool 	operator!=	(const char * lhs
-//				,const NotCaseString & rhs);
-//bool 	operator!=	(const NotCaseString & lhs
-//				,const char * rhs);
-//
-//bool 	operator<	(const NotCaseString & lhs
-//				,const NotCaseString & rhs);
-//bool 	operator<	(const char * lhs
-//				,const NotCaseString & rhs);
-//bool 	operator<	(const NotCaseString & lhs
-//				,const char * rhs);
-//
-//bool 	operator<=	(const NotCaseString & lhs
-//				,const NotCaseString & rhs);
-//bool 	operator<=	(const char * lhs
-//				,const NotCaseString & rhs);
-//bool 	operator<=	(const NotCaseString & lhs
-//				,const char * rhs);
-//
-//bool 	operator>	(const NotCaseString & lhs
-//				,const NotCaseString & rhs);
-//bool 	operator>	(const char * lhs
-//				,const NotCaseString & rhs);
-//bool 	operator>	(const NotCaseString & lhs
-//				,const char * rhs);
-//
-//bool 	operator>=	(const NotCaseString & lhs
-//				,const NotCaseString & rhs);
-//bool 	operator>=	(const char * lhs
-//				,const NotCaseString & rhs);
-//bool 	operator>=	(const NotCaseString & lhs
-//				,const char * rhs);
+

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:15 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/05 10:50:10 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/08 13:14:37 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ namespace fnx_test
 	void	vector			(void);
 	void	itoa			(void);
 	void	NotCaseString	(void);
+	void	WildcardString	(void);
 	void	replace_substr	(char ** argv,
 							 char ** envp);
 	void	get_list		(char ** argv);

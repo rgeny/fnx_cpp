@@ -3,17 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   WildcardString.member.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 10:22:43 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/06 11:39:40 by rgeny            ###   ########.fr       */
+/*   Created: 2022/04/27 01:06:36 by rgeny             #+#    #+#             */
+/*   Updated: 2022/08/08 12:23:44 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WildcardString.hpp"
-
-void	WildcardString::print_data	(void) const
-{
-	
-}
+#include "fnx.hpp"
 

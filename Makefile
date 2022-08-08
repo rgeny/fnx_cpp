@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/08 11:43:53 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/08 13:15:03 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRCS				= $(addsuffix .cpp,					main \
 														vector \
 														itoa \
 														NotCaseString \
+														WildcardString \
 														replace_substr \
 														get_list) \
 														\
@@ -81,6 +82,8 @@ SRCS				= $(addsuffix .cpp,					main \
 														find_first_of \
 														find_last_not_of \
 														rfind) \
+														\
+						$(addprefix WildcardString.,	$(DEFAULT_FILES)) \
 														\
 														filesystem \
 														get_list)

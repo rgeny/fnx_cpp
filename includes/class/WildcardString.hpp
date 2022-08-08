@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 14:02:52 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/08 14:16:30 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ namespace fnx
 				 _esc_wc(esc_wc)
 
 			{
+				_check_wildcard();
 				std::cout	<< "WildcardString range constructor."
 							<< std::endl;
 			}
@@ -81,6 +82,8 @@ namespace fnx
 			char const	_inf_wc;
 			char const	_one_wc;
 			char const	_esc_wc;
+
+			void	_check_wildcard	(void) const;
 	};
 	bool 	operator==	(const WildcardString & lhs,
 						 const WildcardString & rhs);

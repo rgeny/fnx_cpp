@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WildcardString.member.cpp                          :+:      :+:    :+:   */
+/*   wildcardstring_same_wildcard_char.cpp              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 01:06:36 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 14:15:56 by rgeny            ###   ########.fr       */
+/*   Created: 2022/08/08 14:05:02 by rgeny             #+#    #+#             */
+/*   Updated: 2022/08/08 14:06:47 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fnx.hpp"
 
-void	fnx::WildcardString::_check_wildcard	(void) const
+char const *	fnx::WildcardString_same_wildcard_char::what() const throw()
 {
-	if (_inf_wc == _one_wc ||
-		_one_wc == _esc_wc ||
-		_esc_wc == _inf_wc)
-	{
-		throw (WildcardString_same_wildcard_char());
-	}
+	return (ERROR_WILDCARDSTRING_SAME_WILDCARD_CHAR);
 }

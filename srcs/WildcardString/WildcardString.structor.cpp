@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:00:24 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 13:59:36 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/08 14:16:21 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ fnx::WildcardString:: WildcardString	(char const inf_wc,
 	 _esc_wc(esc_wc)
 
 {
+	_check_wildcard();
 //	std::cout	<< "WildcardString dfl constructor."
 //				<< std::endl;
 }
@@ -36,6 +37,7 @@ fnx::WildcardString:: WildcardString	(const WildcardString & src,
 	 _esc_wc(esc_wc)
 
 {
+	_check_wildcard();
 //	std::cout	<< "WildcardString cpy constructor."
 //				<< std::endl;
 }
@@ -52,6 +54,7 @@ fnx::WildcardString:: WildcardString	(const WildcardString & str,
 	 _esc_wc(esc_wc)
 
 {
+	_check_wildcard();
 //	std::cout	<< "WildcardString substring constructor."
 //				<< std::endl;
 }
@@ -66,6 +69,7 @@ fnx::WildcardString:: WildcardString	(const std::string & str,
 	 _esc_wc(esc_wc)
 
 {
+	_check_wildcard();
 //	std::cout	<< "WildcardString from std::string constructor."
 //				<< std::endl;
 }
@@ -80,6 +84,7 @@ fnx::WildcardString:: WildcardString	(const char * s,
 	 _esc_wc(esc_wc)
 
 {
+	_check_wildcard();
 //	std::cout	<< "WildcardString from c-string constructor."
 //				<< std::endl;
 }
@@ -95,6 +100,7 @@ fnx::WildcardString:: WildcardString	(const char * s,
 	 _esc_wc(esc_wc)
 
 {
+	_check_wildcard();
 //	std::cout	<< "WildcardString from sequence constructor."
 //				<< std::endl;
 }
@@ -110,6 +116,7 @@ fnx::WildcardString:: WildcardString	(size_t n,
 	 _esc_wc(esc_wc)
 
 {
+	_check_wildcard();
 //	std::cout	<< "WildcardString fill constructor."
 //				<< std::endl;
 }

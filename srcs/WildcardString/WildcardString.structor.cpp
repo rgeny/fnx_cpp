@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:00:24 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 14:16:21 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/08 18:39:46 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ fnx::WildcardString:: WildcardString	(char const inf_wc,
 //				<< std::endl;
 }
 
-fnx::WildcardString:: WildcardString	(const WildcardString & src,
-										 char const inf_wc,
-										 char const one_wc,
-										 char const esc_wc)
+fnx::WildcardString:: WildcardString	(const WildcardString & src)
 
 	:std::string(src),
-	 _inf_wc(inf_wc),
-	 _one_wc(one_wc),
-	 _esc_wc(esc_wc)
+	 _inf_wc(src._inf_wc),
+	 _one_wc(src._one_wc),
+	 _esc_wc(src._esc_wc)
 
 {
 	_check_wildcard();
@@ -44,14 +41,11 @@ fnx::WildcardString:: WildcardString	(const WildcardString & src,
 
 fnx::WildcardString:: WildcardString	(const WildcardString & str,
 										 size_t pos,
-										 size_t len,
-										 char const inf_wc,
-										 char const one_wc,
-										 char const esc_wc)
+										 size_t len)
 	:std::string(str, pos, len),
-	 _inf_wc(inf_wc),
-	 _one_wc(one_wc),
-	 _esc_wc(esc_wc)
+	 _inf_wc(str._inf_wc),
+	 _one_wc(str._one_wc),
+	 _esc_wc(str._esc_wc)
 
 {
 	_check_wildcard();

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 14:16:30 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/08 18:38:56 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,17 @@ namespace fnx
 		:public std::string
 	{
 		public:
+			char const	_inf_wc;
+			char const	_one_wc;
+			char const	_esc_wc;
+
 			WildcardString		(char const inf_wc = INFINITY_WILDCARD_CHAR,
 								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
 								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
-			WildcardString		(const WildcardString & str,
-								 char const inf_wc = INFINITY_WILDCARD_CHAR,
-								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
-								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+			WildcardString		(const WildcardString & str);
 			WildcardString		(const WildcardString & str,
 								 size_t pos,
-								 size_t len = std::string::npos,
-								 char const inf_wc = INFINITY_WILDCARD_CHAR,
-								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
-								 char const esc_wc = ESCAPE_WILDCARD_CHAR);
+								 size_t len = std::string::npos);
 			WildcardString		(const std::string & str,
 								 char const inf_wc = INFINITY_WILDCARD_CHAR,
 								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
@@ -76,14 +74,29 @@ namespace fnx
 
 			WildcardString &	operator=	(WildcardString const & src);
 
-			void	print_data	(void) const;
+			int		compare	(const WildcardString & str) const;
+			int		compare	(size_t pos,
+							 size_t len,
+							 const WildcardString & str) const;
+			int		compare (size_t pos,
+							 size_t len,
+							 const WildcardString & str,
+							 size_t subpos,
+							 size_t sublen) const;
+			int		compare (const char * s) const;
+			int		compare	(size_t pos,
+							 size_t len,
+							 const char * s) const;
+			int		compare (size_t pos,
+							 size_t len,
+							 const char * s,
+							 size_t n) const;
+
+			bool	is_wildcard		(char const c) const;
 
 		private:
-			char const	_inf_wc;
-			char const	_one_wc;
-			char const	_esc_wc;
 
-			void	_check_wildcard	(void) const;
+			void	_check_wildcard		(void) const;
 	};
 	bool 	operator==	(const WildcardString & lhs,
 						 const WildcardString & rhs);
@@ -132,23 +145,7 @@ namespace fnx
 //public:
 
 //
-//	int		compare	(const WildcardString & str) const;
-//	int		compare	(size_t pos
-//					,size_t len
-//					,const WildcardString & str) const;
-//	int		compare (size_t pos
-//					,size_t len
-//					,const WildcardString & str
-//					,size_t subpos
-//					,size_t sublen) const;
-//	int		compare (const char * s) const;
-//	int		compare	(size_t pos
-//					,size_t len
-//					,const char * s) const;
-//	int		compare (size_t pos
-//					,size_t len
-//					,const char * s
-//					,size_t n) const;
+
 //
 //	size_t	find	(const WildcardString & str
 //					,size_t pos = 0) const;

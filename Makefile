@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/05 11:07:38 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/08 11:43:53 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,14 @@ DEFINES_DIR			= $(INCLUDES_DIR)defines/
 FUNCTIONS_DIR		= $(INCLUDES_DIR)functions/
 TEMPLATES_DIR		= $(INCLUDES_DIR)templates/
 OBJS_DIR			= objs/
+OBJS_EXE_DIR		= objs_exe/
 SRCS_DIR			= srcs/
 FNX_TEST_DIR		= $(SRCS_DIR)fnx_test/
 STR_DIR				= $(SRCS_DIR)str/
 EXCEPTIONS_DIR		= $(SRCS_DIR)exceptions/
 PRINT_DIR			= $(SRCS_DIR)print/
 NOTCASESTRING_DIR	= $(SRCS_DIR)NotCaseString/
+WILDCARDSTRING_DIR	= $(SRCS_DIR)WildcardString/
 STD_DIR				= $(SRCS_DIR)std/
 
 VPATH				= $(SRCS_DIR) $(FNX_TEST_DIR)
@@ -43,6 +45,7 @@ VPATH				+=$(STR_DIR)
 VPATH				+=$(EXCEPTIONS_DIR)
 VPATH				+=$(PRINT_DIR)
 VPATH				+=$(NOTCASESTRING_DIR)
+VPATH				+=$(WILDCARDSTRING_DIR)
 VPATH				+=$(STD_DIR)
 
 
@@ -88,25 +91,27 @@ DEPS				= $(OBJS:.o=.d)
 LIB					= fnxlib.a
 EXE					= fnxlib.out
 
-all					: $(LIB)
+all					: $(OBJS_DIR) $(LIB)
+
+$(OBJS_DIR)			:
+					$(NEW_DIR) $@
 
 exe					:
-					make fclean
-					make LIB="$(EXE)" COMPILE_FLAG="$(COMPILE_EXE_FLAG)"
-					$(CC) $(COMPILE_EXE_FLAG) $(OBJS) -o $(EXE)
+					make OBJS_DIR=$(OBJS_EXE_DIR) LIB="$(EXE)" COMPILE_FLAG="$(COMPILE_EXE_FLAG)"
 
 $(LIB)				: $(OBJS)
 ifneq ($(LIB), $(EXE))
 					ar -rc $@ $^
 					ranlib $@
+else
+					$(CC) $(COMPILE_EXE_FLAG) $(OBJS) -o $(EXE)
 endif
 
 $(OBJS_DIR)%.o		: %.cpp
-					$(NEW_DIR) $(OBJS_DIR)
 					$(CC) $(COMPILE_FLAG) -c $< $(INCLUDES_FLAG) -o $@
 
 clean				:
-					$(DEL_DIR) $(OBJS_DIR)
+					$(DEL_DIR) $(OBJS_DIR) $(OBJS_EXE_DIR)
 
 fclean				: clean
 					$(DEL_DIR) $(LIB) $(EXE)

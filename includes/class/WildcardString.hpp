@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 17:25:01 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 17:31:55 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ namespace fnx
 
 			{
 				_check_wildcard();
-				std::cout	<< "WildcardString range constructor."
-							<< std::endl;
+//				std::cout	<< "WildcardString range constructor."
+//							<< std::endl;
 			}
 			~WildcardString		(void);
 

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 15:05:45 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 17:57:29 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,15 @@ int	fnx::WildcardString::compare	(size_t pos,
 //				<< "str_esc_n = "
 //				<< str_esc_n
 //				<< std::endl;
+	if (lookup[len - ref_esc_n][sublen - str_esc_n] == false)
+	{
+		size_t	i;
+		for (i = 0; i < len && i <sublen; i++)
+		{
+			if (ref[i] != str[i])
+				return (ref[i] - str[i]);
+		}
+	}
 	return (!lookup[len -  ref_esc_n][sublen - str_esc_n]);
 }
 

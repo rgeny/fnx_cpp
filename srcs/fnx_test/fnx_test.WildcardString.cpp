@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 17:29:34 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 17:56:18 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ template
 static void	_print_str	(T1 str1,
 						 T2 str2)
 {
-	std::cout	<< BLACK_TEXT WHITE_BACK "str1 :" RESET
+	std::cout	<< BRIGHT UNDERSCORE "str1 :" RESET
 				<< std::endl;
 	str1.print_data();
 	std::cout	<< std::endl
-				<< BLACK_TEXT WHITE_BACK "str2 :" RESET
+				<< BRIGHT UNDERSCORE "str2 :" RESET
 				<< std::endl;
 	str2.print_data();
 	std::cout	<< std::endl;
@@ -44,22 +44,40 @@ static void	_print_result	(std::string msg,
 				<< std::endl;
 }
 
+
+template
+<
+	class T1,
+	class T2
+>
+static void	_do_compare	(UNUSED T1 lhs,
+						 UNUSED T2 rhs)
+{
+	
+}
+
 template
 <
 	class T1,
 	class T2
 >
 static void	_do_test	(UNUSED T1 lhs,
-						 UNUSED T2 rhs)
+						 UNUSED T2 rhs,
+						 std::string type)
 {
+	bool	equal		= (type == "==");
+	bool	inf			= (type == "<" );
+	bool	inf_equal	= (type == "<=");
+	bool	sup			= (type == ">" );
+	bool	sup_equal	= (type == ">=");
+
 	_print_str(lhs, rhs);
-	_print_result("operator ==", lhs == rhs);
-	return ;
-	_print_result("operator !=", lhs != rhs);
-	_print_result("operator <", lhs < rhs);
-	_print_result("operator <=", lhs <= rhs);
-	_print_result("operator >", lhs > rhs);
-	_print_result("operator >=", lhs >= rhs);
+	_print_result("operator ==", (lhs == rhs) == equal);
+	_print_result("operator !=", (lhs != rhs) != equal);
+	_print_result("operator <", (lhs < rhs) == (inf || inf_equal));
+	_print_result("operator <=", (lhs <= rhs) == (inf || inf_equal || equal));
+	_print_result("operator >", (lhs > rhs) == (sup || sup_equal));
+	_print_result("operator >=", (lhs >= rhs) == (sup || sup_equal || equal));
 //	_print_result("compare (const WildcardString & str) const : ");
 //	_print_result("compare (size_t pos, size_t len, WildcardString const & str) const : ");
 //	_print_result("compare (size_t pos, size_t len, WildcardString const & str, size_te subpos, size_t sublen) const : ");
@@ -107,134 +125,140 @@ void	fnx_test::WildcardString	(void)
 		{
 			fnx::WildcardString	str1("abc");
 			fnx::WildcardString	str2("abc");
-			_do_test(str1, str2);
+			_do_test(str1, str2, "==");
 		}
 		print_test("diff string without wildcard");
 		{
 			fnx::WildcardString str1("abc");
 			fnx::WildcardString	str2("def");
-			_do_test(str1, str2);
+			_do_test(str1, str2, "<");
 		}
 		print_test("test wildcard * 1");
 		{
 			fnx::WildcardString	str1("abcdefg*");
 			fnx::WildcardString	str2("abcdefghi");
-			_do_test(str1, str2);
+			_do_test(str1, str2, "==");
 		}
 		print_test("test wildcard * 2");
 		{
 			fnx::WildcardString	str1("abcdefgh");
 			fnx::WildcardString	str2("abcdefg*");
-			_do_test(str1, str2);
+			_do_test(str1, str2, "==");
 		}
 		print_test("test wildcard * 3");
 		{
 			fnx::WildcardString	str1("abc*fghi");
 			fnx::WildcardString	str2("abcdefghi");
-			_do_test(str1, str2);
+			_do_test(str1, str2, "==");
 		}
-		print_test("test wildcard * 4");
-		{
-			fnx::WildcardString	str1("*");
-			fnx::WildcardString	str2("abcdefg*dnwi * da wdaw 8a*");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard * 5");
-		{
-			fnx::WildcardString	str1("sd*dad*");
-			fnx::WildcardString	str2("abcdefg*dnwi * da wdaw 8a*");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard * 6");
-		{
-			fnx::WildcardString	str1("abc********hi");
-			fnx::WildcardString	str2("**bcdef***ghi");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard ? 1");
-		{
-			fnx::WildcardString str1("ab?de?g"),
-								str2("?bc?ef?");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard ? 2");
-		{
-			fnx::WildcardString str1("ab?de?g"),
-								str2("?bc?ef");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard ? 3");
-		{
-			fnx::WildcardString str1("ab?de?"),
-								str2("?bc?ef?");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard ? 4");
-		{
-			fnx::WildcardString str1("ab?def?"),
-								str2("?bc?e?");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard ? 5");
-		{
-			fnx::WildcardString str1("ab?de?g"),
-								str2(":bc:ef:", '*', ':');
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard ? 6");
-		{
-			fnx::WildcardString str1("ab?de?g"),
-								str2(":bc:e::", '*', ':');
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard \\ 1");
-		{
-			fnx::WildcardString str1("abc"),
-								str2("ab\\?");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard \\ 2");
-		{
-			fnx::WildcardString str1("abc"),
-								str2("ab\\c");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard \\ 3");
-		{
-			fnx::WildcardString str1("ab?"),
-								str2("ab\\c");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard \\ 4");
-		{
-			fnx::WildcardString str1("ab\\d"),
-								str2("ab?");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard \\ 5");
-		{
-			fnx::WildcardString str1("ab?"),
-								str2("ab;c", '.', ':', ';');
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard \\ 6");
-		{
-			fnx::WildcardString str1("ab?"),
-								str2("ab\\c", '.', ':', ';');
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard \\ 7");
-		{
-			fnx::WildcardString str1("abcd"),
-								str2("ab\\c\\d");
-			_do_test(str1, str2);
-		}
-		print_test("test wildcard * ");
-		{
-			fnx::WildcardString str1("baaabab"),
-								str2("*****ba*****ab");
-			_do_test(str1, str2);
-		}
+	fnx::WildcardString	s1("a"),
+						s2("?z");
+	std::cout	<< (s1.compare(s2))
+				<< std::endl
+				<< (s2.compare(s1))
+				<< std::endl;
+//		print_test("test wildcard * 4");
+//		{
+//			fnx::WildcardString	str1("*");
+//			fnx::WildcardString	str2("abcdefg*dnwi * da wdaw 8a*");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard * 5");
+//		{
+//			fnx::WildcardString	str1("sd*dad*");
+//			fnx::WildcardString	str2("abcdefg*dnwi * da wdaw 8a*");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard * 6");
+//		{
+//			fnx::WildcardString	str1("abc********hi");
+//			fnx::WildcardString	str2("**bcdef***ghi");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard ? 1");
+//		{
+//			fnx::WildcardString str1("ab?de?g"),
+//								str2("?bc?ef?");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard ? 2");
+//		{
+//			fnx::WildcardString str1("ab?de?g"),
+//								str2("?bc?ef");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard ? 3");
+//		{
+//			fnx::WildcardString str1("ab?de?"),
+//								str2("?bc?ef?");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard ? 4");
+//		{
+//			fnx::WildcardString str1("ab?def?"),
+//								str2("?bc?e?");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard ? 5");
+//		{
+//			fnx::WildcardString str1("ab?de?g"),
+//								str2(":bc:ef:", '*', ':');
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard ? 6");
+//		{
+//			fnx::WildcardString str1("ab?de?g"),
+//								str2(":bc:e::", '*', ':');
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard \\ 1");
+//		{
+//			fnx::WildcardString str1("abc"),
+//								str2("ab\\?");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard \\ 2");
+//		{
+//			fnx::WildcardString str1("abc"),
+//								str2("ab\\c");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard \\ 3");
+//		{
+//			fnx::WildcardString str1("ab?"),
+//								str2("ab\\c");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard \\ 4");
+//		{
+//			fnx::WildcardString str1("ab\\d"),
+//								str2("ab?");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard \\ 5");
+//		{
+//			fnx::WildcardString str1("ab?"),
+//								str2("ab;c", '.', ':', ';');
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard \\ 6");
+//		{
+//			fnx::WildcardString str1("ab?"),
+//								str2("ab\\c", '.', ':', ';');
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard \\ 7");
+//		{
+//			fnx::WildcardString str1("abcd"),
+//								str2("ab\\c\\d");
+//			_do_test(str1, str2);
+//		}
+//		print_test("test wildcard * ");
+//		{
+//			fnx::WildcardString str1("baaabab"),
+//								str2("*****ba*****ab");
+//			_do_test(str1, str2);
+//		}
 	}
 	print_category("WildcardString (compare WildcardString with char const *)");
 	{

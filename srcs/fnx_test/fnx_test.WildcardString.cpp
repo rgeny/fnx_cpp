@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 15:05:33 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 17:29:34 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,14 @@ template
 static void	_print_str	(T1 str1,
 						 T2 str2)
 {
-	std::cout	<< "str1 = \""
-				<< str1
-				<< "\" ('"
-				<< str1._inf_wc
-				<< "'"
-				<< WHITE_BACK
-				<< " "
-				<< RESET
-				<< "'"
-				<< str1._one_wc
-				<< "'"
-				<< WHITE_BACK
-				<< " "
-				<< RESET
-				<< "'"
-				<< str1._esc_wc
-				<< "')"
-				<< std::endl
-				<< "str2 = \""
-				<< str2
-				<< "\" ('"
-				<< str2._inf_wc
-				<< "'"
-				<< WHITE_BACK
-				<< " "
-				<< RESET
-				<< "'"
-				<< str2._one_wc
-				<< "'"
-				<< WHITE_BACK
-				<< " "
-				<< RESET
-				<< "'"
-				<< str2._esc_wc
-				<< "')"
+	std::cout	<< BLACK_TEXT WHITE_BACK "str1 :" RESET
 				<< std::endl;
+	str1.print_data();
+	std::cout	<< std::endl
+				<< BLACK_TEXT WHITE_BACK "str2 :" RESET
+				<< std::endl;
+	str2.print_data();
+	std::cout	<< std::endl;
 }
 
 static void	_print_result	(std::string msg,

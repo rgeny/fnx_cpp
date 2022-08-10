@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 14:53:49 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 17:25:01 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ namespace fnx
 		:public std::string
 	{
 		public:
-			char const	_inf_wc;
-			char const	_one_wc;
-			char const	_esc_wc;
 
 			WildcardString		(char const inf_wc = INFINITY_WILDCARD_CHAR,
 								 char const one_wc = ONE_CHAR_WILDCARD_CHAR,
@@ -92,7 +89,12 @@ namespace fnx
 							 const char * s,
 							 size_t n) const;
 
+			void	print_data	(void) const;
+
 		private:
+			char const	_inf_wc;
+			char const	_one_wc;
+			char const	_esc_wc;
 
 			void	_check_wildcard		(void) const;
 	};

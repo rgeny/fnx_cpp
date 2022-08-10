@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 18:38:56 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 14:53:49 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ namespace fnx
 							 size_t len,
 							 const char * s,
 							 size_t n) const;
-
-			bool	is_wildcard		(char const c) const;
 
 		private:
 

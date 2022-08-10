@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 18:59:00 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 15:05:33 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,41 @@ template
 static void	_print_str	(T1 str1,
 						 T2 str2)
 {
-	std::cout	<< "str1 = "
+	std::cout	<< "str1 = \""
 				<< str1
+				<< "\" ('"
+				<< str1._inf_wc
+				<< "'"
+				<< WHITE_BACK
+				<< " "
+				<< RESET
+				<< "'"
+				<< str1._one_wc
+				<< "'"
+				<< WHITE_BACK
+				<< " "
+				<< RESET
+				<< "'"
+				<< str1._esc_wc
+				<< "')"
 				<< std::endl
-				<< "str2 = "
+				<< "str2 = \""
 				<< str2
+				<< "\" ('"
+				<< str2._inf_wc
+				<< "'"
+				<< WHITE_BACK
+				<< " "
+				<< RESET
+				<< "'"
+				<< str2._one_wc
+				<< "'"
+				<< WHITE_BACK
+				<< " "
+				<< RESET
+				<< "'"
+				<< str2._esc_wc
+				<< "')"
 				<< std::endl;
 }
 
@@ -169,11 +199,17 @@ void	fnx_test::WildcardString	(void)
 		}
 		print_test("test wildcard ? 4");
 		{
+			fnx::WildcardString str1("ab?def?"),
+								str2("?bc?e?");
+			_do_test(str1, str2);
+		}
+		print_test("test wildcard ? 5");
+		{
 			fnx::WildcardString str1("ab?de?g"),
 								str2(":bc:ef:", '*', ':');
 			_do_test(str1, str2);
 		}
-		print_test("test wildcard ? 4");
+		print_test("test wildcard ? 6");
 		{
 			fnx::WildcardString str1("ab?de?g"),
 								str2(":bc:e::", '*', ':');
@@ -213,6 +249,18 @@ void	fnx_test::WildcardString	(void)
 		{
 			fnx::WildcardString str1("ab?"),
 								str2("ab\\c", '.', ':', ';');
+			_do_test(str1, str2);
+		}
+		print_test("test wildcard \\ 7");
+		{
+			fnx::WildcardString str1("abcd"),
+								str2("ab\\c\\d");
+			_do_test(str1, str2);
+		}
+		print_test("test wildcard * ");
+		{
+			fnx::WildcardString str1("baaabab"),
+								str2("*****ba*****ab");
 			_do_test(str1, str2);
 		}
 	}

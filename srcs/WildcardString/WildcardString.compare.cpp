@@ -6,16 +6,11 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 18:57:39 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 15:05:45 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fnx.hpp"
-
-bool	fnx::WildcardString::is_wildcard	(char const c) const
-{
-	return (c == _inf_wc || c == _one_wc || c == _esc_wc);
-}
 
 int		fnx::WildcardString::compare	(fnx::WildcardString const & str) const
 {
@@ -29,34 +24,6 @@ int		fnx::WildcardString::compare	(size_t pos,
 	return (this->compare(pos, len, str, 0, str.size()));
 }
 
-//static bool	_is_valid_name	(fnx::WildcardString const & s1,
-//							 size_t i,
-//							 size_t len,
-//							 fnx::WildcardString const & s2,
-//							 size_t j,
-//							 size_t & k,
-//							 size_t sublen,
-//							 size_t & l)
-//{
-//	for (l = 0;
-//		 (i + k + l) < len &&
-//		 (l == 0 ||
-//		  !s1.is_wildcard(s1[i + k + l]));
-//		 l++)
-//	{
-//		if (s1[i + k + l] != s2[j + k + l])
-//			return (false);
-//	}
-//	if (s1.is_wildcard(s1[i + k + l]) ||
-//		((i + k + l) == len &&
-//		 (j + k + l) == sublen))
-//	{
-//		k += l;
-//		return (true);
-//	}
-//	return (false);
-//}
-
 int	fnx::WildcardString::compare	(size_t pos,
 									 size_t len,
 									 fnx::WildcardString const & str,
@@ -66,145 +33,78 @@ int	fnx::WildcardString::compare	(size_t pos,
 	len = std::min(len + pos, this->size());
 	sublen = std::min(sublen + subpos, str.size());
 	fnx::WildcardString const &	ref = *this;
-	size_t	i, j;
 
-	for (i = 0, j = 0;
-		 i < len || j < sublen;)
+	std::vector<std::vector<bool> >	lookup;
+
+//	init escape wildcard variables
+	size_t	ref_esc_n = 0,
+			str_esc_n = 0;
+	bool	ref_esc = false,
+			str_esc = false;
+
+//	init boolean tab
+	lookup.resize(len + 1);
+	for (size_t i = 0; i <= len; i++)
+		lookup[i].resize(sublen + 1);
+	lookup[0][0] = true;
+
+//	init first column of boolean tab
+	for (size_t i = 1; i <= len; i++)
+		if (ref[i - 1] == _inf_wc)
+			lookup[i][0] = lookup[i - 1][0];
+//	init first line of boolean tab
+	for (size_t j = 1; j <= sublen; j++)
+		if (str[j - 1] == str._inf_wc)
+			lookup[0][j] = lookup[0][j - 1];
+
+
+//	fill boolean tab
+	for (size_t i = 1; i <= len; i++)
 	{
-		if (ref[i] == _esc_wc &&
-			str[j] == str._esc_wc)
+		if (ref[i - 1] == _esc_wc)
 		{
 			i++;
-			j++;
-			if (ref[i] != str[j])
-				return (ref[i] - str[j]);
+			ref_esc = true;
+			ref_esc_n++;
 		}
-		else if (ref[i] == _esc_wc)
+		str_esc_n = 0;
+		for (size_t j = 1; j <= sublen; j++)
 		{
-			i++;
-			if (ref[i] != str[j] && !str.is_wildcard(str[j]))
-				return (ref[i] - str[j]);
-		}
-		else if (str[j] == str._esc_wc)
-		{
-			j++;
-			if (str[j] != ref[i] && !this->is_wildcard(ref[i]))
-				return (ref[i] - str[j]);
-		}
-		else if (ref[i] == _one_wc)
-		{
-			i++;
-			if (j < sublen)
+			if (str[j - 1] == str._esc_wc)
+			{
 				j++;
+				str_esc = true;
+				str_esc_n++;
+			}
+			if ((!str_esc && str[j - 1] == str._inf_wc) ||
+				 (!ref_esc && ref[i - 1] == _inf_wc))
+			{
+				lookup[i - ref_esc_n][j - str_esc_n] = lookup[i - ref_esc_n][j - 1 - str_esc_n] || lookup[i - 1 - ref_esc_n][j - str_esc_n];
+			}
+			else if ((!str_esc && str[j - 1] == str._one_wc) ||
+					 (!ref_esc && ref[i - 1] == _one_wc) ||
+					 ref[i - 1] == str[j - 1])
+			{
+				lookup[i - ref_esc_n][j - str_esc_n] = lookup[i - 1 - ref_esc_n][j - 1 - str_esc_n];
+			}
+			str_esc = false;
 		}
-		else if (str[j] == str._one_wc)
-		{
-			j++;
-			if (i < len)
-				i++;
-		}
-
-		else if (ref[i] != str[j])
-			return (ref[i] - str[j]);
-		else
-		{
-			if (i < len)
-				i++;
-			if (j < sublen)
-				j++;
-		}
-//		std::cout	<< "i = "
-//					<< i
-//					<< std::endl
-//					<< "j = "
-//					<< j
-//					<< std::endl;
-//		if (me[i] == _inf_wc)
-//		{
-//			std::cout	<< "before : "
-//						<< i
-//						<< std::endl;
-//			i = me.find_first_not_of(_inf_wc, i);
-//			std::cout	<< "after  : "
-//						<< i
-//						<< std::endl;
-//			if (i == fnx::WildcardString::npos)
-//				return (0);
-//			size_t	k = str.find_first_of("*", i);
-//			std::cout	<< "k : "
-//						<< k
-//						<< std::endl;
-//		}
-//		else if (str[j] == _inf_wc)
-//		{
-//			std::cout	<< "before(str) : "
-//						<< j
-//						<< std::endl;
-//			j = str.find_first_not_of(_inf_wc, j);
-//			std::cout	<< "after(str)  : "
-//						<< j
-//						<< std::endl;
-//			if (j == fnx::WildcardString::npos)
-//				return (0);
-//			while (
-//
-//		}
-//		else if (me[i] != str[j])
-//			return (me[i] - str[j]);
-//		else
-//		{
-//			i++;
-//			j++;
-//		}
+		ref_esc = false;
 	}
-	
-	return (ref[i] - str[j]);
-
-//	return (me[i] - str[j]);
-
-//	len = std::min(len + pos, this->size());
-//	sublen = std::min(sublen + subpos, str.size());
-//	size_t	i, j, k, l;
-//
-//	for (i = pos, j = subpos, k = 0, l = 0;
-//		 (i + k) < len || (j + k) < sublen;)
+//	for (size_t i = 0; i <= len; i++)
 //	{
-//		if ((*this)[i + k] == _inf_wc)
-//		{
-//			while ((i + k) < len &&
-//					(*this)[i + k] == _inf_wc)
-//			{
-//				i++;
-//			}
-//			while ((j + k) < sublen &&
-//				   !_is_valid_name(*this, i, len, str, j, k, sublen, l))
-//			{
-//				j++;
-//			}
-//		}
-//		else if (str[j + k] == _inf_wc)
-//		{
-//			while ((j + k) < sublen &&
-//					str[j + k] == _inf_wc)
-//			{
-//				j++;
-//			}
-//			while ((i + k) < len &&
-//					!_is_valid_name(str, j, sublen, *this, i, k, len, l))
-//			{
-//				i++;
-//			}
-//		}
-//		else if (!_is_valid_name(*this, i, len, str, j, k, sublen, l) &&
-//				 !_is_valid_name(str, j, sublen, *this, i, k, len, l))
-//		{
-//			return ((*this)[i + k + l] - str[j + k + l]);
-//		}
-//
+//		for (size_t j = 0; j <= sublen; j++)
+//			std::cout	<< lookup[i][j]
+//						<< " ";
+//		std::cout	<< std::endl;
 //	}
-//
-//
-//	return ((len - i) - (sublen - j));
+//	std::cout	<< "ref_esc_n = "
+//				<< ref_esc_n
+//				<< std::endl
+//				<< "str_esc_n = "
+//				<< str_esc_n
+//				<< std::endl;
+	return (!lookup[len -  ref_esc_n][sublen - str_esc_n]);
 }
 
 int		fnx::WildcardString::compare	(char const * s) const

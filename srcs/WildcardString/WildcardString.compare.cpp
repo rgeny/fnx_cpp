@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 17:57:29 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/10 19:27:57 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,26 +116,35 @@ int	fnx::WildcardString::compare	(size_t pos,
 	return (!lookup[len -  ref_esc_n][sublen - str_esc_n]);
 }
 
-int		fnx::WildcardString::compare	(char const * s) const
+int		fnx::WildcardString::compare	(char const * s,
+										 char const inf_wc,
+										 char const one_wc,
+										 char const esc_wc) const
 {
-	fnx::WildcardString	tmp(s);
+	fnx::WildcardString	tmp(s, inf_wc, one_wc, esc_wc);
 	return (this->compare(0, this->size(), tmp, 0, tmp.size()));
 }
 
-int		fnx::WildcardString::compare	(size_t pos
-						,size_t len
-						,const char * s) const
+int		fnx::WildcardString::compare	(size_t pos,
+										 size_t len,
+										 const char * s,
+										 char const inf_wc,
+										 char const one_wc,
+										 char const esc_wc) const
 {
-	fnx::WildcardString	tmp(s);
+	fnx::WildcardString	tmp(s, inf_wc, one_wc, esc_wc);
 	return (this->compare(pos, len, tmp, 0, tmp.size()));
 
 }
 
-int	fnx::WildcardString::compare	(size_t pos,
-								 size_t len,
-								 char const * s,
-								 size_t n) const
+int		fnx::WildcardString::compare	(size_t pos,
+										 size_t len,
+										 char const * s,
+										 size_t n,
+										 char const inf_wc,
+										 char const one_wc,
+										 char const esc_wc) const
 {
-	fnx::WildcardString	tmp(s);
+	fnx::WildcardString	tmp(s, inf_wc, one_wc, esc_wc);
 	return (this->compare(pos, len, tmp, 0, n));
 }

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/12 11:43:59 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 12:42:38 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,6 @@ namespace fnx
 									 size_t n) const;
 			size_t	find_first_of	(char c,
 									 size_t pos = 0) const;
-
-
-			void	print_data	(void) const;
 
 		private:
 	};

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 17:23:03 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/12 11:19:06 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 12:40:14 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ size_t	fnx::WildcardString::find_first_of	(const char * s,
 size_t	fnx::WildcardString::find_first_of	(char c,
 											 size_t pos) const
 {
-	fnx::WildcardString	tmp((size_t)1, c);
+	fnx::WildcardString	tmp(1, c);
 	return (this->find_first_of(tmp.c_str(), pos, (size_t)1));
 }

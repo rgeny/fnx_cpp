@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/12 11:49:58 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 12:42:22 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ template
 static void	_print_str	(T1 lhs,
 						 T2 rhs)
 {
-	std::cout	<< BRIGHT UNDERSCORE "lhs :" RESET
+	std::cout	<< BRIGHT UNDERSCORE "lhs =" RESET " "
+				<< lhs
+				<< std::endl
+				<< BRIGHT UNDERSCORE "rhs =" RESET " "
+				<< rhs
 				<< std::endl;
-	lhs.print_data();
-	std::cout	<< std::endl
-				<< BRIGHT UNDERSCORE "rhs :" RESET
-				<< std::endl;
-	rhs.print_data();
-	std::cout	<< std::endl;
 }
 
 static void	_print_result	(std::string msg,

@@ -6,16 +6,9 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:06:36 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/12 11:42:24 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 12:42:49 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fnx.hpp"
 
-void	fnx::WildcardString::print_data	(void) const
-{
-	std::cout	<< "\""
-				<< *this
-				<< "\""
-				<< std::endl;
-}

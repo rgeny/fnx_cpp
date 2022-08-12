@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 13:16:07 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 11:47:26 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int	main	( __attribute((unused)) int argc
 	fnx_test::replace_substr(argv, envp);
 	fnx_test::get_list(argv);
 	fnx_test::WildcardString();
+
+	return (0);
 }
 #endif

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 19:27:57 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 11:21:17 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ int	fnx::WildcardString::compare	(size_t pos,
 
 //	init first column of boolean tab
 	for (size_t i = 1; i <= len; i++)
-		if (ref[i - 1] == _inf_wc)
+		if (ref[i - 1] == INFINITY_WILDCARD)
 			lookup[i][0] = lookup[i - 1][0];
 //	init first line of boolean tab
 	for (size_t j = 1; j <= sublen; j++)
-		if (str[j - 1] == str._inf_wc)
+		if (str[j - 1] == INFINITY_WILDCARD)
 			lookup[0][j] = lookup[0][j - 1];
 
 
 //	fill boolean tab
 	for (size_t i = 1; i <= len; i++)
 	{
-		if (ref[i - 1] == _esc_wc)
+		if (ref[i - 1] == ESCAPE_WILDCARD)
 		{
 			i++;
 			ref_esc = true;
@@ -70,19 +70,19 @@ int	fnx::WildcardString::compare	(size_t pos,
 		str_esc_n = 0;
 		for (size_t j = 1; j <= sublen; j++)
 		{
-			if (str[j - 1] == str._esc_wc)
+			if (str[j - 1] == ESCAPE_WILDCARD)
 			{
 				j++;
 				str_esc = true;
 				str_esc_n++;
 			}
-			if ((!str_esc && str[j - 1] == str._inf_wc) ||
-				 (!ref_esc && ref[i - 1] == _inf_wc))
+			if ((!str_esc && str[j - 1] == INFINITY_WILDCARD) ||
+				 (!ref_esc && ref[i - 1] == INFINITY_WILDCARD))
 			{
 				lookup[i - ref_esc_n][j - str_esc_n] = lookup[i - ref_esc_n][j - 1 - str_esc_n] || lookup[i - 1 - ref_esc_n][j - str_esc_n];
 			}
-			else if ((!str_esc && str[j - 1] == str._one_wc) ||
-					 (!ref_esc && ref[i - 1] == _one_wc) ||
+			else if ((!str_esc && str[j - 1] == ONE_CHAR_WILDCARD) ||
+					 (!ref_esc && ref[i - 1] == ONE_CHAR_WILDCARD) ||
 					 ref[i - 1] == str[j - 1])
 			{
 				lookup[i - ref_esc_n][j - str_esc_n] = lookup[i - 1 - ref_esc_n][j - 1 - str_esc_n];
@@ -116,23 +116,17 @@ int	fnx::WildcardString::compare	(size_t pos,
 	return (!lookup[len -  ref_esc_n][sublen - str_esc_n]);
 }
 
-int		fnx::WildcardString::compare	(char const * s,
-										 char const inf_wc,
-										 char const one_wc,
-										 char const esc_wc) const
+int		fnx::WildcardString::compare	(char const * s) const
 {
-	fnx::WildcardString	tmp(s, inf_wc, one_wc, esc_wc);
+	fnx::WildcardString	tmp(s);
 	return (this->compare(0, this->size(), tmp, 0, tmp.size()));
 }
 
 int		fnx::WildcardString::compare	(size_t pos,
 										 size_t len,
-										 const char * s,
-										 char const inf_wc,
-										 char const one_wc,
-										 char const esc_wc) const
+										 const char * s) const
 {
-	fnx::WildcardString	tmp(s, inf_wc, one_wc, esc_wc);
+	fnx::WildcardString	tmp(s);
 	return (this->compare(pos, len, tmp, 0, tmp.size()));
 
 }
@@ -140,11 +134,8 @@ int		fnx::WildcardString::compare	(size_t pos,
 int		fnx::WildcardString::compare	(size_t pos,
 										 size_t len,
 										 char const * s,
-										 size_t n,
-										 char const inf_wc,
-										 char const one_wc,
-										 char const esc_wc) const
+										 size_t n) const
 {
-	fnx::WildcardString	tmp(s, inf_wc, one_wc, esc_wc);
+	fnx::WildcardString	tmp(s);
 	return (this->compare(pos, len, tmp, 0, n));
 }

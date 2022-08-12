@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/10 17:56:18 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 11:49:58 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ template
 	class T1,
 	class T2
 >
-static void	_print_str	(T1 str1,
-						 T2 str2)
+static void	_print_str	(T1 lhs,
+						 T2 rhs)
 {
-	std::cout	<< BRIGHT UNDERSCORE "str1 :" RESET
+	std::cout	<< BRIGHT UNDERSCORE "lhs :" RESET
 				<< std::endl;
-	str1.print_data();
+	lhs.print_data();
 	std::cout	<< std::endl
-				<< BRIGHT UNDERSCORE "str2 :" RESET
+				<< BRIGHT UNDERSCORE "rhs :" RESET
 				<< std::endl;
-	str2.print_data();
+	rhs.print_data();
 	std::cout	<< std::endl;
 }
 
@@ -44,18 +44,6 @@ static void	_print_result	(std::string msg,
 				<< std::endl;
 }
 
-
-template
-<
-	class T1,
-	class T2
->
-static void	_do_compare	(UNUSED T1 lhs,
-						 UNUSED T2 rhs)
-{
-	
-}
-
 template
 <
 	class T1,
@@ -65,224 +53,275 @@ static void	_do_test	(UNUSED T1 lhs,
 						 UNUSED T2 rhs,
 						 std::string type)
 {
-	bool	equal		= (type == "==");
-	bool	inf			= (type == "<" );
-	bool	inf_equal	= (type == "<=");
-	bool	sup			= (type == ">" );
-	bool	sup_equal	= (type == ">=");
+	bool	equal		= (type == "=="),
+			inf			= (type == "<" ),
+			sup			= (type == ">" );
+	size_t	size_min	= std::min(lhs.size(), rhs.size()),
+			size_max	= std::max(lhs.size(), rhs.size());
 
-	_print_str(lhs, rhs);
-	_print_result("operator ==", (lhs == rhs) == equal);
-	_print_result("operator !=", (lhs != rhs) != equal);
-	_print_result("operator <", (lhs < rhs) == (inf || inf_equal));
-	_print_result("operator <=", (lhs <= rhs) == (inf || inf_equal || equal));
-	_print_result("operator >", (lhs > rhs) == (sup || sup_equal));
-	_print_result("operator >=", (lhs >= rhs) == (sup || sup_equal || equal));
-//	_print_result("compare (const WildcardString & str) const : ");
-//	_print_result("compare (size_t pos, size_t len, WildcardString const & str) const : ");
-//	_print_result("compare (size_t pos, size_t len, WildcardString const & str, size_te subpos, size_t sublen) const : ");
-//	_print_result("compare (char const * s) const : ");
-//	_print_result("compare (size_t posm size_t len, char const * s) const : ");
-//	_print_result("compare (size_t pos, size_t len, char const *s, size_t n) const : ");
-//	_print_result("find (const WildcardString & str, size_t pos = 0) const : ");
-//	_print_result("find (const char * s, size_t pos = 0) const : ");
-//	_print_result("find (const char * s, size_t pos, size_t n) const : ");
-//	_print_result("find (char c, size_t pos = 0) const : ");
-//	_print_result("rfind (const WildcardString & str, size_t pos = npos) const : ");
-//	_print_result("rfind (const char * s, size_t pos = npos) const : ");
-//	_print_result("rfind (const char * s, size_t pos, size_t n) const : ");
-//	_print_result("rfind (char c, size_t pos = npos) const : ");
-//	_print_result("find_first_of (const WildcardString & str, size_t pos = 0) const : ");
-//	_print_result("find_first_of (const char * s, size_t pos = 0) const : ");
-//	_print_result("find_first_of (const char * s, size_t pos, size_t n) const : ");
-//	_print_result("find_first_of (char c, size_t pos = 0) const : ");
-//	_print_result("find_last_of (const WildcardString & str, size_t pos = npos) const : ");
-//	_print_result("find_last_of (const char * s, size_t pos = npos) const : ");
-//	_print_result("find_last_of (const char * s, size_t pos, size_t n) const : ");
-//	_print_result("find_last_of (char c, size_t pos = npos) const : ");
-//	_print_result("find_first_not_of (const WildcardString & str, size_t pos = 0) const : ");
-//	_print_result("find_first_not_of (const char * s, size_t pos = 0) const : ");
-//	_print_result("find_first_not_of (const char * s, size_t pos, size_t n) const : ");
-//	_print_result("find_first_not_of (char c, size_t pos = 0) const : ");
-//	_print_result("find_last_not_of (const WildcardString & str, size_t pos = npos) const : ");
-//	_print_result("find_last_not_of (const char * s, size_t pos = npos) const : ");
-//	_print_result("find_last_not_of (const char * s, size_t pos, size_t n) const : ");
-//	_print_result("find_last_not_of (char c, size_t pos = npos) const : ");
+	if (equal || inf || sup)
+	{
+		_print_str(lhs, rhs);
+		_print_result	("(lhs == rhs) == equal",
+						  (lhs == rhs) == equal);
+		_print_result	("(lhs != rhs) != equal",
+						  (lhs != rhs) != equal);
+		_print_result	("(lhs < rhs) == inf",
+						  (lhs < rhs) == inf);
+		_print_result	("(lhs <= rhs) == (inf || equal)",
+						  (lhs <= rhs) == (inf || equal));
+		_print_result	("(lhs > rhs) == sup",
+						  (lhs > rhs) == (sup));
+		_print_result	("(lhs >= rhs) == (sup || equal)",
+						  (lhs >= rhs) == (sup || equal));
+	}
+	if  (equal == true)
+	{
+//	int	compare	(WildcardString const & str) const
+		_print_result	("lhs.compare(rhs) == 0",
+						  lhs.compare(rhs) == 0 );
+//	int	compare	(size_t pos,
+//				 size_t len,
+//				 WildcardString const & str) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs) == 0",
+						  lhs.compare(0, lhs.size(), rhs) == 0 );
+		_print_result	("lhs.compare(lhs.size(), 0, rhs) == 0",
+						  lhs.compare(0, lhs.size(), rhs) == 0 );
+//	int	compare	(size_t pos,
+//				 size_t len,
+//				 WildcardString const & str,
+//				 size_t subpos,
+//				 size_t sublen) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs, 0, rhs.size()) == 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) == 0);
+		_print_result	("lhs.compare(lhs.size(), 0, rhs, 0, rhs.size()) == 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) == 0);
+		_print_result	("lhs.compare(lhs.size(), 0, rhs, rhs.size(), 0) == 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) == 0);
+		_print_result	("lhs.compare(0, lhs.size(), rhs, rhs.size(), 0) == 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) == 0);
+//	int	compare (char const * s) const;
+		_print_result	("lhs.compare(rhs.c_str()) == 0",
+						 lhs.compare(rhs.c_str()) == 0);
+//	int	compare (size_t pos,
+//				 size_t len,
+//				 char const * s) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs.c_str()) == 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) == 0);
+		_print_result	("lhs.compare(lhs.size() / 2, lhs.size()) == 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) == 0);
+		_print_result	("lhs.compare(0, lhs.size() / 2, rhs.c_str()) == 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) == 0);
+//	int	compare (size_t pos,
+//				 size_t len,
+//				 char const * s,
+//				 size_t	n) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs.c_str(), rhs.size()) == 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str(), rhs.size()) == 0);
+		_print_result	("lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) == 0",
+						  lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) == 0);
+//	size_t	find	(WildcardString const & str,
+//					 size_t pos = 0) const;
+		_print_result	("lhs.find(rhs) == 0",
+					 	 lhs.find(rhs) == 0);
+//	size_t	find	(char const * s,
+//					 size_t pos = 0) const;
+		_print_result	("lhs.find(rhs.c_str(), 0) == 0",
+						  lhs.find(rhs.c_str(), 0) == 0);
+//	size_t	find	(char const * s,
+//					 size_t pos,
+//					 size_t n) const;
+		_print_result	("lhs.find(rhs.c_str(), 0, size_max) == 0",
+					 	  lhs.find(rhs.c_str(), 0, size_max) == 0);
+//	size_t	find	(char c,
+//					 size_t pos = 0) const;
+		_print_result	("lhs.find(rhs[0], 0) == 0",
+					 	  lhs.find(rhs[0], 0) == 0);
+//	size_t	rfind	(WildcardString const & str,
+//					 size_t pos = npos) const;
+		_print_result	("lhs.rfind(rhs, size_min) == size_min)",
+						  lhs.rfind(rhs, size_min) == size_min);
+//	size_t	rfind	(char const * s,
+//					 size_t pos,
+//					 size_t n) const;
+		_print_result	("lhs.rfind(rhs.c_str(), size_min, size_max) == size_min",
+						  lhs.rfind(rhs.c_str(), size_min, size_max) == size_min);
+//	size_t	rfind	(char const * s,
+//					 size_t pos = npos) const;
+		_print_result	("lhs.rfind(rhs.c_str(), size_min) == size_min",
+						  lhs.rfind(rhs.c_str(), size_min) == size_min);
+//	size_t	rfind	(char c,
+//					 size_t pos = npos) const;
+		_print_result	("lhs.rfind(rhs[0], 0) == 0",
+						  lhs.rfind(rhs[0], 0) == 0);
+//	size_t	find_first_of	(WildcardString const & str,
+//							 size_t pos = 0) const;
+		_print_result	("lhs.find_first_of(rhs) == 0",
+						  lhs.find_first_of(rhs) == 0);
+//		_print_result	("lhs.find_first_of(const char * s, size_t pos = 0) const");
+//		_print_result	("lhs.find_first_of(const char * s, size_t pos, size_t n) const");
+//		_print_result	("lhs.find_first_of(char c, size_t pos = 0) const");
+//		_print_result	("lhs.find_last_of(rhs, size_t pos = npos) const");
+//		_print_result	("lhs.find_last_of(const char * s, size_t pos = npos) const");
+//		_print_result	("lhs.find_last_of(const char * s, size_t pos, size_t n) const");
+//		_print_result	("lhs.find_last_of(char c, size_t pos = npos) const");
+//		_print_result	("lhs.find_first_not_of(rhs, size_t pos = 0) const");
+//		_print_result	("lhs.find_first_not_of(const char * s, size_t pos = 0) const");
+//		_print_result	("lhs.find_first_not_of(const char * s, size_t pos, size_t n) const");
+//		_print_result	("lhs.find_first_not_of(char c, size_t pos = 0) const");
+//		_print_result	("lhs.find_last_not_of(rhs, size_t pos = npos) const");
+//		_print_result	("lhs.find_last_not_of(const char * s, size_t pos = npos) const");
+//		_print_result	("lhs.find_last_not_of(const char * s, size_t pos, size_t n) const");
+//		_print_result	("lhs.find_last_not_of(char c, size_t pos = npos) const");
+	}
+	else if (inf == true)
+	{
+		_print_result("lhs.compare(rhs) const : ", lhs.compare(rhs) < 0);
+	}
+	else if (sup == true)
+	{
+		_print_result("lhs.compare(rhs) const : ", lhs.compare(rhs) > 0);
+	}
 }
 
 void	fnx_test::WildcardString	(void)
 {
-//	std::string	s1("abcdef"),
-//				s2("abcdefghi");
-//	
-//	std::cout	<< "res = "
-//				<< s2.find(s1.substr(3, s1.size()), 0)
-//				<< std::endl;
-//	return ;
 	print_category("WildcardString (compare WildcardString with WildcardString)");
 	{
 		print_test("same string");
 		{
-			fnx::WildcardString	str1("abc");
-			fnx::WildcardString	str2("abc");
-			_do_test(str1, str2, "==");
+			fnx::WildcardString	lhs("abc"),
+								rhs("abc");
+			_do_test(lhs, rhs, "==");
 		}
-		print_test("diff string without wildcard");
+		print_test("< string without wildcard");
 		{
-			fnx::WildcardString str1("abc");
-			fnx::WildcardString	str2("def");
-			_do_test(str1, str2, "<");
+			fnx::WildcardString lhs("abc"),
+								rhs("def");
+			_do_test(lhs, rhs, "<");
+			print_test("> string without wildcard");
+			_do_test(rhs, lhs, ">");
 		}
 		print_test("test wildcard * 1");
 		{
-			fnx::WildcardString	str1("abcdefg*");
-			fnx::WildcardString	str2("abcdefghi");
-			_do_test(str1, str2, "==");
+			fnx::WildcardString	lhs("abcdefg*"),
+								rhs("abcdefghi");
+			_do_test(lhs, rhs, "==");
 		}
 		print_test("test wildcard * 2");
 		{
-			fnx::WildcardString	str1("abcdefgh");
-			fnx::WildcardString	str2("abcdefg*");
-			_do_test(str1, str2, "==");
+			fnx::WildcardString	lhs("abcdefgh");
+			fnx::WildcardString	rhs("abcdefg*");
+			_do_test(lhs, rhs, "==");
 		}
 		print_test("test wildcard * 3");
 		{
-			fnx::WildcardString	str1("abc*fghi");
-			fnx::WildcardString	str2("abcdefghi");
-			_do_test(str1, str2, "==");
+			fnx::WildcardString	lhs("abc*fghi");
+			fnx::WildcardString	rhs("abcdefghi");
+			_do_test(lhs, rhs, "==");
 		}
-	fnx::WildcardString	s1("a"),
-						s2("?z");
-	std::cout	<< (s1.compare(s2))
-				<< std::endl
-				<< (s2.compare(s1))
-				<< std::endl;
-//		print_test("test wildcard * 4");
-//		{
-//			fnx::WildcardString	str1("*");
-//			fnx::WildcardString	str2("abcdefg*dnwi * da wdaw 8a*");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard * 5");
-//		{
-//			fnx::WildcardString	str1("sd*dad*");
-//			fnx::WildcardString	str2("abcdefg*dnwi * da wdaw 8a*");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard * 6");
-//		{
-//			fnx::WildcardString	str1("abc********hi");
-//			fnx::WildcardString	str2("**bcdef***ghi");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard ? 1");
-//		{
-//			fnx::WildcardString str1("ab?de?g"),
-//								str2("?bc?ef?");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard ? 2");
-//		{
-//			fnx::WildcardString str1("ab?de?g"),
-//								str2("?bc?ef");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard ? 3");
-//		{
-//			fnx::WildcardString str1("ab?de?"),
-//								str2("?bc?ef?");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard ? 4");
-//		{
-//			fnx::WildcardString str1("ab?def?"),
-//								str2("?bc?e?");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard ? 5");
-//		{
-//			fnx::WildcardString str1("ab?de?g"),
-//								str2(":bc:ef:", '*', ':');
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard ? 6");
-//		{
-//			fnx::WildcardString str1("ab?de?g"),
-//								str2(":bc:e::", '*', ':');
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard \\ 1");
-//		{
-//			fnx::WildcardString str1("abc"),
-//								str2("ab\\?");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard \\ 2");
-//		{
-//			fnx::WildcardString str1("abc"),
-//								str2("ab\\c");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard \\ 3");
-//		{
-//			fnx::WildcardString str1("ab?"),
-//								str2("ab\\c");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard \\ 4");
-//		{
-//			fnx::WildcardString str1("ab\\d"),
-//								str2("ab?");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard \\ 5");
-//		{
-//			fnx::WildcardString str1("ab?"),
-//								str2("ab;c", '.', ':', ';');
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard \\ 6");
-//		{
-//			fnx::WildcardString str1("ab?"),
-//								str2("ab\\c", '.', ':', ';');
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard \\ 7");
-//		{
-//			fnx::WildcardString str1("abcd"),
-//								str2("ab\\c\\d");
-//			_do_test(str1, str2);
-//		}
-//		print_test("test wildcard * ");
-//		{
-//			fnx::WildcardString str1("baaabab"),
-//								str2("*****ba*****ab");
-//			_do_test(str1, str2);
-//		}
-	}
-	print_category("WildcardString (compare WildcardString with char const *)");
-	{
-		
-	}
-	print_category("WildcardString (compare char const * with WildcardString)");
-	{
-		
-	}
-	print_category("WildcardString (compare WildcardString with std::string)");
-	{
-		
-	}
-	print_category("WildcardString (compare std::string with WildcardString)");
-	{
-		
-	}
-	print_category("WildcardString (compare WildcardString with NotCaseString)");
-	{
-		
-	}
-	print_category("WildcardString (compare NotCaseString with WildcardString)");
-	{
-		
+		print_test("test wildcard * 4");
+		{
+			fnx::WildcardString	lhs("*");
+			fnx::WildcardString	rhs("abcdefg*dnwi * da wdaw 8a*");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard * 5");
+		{
+			fnx::WildcardString	lhs("sd*dad*");
+			fnx::WildcardString	rhs("abcdefg*dnwi * da wdaw 8a*");
+			_do_test(lhs, rhs, ">");
+		}
+		print_test("test wildcard * 6");
+		{
+			fnx::WildcardString	lhs("abc********hi");
+			fnx::WildcardString	rhs("**bcdef***ghi");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard ? 1");
+		{
+			fnx::WildcardString lhs("ab?de?g"),
+								rhs("?bc?ef?");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard ? 2");
+		{
+			fnx::WildcardString lhs("ab?de?g"),
+								rhs("?bc?ef");
+			_do_test(lhs, rhs, ">");
+		}
+		print_test("test wildcard ? 3");
+		{
+			fnx::WildcardString lhs("ab?de?"),
+								rhs("?bc?ef?");
+			_do_test(lhs, rhs, ">");
+		}
+		print_test("test wildcard ? 4");
+		{
+			fnx::WildcardString lhs("ab?def?"),
+								rhs("?bc?e?");
+			_do_test(lhs, rhs, ">");
+		}
+		print_test("test wildcard ? 5");
+		{
+			fnx::WildcardString lhs("ab?de?g"),
+								rhs("?bc?ef?");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard ? 6");
+		{
+			fnx::WildcardString lhs("ab?de?g"),
+								rhs("?bc?e??");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard \\ 1");
+		{
+			fnx::WildcardString lhs("abc"),
+								rhs("ab\\?");
+			_do_test(lhs, rhs, ">");
+		}
+		print_test("test wildcard \\ 2");
+		{
+			fnx::WildcardString lhs("abc"),
+								rhs("ab\\c");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard \\ 3");
+		{
+			fnx::WildcardString lhs("ab?"),
+								rhs("ab\\c");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard \\ 4");
+		{
+			fnx::WildcardString lhs("ab\\d"),
+								rhs("ab?");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard \\ 5");
+		{
+			fnx::WildcardString lhs("ab?"),
+								rhs("ab;c");
+			_do_test(lhs, rhs, ">");
+		}
+		print_test("test wildcard \\ 6");
+		{
+			fnx::WildcardString lhs("ab?"),
+								rhs("ab\\c");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard \\ 7");
+		{
+			fnx::WildcardString lhs("abcd"),
+								rhs("ab\\c\\d");
+			_do_test(lhs, rhs, "==");
+		}
+		print_test("test wildcard * ");
+		{
+			fnx::WildcardString lhs("baaabab"),
+								rhs("*****ba*****ab");
+			_do_test(lhs, rhs, "==");
+		}
 	}
 }
 #endif

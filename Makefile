@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/08 14:24:41 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/11 14:50:47 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,10 @@ SRCS				= $(addsuffix .cpp,					main \
 														rfind) \
 														\
 						$(addprefix WildcardString.,	$(DEFAULT_FILES) \
-														compare) \
+														compare \
+														find \
+														rfind \
+														find_first_of) \
 														\
 														filesystem \
 														get_list)

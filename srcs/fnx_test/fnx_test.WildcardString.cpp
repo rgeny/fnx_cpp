@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/12 12:42:22 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/22 11:23:54 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ static void	_print_result	(std::string msg,
 				<< std::endl;
 }
 
+static void _print_value	(std::string msg,
+							 int value)
+{
+	std::cout	<< MAGENTA_TEXT
+				<< msg
+				<< " : "
+				<< value
+				<< RESET
+				<< std::endl;
+}
+
 template
 <
 	class T1,
@@ -59,6 +70,7 @@ static void	_do_test	(UNUSED T1 lhs,
 
 	if (equal || inf || sup)
 	{
+//	operator
 		_print_str(lhs, rhs);
 		_print_result	("(lhs == rhs) == equal",
 						  (lhs == rhs) == equal);
@@ -118,6 +130,8 @@ static void	_do_test	(UNUSED T1 lhs,
 						  lhs.compare(0, lhs.size(), rhs.c_str(), rhs.size()) == 0);
 		_print_result	("lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) == 0",
 						  lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) == 0);
+
+
 //	size_t	find	(WildcardString const & str,
 //					 size_t pos = 0) const;
 		_print_result	("lhs.find(rhs) == 0",
@@ -135,6 +149,8 @@ static void	_do_test	(UNUSED T1 lhs,
 //					 size_t pos = 0) const;
 		_print_result	("lhs.find(rhs[0], 0) == 0",
 					 	  lhs.find(rhs[0], 0) == 0);
+
+
 //	size_t	rfind	(WildcardString const & str,
 //					 size_t pos = npos) const;
 		_print_result	("lhs.rfind(rhs, size_min) == size_min)",
@@ -152,33 +168,291 @@ static void	_do_test	(UNUSED T1 lhs,
 //					 size_t pos = npos) const;
 		_print_result	("lhs.rfind(rhs[0], 0) == 0",
 						  lhs.rfind(rhs[0], 0) == 0);
+
+
 //	size_t	find_first_of	(WildcardString const & str,
 //							 size_t pos = 0) const;
 		_print_result	("lhs.find_first_of(rhs) == 0",
 						  lhs.find_first_of(rhs) == 0);
-//		_print_result	("lhs.find_first_of(const char * s, size_t pos = 0) const");
-//		_print_result	("lhs.find_first_of(const char * s, size_t pos, size_t n) const");
-//		_print_result	("lhs.find_first_of(char c, size_t pos = 0) const");
-//		_print_result	("lhs.find_last_of(rhs, size_t pos = npos) const");
-//		_print_result	("lhs.find_last_of(const char * s, size_t pos = npos) const");
-//		_print_result	("lhs.find_last_of(const char * s, size_t pos, size_t n) const");
-//		_print_result	("lhs.find_last_of(char c, size_t pos = npos) const");
-//		_print_result	("lhs.find_first_not_of(rhs, size_t pos = 0) const");
-//		_print_result	("lhs.find_first_not_of(const char * s, size_t pos = 0) const");
-//		_print_result	("lhs.find_first_not_of(const char * s, size_t pos, size_t n) const");
-//		_print_result	("lhs.find_first_not_of(char c, size_t pos = 0) const");
-//		_print_result	("lhs.find_last_not_of(rhs, size_t pos = npos) const");
-//		_print_result	("lhs.find_last_not_of(const char * s, size_t pos = npos) const");
-//		_print_result	("lhs.find_last_not_of(const char * s, size_t pos, size_t n) const");
-//		_print_result	("lhs.find_last_not_of(char c, size_t pos = npos) const");
+//	size_t	find_first_of	(char const * s,
+//							 size_t pos = 0) const;
+		_print_result	("lhs.find_first_of(rhs.c_str()) == 0",
+						  lhs.find_first_of(rhs.c_str()) == 0);
+//	size_t	find_first_of	(char const * s,
+//							 size_t pos,
+//							 size_t n) const;
+		_print_result	("lhs.find_first_of(rhs.c_str(), 0, size_max) == 0",
+						  lhs.find_first_of(rhs.c_str(), 0, size_max) == 0);
+//	size_t	find_first_of	(char c,
+//							 size_t pos = 0) const;
+		_print_result	("lhs.find_first_of(rhs[0], 0) == 0",
+						  lhs.find_first_of(rhs[0], 0) == 0);
 	}
 	else if (inf == true)
 	{
-		_print_result("lhs.compare(rhs) const : ", lhs.compare(rhs) < 0);
+//	int	compare	(WildcardString const & str) const
+		_print_result	("lhs.compare(rhs) < 0",
+						  lhs.compare(rhs) < 0 );
+//	int	compare	(size_t pos,
+//				 size_t len,
+//				 WildcardString const & str) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs) < 0",
+						  lhs.compare(0, lhs.size(), rhs) < 0 );
+		_print_result	("lhs.compare(lhs.size(), 0, rhs) < 0",
+						  lhs.compare(0, lhs.size(), rhs) < 0 );
+//	int	compare	(size_t pos,
+//				 size_t len,
+//				 WildcardString const & str,
+//				 size_t subpos,
+//				 size_t sublen) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs, 0, rhs.size()) < 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) < 0);
+		_print_result	("lhs.compare(lhs.size(), 0, rhs, 0, rhs.size()) < 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) < 0);
+		_print_result	("lhs.compare(lhs.size(), 0, rhs, rhs.size(), 0) < 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) < 0);
+		_print_result	("lhs.compare(0, lhs.size(), rhs, rhs.size(), 0) < 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) < 0);
+//	int	compare (char const * s) const;
+		_print_result	("lhs.compare(rhs.c_str()) < 0",
+						 lhs.compare(rhs.c_str()) < 0);
+//	int	compare (size_t pos,
+//				 size_t len,
+//				 char const * s) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs.c_str()) < 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) < 0);
+		_print_result	("lhs.compare(lhs.size() / 2, lhs.size()) < 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) < 0);
+		_print_result	("lhs.compare(0, lhs.size() / 2, rhs.c_str()) < 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) < 0);
+//	int	compare (size_t pos,
+//				 size_t len,
+//				 char const * s,
+//				 size_t	n) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs.c_str(), rhs.size()) < 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str(), rhs.size()) < 0);
+		_print_result	("lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) < 0",
+						  lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) < 0);
+
+
+//	size_t	find	(WildcardString const & str,
+//					 size_t pos = 0) const;
+		_print_value	("lhs.find(rhs) < 0",
+					 	 lhs.find(rhs) < 0);
+//	size_t	find	(char const * s,
+//					 size_t pos = 0) const;
+		_print_value	("lhs.find(rhs.c_str(), 0) < 0",
+						  lhs.find(rhs.c_str(), 0) < 0);
+//	size_t	find	(char const * s,
+//					 size_t pos,
+//					 size_t n) const;
+		_print_value	("lhs.find(rhs.c_str(), 0, size_max) < 0",
+					 	  lhs.find(rhs.c_str(), 0, size_max) < 0);
+//	size_t	find	(char c,
+//					 size_t pos = 0) const;
+		_print_value	("lhs.find(rhs[0], 0) < 0",
+					 	  lhs.find(rhs[0], 0) < 0);
+
+
+//	size_t	rfind	(WildcardString const & str,
+//					 size_t pos = npos) const;
+		_print_value	("lhs.rfind(rhs, size_min) < size_min)",
+						  lhs.rfind(rhs, size_min) < size_min);
+//	size_t	rfind	(char const * s,
+//					 size_t pos,
+//					 size_t n) const;
+		_print_value	("lhs.rfind(rhs.c_str(), size_min, size_max) < size_min",
+						  lhs.rfind(rhs.c_str(), size_min, size_max) < size_min);
+//	size_t	rfind	(char const * s,
+//					 size_t pos = npos) const;
+		_print_value	("lhs.rfind(rhs.c_str(), size_min) < size_min",
+						  lhs.rfind(rhs.c_str(), size_min) < size_min);
+//	size_t	rfind	(char c,
+//					 size_t pos = npos) const;
+		_print_value	("lhs.rfind(rhs[0], 0) < 0",
+						  lhs.rfind(rhs[0], 0) < 0);
+
+
+//	size_t	find_first_of	(WildcardString const & str,
+//							 size_t pos = 0) const;
+		_print_value	("lhs.find_first_of(rhs) < 0",
+						  lhs.find_first_of(rhs) < 0);
+//	size_t	find_first_of	(char const * s,
+//							 size_t pos = 0) const;
+		_print_value	("lhs.find_first_of(rhs.c_str()) < 0",
+						  lhs.find_first_of(rhs.c_str()) < 0);
+//	size_t	find_first_of	(char const * s,
+//							 size_t pos,
+//							 size_t n) const;
+		_print_value	("lhs.find_first_of(rhs.c_str(), 0, size_max) < 0",
+						  lhs.find_first_of(rhs.c_str(), 0, size_max) < 0);
+//	size_t	find_first_of	(char c,
+//							 size_t pos = 0) const;
+		_print_value	("lhs.find_first_of(rhs[0], 0) < 0",
+						  lhs.find_first_of(rhs[0], 0) < 0);
+
 	}
 	else if (sup == true)
 	{
-		_print_result("lhs.compare(rhs) const : ", lhs.compare(rhs) > 0);
+//	int	compare	(WildcardString const & str) const
+		_print_result	("lhs.compare(rhs) > 0",
+						  lhs.compare(rhs) > 0 );
+//	int	compare	(size_t pos,
+//				 size_t len,
+//				 WildcardString const & str) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs) > 0",
+						  lhs.compare(0, lhs.size(), rhs) > 0 );
+		_print_result	("lhs.compare(lhs.size(), 0, rhs) > 0",
+						  lhs.compare(0, lhs.size(), rhs) > 0 );
+//	int	compare	(size_t pos,
+//				 size_t len,
+//				 WildcardString const & str,
+//				 size_t subpos,
+//				 size_t sublen) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs, 0, rhs.size()) > 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) > 0);
+		_print_result	("lhs.compare(lhs.size(), 0, rhs, 0, rhs.size()) > 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) > 0);
+		_print_result	("lhs.compare(lhs.size(), 0, rhs, rhs.size(), 0) > 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) > 0);
+		_print_result	("lhs.compare(0, lhs.size(), rhs, rhs.size(), 0) > 0",
+						  lhs.compare (0, lhs.size(), rhs, 0, rhs.size()) > 0);
+//	int	compare (char const * s) const;
+		_print_result	("lhs.compare(rhs.c_str()) > 0",
+						 lhs.compare(rhs.c_str()) > 0);
+//	int	compare (size_t pos,
+//				 size_t len,
+//				 char const * s) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs.c_str()) > 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) > 0);
+		_print_result	("lhs.compare(lhs.size() / 2, lhs.size()) > 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) > 0);
+		_print_result	("lhs.compare(0, lhs.size() / 2, rhs.c_str()) > 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str()) > 0);
+//	int	compare (size_t pos,
+//				 size_t len,
+//				 char const * s,
+//				 size_t	n) const;
+		_print_result	("lhs.compare(0, lhs.size(), rhs.c_str(), rhs.size()) > 0",
+						  lhs.compare(0, lhs.size(), rhs.c_str(), rhs.size()) > 0);
+		_print_result	("lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) > 0",
+						  lhs.compare(lhs.size() / 2, lhs.size(), rhs.c_str(), rhs.size()) > 0);
+
+
+//	size_t	find	(WildcardString const & str,
+//					 size_t pos = 0) const;
+		_print_value	("lhs.find(rhs) > 0",
+					 	 lhs.find(rhs) > 0);
+//	size_t	find	(char const * s,
+//					 size_t pos = 0) const;
+		_print_value	("lhs.find(rhs.c_str(), 0) > 0",
+						  lhs.find(rhs.c_str(), 0) > 0);
+//	size_t	find	(char const * s,
+//					 size_t pos,
+//					 size_t n) const;
+		_print_value	("lhs.find(rhs.c_str(), 0, size_max) > 0",
+					 	  lhs.find(rhs.c_str(), 0, size_max) > 0);
+//	size_t	find	(char c,
+//					 size_t pos = 0) const;
+		_print_value	("lhs.find(rhs[0], 0) > 0",
+					 	  lhs.find(rhs[0], 0) > 0);
+
+
+//	size_t	rfind	(WildcardString const & str,
+//					 size_t pos = npos) const;
+		_print_value	("lhs.rfind(rhs, size_min) > size_min)",
+						  lhs.rfind(rhs, size_min) > size_min);
+//	size_t	rfind	(char const * s,
+//					 size_t pos,
+//					 size_t n) const;
+		_print_value	("lhs.rfind(rhs.c_str(), size_min, size_max) > size_min",
+						  lhs.rfind(rhs.c_str(), size_min, size_max) > size_min);
+//	size_t	rfind	(char const * s,
+//					 size_t pos = npos) const;
+		_print_value	("lhs.rfind(rhs.c_str(), size_min) > size_min",
+						  lhs.rfind(rhs.c_str(), size_min) > size_min);
+//	size_t	rfind	(char c,
+//					 size_t pos = npos) const;
+		_print_value	("lhs.rfind(rhs[0], 0) > 0",
+						  lhs.rfind(rhs[0], 0) > 0);
+
+
+//	size_t	find_first_of	(WildcardString const & str,
+//							 size_t pos = 0) const;
+		_print_value	("lhs.find_first_of(rhs) > 0",
+						  lhs.find_first_of(rhs) > 0);
+//	size_t	find_first_of	(char const * s,
+//							 size_t pos = 0) const;
+		_print_value	("lhs.find_first_of(rhs.c_str()) > 0",
+						  lhs.find_first_of(rhs.c_str()) > 0);
+//	size_t	find_first_of	(char const * s,
+//							 size_t pos,
+//							 size_t n) const;
+		_print_value	("lhs.find_first_of(rhs.c_str(), 0, size_max) > 0",
+						  lhs.find_first_of(rhs.c_str(), 0, size_max) > 0);
+//	size_t	find_first_of	(char c,
+//							 size_t pos = 0) const;
+		_print_value	("lhs.find_first_of(rhs[0], 0) > 0",
+						  lhs.find_first_of(rhs[0], 0) > 0);
+
+	}
+	if (equal || inf || sup)
+	{
+//	size_t	find__last_of	(WilcardString const & str,
+//							 size_t pos = npos) const;
+		_print_value	("lhs.find_last_of(rhs)",
+						  lhs.find_last_of(rhs));
+//	size_t	find__last_of	(char const * s,
+//							 size_t pos = npos) const;
+		_print_value	("lhs.find_last_of(rhs.c_str())",
+						  lhs.find_last_of(rhs.c_str()));
+//	size_t	find__last_of	(char const * s,
+//							 size_t pos,
+//							 size_t n) const;
+		_print_value	("lhs.find_last_of(rhs.c_str(), 0, size_max)",
+						  lhs.find_last_of(rhs.c_str(), 0, size_max));
+//	size_t	find__last_of	(char c,
+//							 size_t pos = npos) const;
+		_print_value	("lhs.find_last_of(rhs[0])",
+						  lhs.find_last_of(rhs[0]));
+
+
+//	size_t	find_first_not_of	(WildcardString const & str,
+//								 size_t pos = 0) const;
+		_print_value	("lhs.find_first_not_of(rhs)",
+						  lhs.find_first_not_of(rhs));
+//	size_t	find_first_not_of	(char const * s,
+//								 size_t pos = 0) const;
+		_print_value	("lhs.find_first_not_of(rhs.c_str())",
+						  lhs.find_first_not_of(rhs.c_str()));
+//	size_t	find_first_not_of	(char const * s,
+//								 size_t pos,
+//								 size_t n) const;
+		_print_value	("lhs.find_first_not_of(rhs.c_str(), 0, size_max)",
+						  lhs.find_first_not_of(rhs.c_str(), 0, size_max));
+//	size_t	find_first_not_of	(char c,
+//								 size_t pos = 0) const;
+		_print_value	("lhs.find_first_not_of(rhs[0])",
+						  lhs.find_first_not_of(rhs[0]));
+
+
+//	size_t	find_last_not_of	(WildcardString const & str,
+//								 size_t pos = 0) const;
+		_print_value	("lhs.find_last_not_of(rhs)",
+						  lhs.find_last_not_of(rhs));
+//	size_t	find_last_not_of	(char const * s,
+//								 size_t pos = 0) const;
+		_print_value	("lhs.find_last_not_of(rhs.c_str())",
+						  lhs.find_last_not_of(rhs.c_str()));
+//	size_t	find_last_not_of	(char const * s,
+//								 size_t pos,
+//								 size_t n) const;
+		_print_value	("lhs.find_last_not_of(rhs.c_str(), 0, size_max)",
+						  lhs.find_last_not_of(rhs.c_str(), 0, size_max));
+//	size_t	find_last_not_of	(char c,
+//								 size_t pos = 0) const;
+		_print_value	("lhs.find_last_not_of(rhs[0])",
+						  lhs.find_last_not_of(rhs[0]));
 	}
 }
 

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   NotCaseString.find_last_of.cpp                     :+:      :+:    :+:   */
+/*   WildcardString.find_last_of.cpp                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 17:22:47 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 12:13:08 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 13:55:22 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fnx.hpp"
 
-size_t	fnx::NotCaseString::find_last_of	(const fnx::NotCaseString & str,
+size_t	fnx::WildcardString::find_last_of	(fnx::WildcardString const & str,
 											 size_t pos) const
 {
 	return (this->find_last_of(str.c_str(), pos, str.size()));
 }
 
-size_t	fnx::NotCaseString::find_last_of	(const char * s,
+size_t	fnx::WildcardString::find_last_of	(char const * s,
 											 size_t pos) const
 {
 	return (this->find_last_of(s, pos, strlen(s)));
 }
 
-size_t	fnx::NotCaseString::find_last_of	(const char * s,
+size_t	fnx::WildcardString::find_last_of	(char const * s,
 											 size_t pos,
 											 size_t n) const
 {
@@ -44,9 +44,9 @@ size_t	fnx::NotCaseString::find_last_of	(const char * s,
 	return (std::string::npos);
 }
 
-size_t	fnx::NotCaseString::find_last_of	(char c,
+size_t	fnx::WildcardString::find_last_of	(char c,
 											 size_t pos) const
 {
-	fnx::NotCaseString	tmp(1, c);
+	fnx::WildcardString	tmp(1, c);
 	return (this->find_last_of(tmp.c_str(), pos, 1));
 }

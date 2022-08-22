@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/11 14:50:47 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/12 14:18:48 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,10 @@ SRCS				= $(addsuffix .cpp,					main \
 														compare \
 														find \
 														rfind \
-														find_first_of) \
+														find_first_of \
+														find_last_of \
+														find_first_not_of \
+														find_last_not_of) \
 														\
 														filesystem \
 														get_list)

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:33:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/12 12:42:38 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/12 14:22:22 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,36 @@ namespace fnx
 			size_t	find_first_of	(char c,
 									 size_t pos = 0) const;
 
+			size_t	find_last_of	(WildcardString const & str,
+									 size_t pos = npos) const;
+			size_t	find_last_of	(char const * s,
+									 size_t pos = npos) const;
+			size_t	find_last_of	(char const * s,
+									 size_t pos,
+									 size_t n) const;
+			size_t	find_last_of	(char c,
+									 size_t pos = npos) const;
+
+			size_t	find_first_not_of	(WildcardString const & str,
+										 size_t pos = 0) const;
+			size_t	find_first_not_of	(char const * s,
+										 size_t pos = 0) const;
+			size_t	find_first_not_of	(char const * s,
+										 size_t pos,
+										 size_t n) const;
+			size_t	find_first_not_of	(char c,
+										 size_t pos = 0) const;
+
+			size_t	find_last_not_of	(WildcardString const & str,
+										 size_t pos = npos) const;
+			size_t	find_last_not_of	(char const * s,
+										 size_t pos = npos) const;
+			size_t	find_last_not_of	(char const * s,
+										 size_t pos,
+										 size_t n) const;
+			size_t	find_last_not_of	(char c,
+										 size_t pos = npos) const;
+
 		private:
 	};
 	bool 	operator==	(WildcardString const & lhs,
@@ -154,35 +184,11 @@ namespace fnx
 
 //
 //
-//	size_t	find_last_of	(WildcardString const & str
-//							 size_t pos = npos) const;
-//	size_t	find_last_of	(char const * s,
-//							 size_t pos = npos) const;
-//	size_t	find_last_of	(char const * s,
-//							 size_t pos,
-//							 size_t n) const;
-//	size_t	find_last_of	(char c,
-//							 size_t pos = npos) const;
+
 //
-//	size_t	find_first_not_of	(WildcardString const & str
-//								 size_t pos = 0) const;
-//	size_t	find_first_not_of	(char const * s,
-//								 size_t pos = 0) const;
-//	size_t	find_first_not_of	(char const * s,
-//								 size_t pos,
-//								 size_t n) const;
-//	size_t	find_first_not_of	(char c,
-//								 size_t pos = 0) const;
+
 //
-//	size_t	find_last_not_of	(WildcardString const & str
-//								 size_t pos = npos) const;
-//	size_t	find_last_not_of	(char const * s,
-//								 size_t pos = npos) const;
-//	size_t	find_last_not_of	(char const * s,
-//								 size_t pos,
-//								 size_t n) const;
-//	size_t	find_last_not_of	(char c,
-//								 size_t pos = npos) const;
+
 //
 //private:
 //	std::string				_out_of_range	(size_t pos,

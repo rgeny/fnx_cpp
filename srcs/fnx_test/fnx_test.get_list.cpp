@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:13:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 12:00:01 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/22 11:46:49 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,73 @@ void	fnx_test::get_list	(UNUSED char ** argv)
 
 	{
 		print_test(std::string("get_files (") + root.c_str() + ")");
-		std::vector<std::string>	tmp = fnx::get_files(root);
+		std::vector<fnx::WildcardString>	tmp = fnx::get_files(root);
 		for (std::size_t i = 0; i < tmp.size(); i++)
 			std::cout	<< tmp[i]
 						<< std::endl;
 	}
 	{
-		print_test(std::string("get_files (") + root.c_str() + ", {\"empty\", \"sample\"}");
-		fnx::vector<std::string>	param;
-		std::vector<std::string>	tmp;
+		print_test(std::string("get_files (") + root.c_str() + ", {\"empty\", \"sample\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
 
 		param.push_back("empty");
 		param.push_back("sample");
+		tmp = fnx::get_files(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_files (") + root.c_str() + ", {\"*\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("*");
+		tmp = fnx::get_files(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_files (") + root.c_str() + ", {\"\\*\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("\\*");
+		tmp = fnx::get_files(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_files (") + root.c_str() + ", {\"*line\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("*line");
+		tmp = fnx::get_files(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_files (") + root.c_str() + ", {\"*m*\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("*m*");
+		tmp = fnx::get_files(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_files (") + root.c_str() + ", {\"*n?\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("*n?");
 		tmp = fnx::get_files(root, param);
 		for (std::size_t i = 0; i < tmp.size(); i++)
 			std::cout	<< tmp[i]

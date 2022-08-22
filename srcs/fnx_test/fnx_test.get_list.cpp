@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:13:37 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/22 11:46:49 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/22 11:58:08 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,82 @@ void	fnx_test::get_list	(UNUSED char ** argv)
 			std::cout	<< tmp[i]
 						<< std::endl;
 	}
+
+	print_category("get_dirs");
+	{
+		print_test(std::string("get_dirs (") + root.c_str() + ")");
+		std::vector<fnx::WildcardString>	tmp = fnx::get_dirs(root);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_dirs (") + root.c_str() + ", {\"empty_dir\", \"same_dir\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("empty_dir");
+		param.push_back("same_dir");
+		tmp = fnx::get_dirs(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_dirs (") + root.c_str() + ", {\"*\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("*");
+		tmp = fnx::get_dirs(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_dirs (") + root.c_str() + ", {\"\\*\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("\\*");
+		tmp = fnx::get_dirs(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_dirs (") + root.c_str() + ", {\"alphabetic_dir*\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("alphabetic_dir*");
+		tmp = fnx::get_dirs(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_dirs (") + root.c_str() + ", {\"?\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("?");
+		tmp = fnx::get_dirs(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+	{
+		print_test(std::string("get_dirs (") + root.c_str() + ", {\"a*?\"})");
+		fnx::vector<fnx::WildcardString>	param;
+		std::vector<fnx::WildcardString>	tmp;
+
+		param.push_back("a*?");
+		tmp = fnx::get_dirs(root, param);
+		for (std::size_t i = 0; i < tmp.size(); i++)
+			std::cout	<< tmp[i]
+						<< std::endl;
+	}
+
 }
 #endif

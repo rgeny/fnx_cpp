@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:28:46 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/22 11:37:14 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/22 11:51:44 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ namespace fnx
 	fs::path	operator+	(fs::path	lhs,
 							 fs::path	rhs);
 	std::vector<fnx::WildcardString>	get_files	(fs::path	path,
+											 		 fnx::vector<fnx::WildcardString> ign_list
+													 	= fnx::vector<fnx::WildcardString>());
+	std::vector<fnx::WildcardString>	get_dirs	(fs::path	path,
 											 		 fnx::vector<fnx::WildcardString> ign_list
 													 	= fnx::vector<fnx::WildcardString>());
 }

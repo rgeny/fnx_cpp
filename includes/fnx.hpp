@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 15:03:16 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 12:21:47 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/22 12:47:48 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # include "templates/time.hpp"
 # include "templates/container.hpp"
 # include "templates/itoa.hpp"
+# include "templates/str.hpp"
 
 #endif
 

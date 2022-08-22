@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 14:59:18 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/03 10:25:28 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/22 12:47:11 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 # include <vector>
 # include <string>
 
+# include "../templates/container.hpp"
+
 namespace fnx
 {
 	std::size_t					strllen	( char const * const * str);
-	std::vector<std::string>	vsplit	( std::string str
-										, std::string set);
+//	fnx::vector<std::string>	vsplit	( std::string str
+//										, std::string set);
 	std::string					vjoin	( std::vector<std::string> src
 										, std::string delimiter = "");
 	std::string					vjoin	( std::vector<std::string>::iterator it

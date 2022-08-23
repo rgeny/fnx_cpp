@@ -6,8 +6,7 @@
 *.lo
 *.o
 *.obj
-objs
-objs_exe
+objs*
 
 # Precompiled Headers
 *.gch

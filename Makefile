@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/23 12:27:40 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/23 14:38:51 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC					= clang++
 VALGRIND			= valgrind
 COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra -g -std=c++20
 ifdef DEBUG
-	COMPILE_FLAG	+=-D DEBUG=42
+	COMPILE_FLAG	+=-D FNX_DEBUG=42
 endif
 COMPILE_EXE_FLAG	= $(COMPILE_FLAG) -D FNX_TEST=42
 DEPS_FLAG			= -MMD -MP
@@ -72,17 +72,20 @@ SRCS				= $(addsuffix .cpp,					main \
 														NotCaseString \
 														WildcardString \
 														replace_substr \
-														get_list) \
+														get_list \
+														file_to_str) \
 														\
 														strllen \
 														split \
 														join \
 														replace_substr \
+														file_to_str \
 														\
 														wrong_number_of_arguments \
 														wrong_parameters \
 														error \
 														wildcardstring_same_wildcard_char \
+														file_cant_be_opened \
 														\
 						$(addprefix NotCaseString.,		$(DEFAULT_FILES) \
 														find_last_of \

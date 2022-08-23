@@ -6,7 +6,7 @@
 /*   By: rgeny <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 14:36:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/22 11:26:45 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/23 15:34:28 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ int	main	( __attribute((unused)) int argc
 	fnx_test::itoa();
 	fnx_test::NotCaseString();
 	fnx_test::replace_substr(argv, envp);
-	fnx_test::WildcardString();
+	fnx_test::file_to_str(argv);
 	fnx_test::get_list(argv);
+	fnx_test::WildcardString(argv);
 
 	return (0);
 }

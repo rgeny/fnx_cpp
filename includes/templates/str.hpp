@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 12:44:43 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/22 12:48:54 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/22 13:05:49 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,20 @@ namespace fnx
 		fnx::vector<T>	to_return;
 		size_t			i;
 
+		std::cout	<< std::endl
+					<< "set = "
+					<< set
+					<< std::endl
+					<< "str = "
+					<< str
+					<< std::endl;
+
 		while ( ! str.empty() )
 		{
 			i = str.find_first_of(set, 0);
+			std::cout	<< "i = "
+						<< i
+						<< std::endl;
 			if (i > 0)
 				to_return.push_back(str.substr(0, i));
 			if (i == T::npos)

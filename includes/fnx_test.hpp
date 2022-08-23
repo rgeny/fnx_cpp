@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:15 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/08 13:14:37 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/23 15:34:11 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ namespace fnx_test
 {
 	void	print_category	(std::string const msg);
 	void	print_test		(std::string const msg);
+	void	print_test		(std::string const msg,
+							 bool result);
 	void	trio			(void);
 	void	ptpt_to_vector	(char ** argv);
 	void	strllen			(char ** argv,
@@ -32,10 +34,11 @@ namespace fnx_test
 	void	vector			(void);
 	void	itoa			(void);
 	void	NotCaseString	(void);
-	void	WildcardString	(void);
+	void	WildcardString	(char ** argv);
 	void	replace_substr	(char ** argv,
 							 char ** envp);
 	void	get_list		(char ** argv);
+	void	file_to_str		(char ** argv);
 }
 
 #endif

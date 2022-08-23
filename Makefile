@@ -6,7 +6,7 @@
 #    By: rgeny <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 14:20:33 by rgeny             #+#    #+#              #
-#    Updated: 2022/08/12 14:18:48 by rgeny            ###   ########.fr        #
+#    Updated: 2022/08/23 12:27:40 by rgeny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,9 @@ DEL_DIR				= rm -rf
 CC					= clang++
 VALGRIND			= valgrind
 COMPILE_FLAG		= $(DEPS_FLAG) -Wall -Werror -Wextra -g -std=c++20
+ifdef DEBUG
+	COMPILE_FLAG	+=-D DEBUG=42
+endif
 COMPILE_EXE_FLAG	= $(COMPILE_FLAG) -D FNX_TEST=42
 DEPS_FLAG			= -MMD -MP
 INCLUDES_FLAG		= $(addprefix -I,	$(INCLUDES_DIR) \
@@ -31,6 +34,12 @@ FUNCTIONS_DIR		= $(INCLUDES_DIR)functions/
 TEMPLATES_DIR		= $(INCLUDES_DIR)templates/
 OBJS_DIR			= objs/
 OBJS_EXE_DIR		= objs_exe/
+OBJS_DEBUG_DIR		= objs_debug/
+OBJS_EXE_DEBUG_DIR	= objs_exe_bebug/
+ifdef DEBUG
+	OBJS_DIR		= $(OBJS_DEBUG_DIR)
+	OBJS_EXE_DIR	= $(OBJS_EXE_DEBUG_DIR)
+endif
 SRCS_DIR			= srcs/
 FNX_TEST_DIR		= $(SRCS_DIR)fnx_test/
 STR_DIR				= $(SRCS_DIR)str/
@@ -101,11 +110,19 @@ OBJS				= $(patsubst %.cpp, $(OBJS_DIR)%.o, $(SRCS))
 DEPS				= $(OBJS:.o=.d)
 
 LIB					= fnxlib.a
+LIB_DEBUG			= fnxlib_debug.a
 EXE					= fnxlib.out
+EXE_DEBUG			= fnxlib_debug.out
+ifdef DEBUG
+	LIB				= $(LIB_DEBUG)
+	EXE				= $(EXE_DEBUG)
+endif
+
 
 all					: $(OBJS_DIR) $(LIB)
 
 $(OBJS_DIR)			:
+
 					$(NEW_DIR) $@
 
 exe					:
@@ -123,14 +140,14 @@ $(OBJS_DIR)%.o		: %.cpp
 					$(CC) $(COMPILE_FLAG) -c $< $(INCLUDES_FLAG) -o $@
 
 clean				:
-					$(DEL_DIR) $(OBJS_DIR) $(OBJS_EXE_DIR)
+					$(DEL_DIR) $(OBJS_DIR) $(OBJS_EXE_DIR) $(OBJS_DEBUG_DIR) $(OBJS_EXE_DEBUG_DIR)
 
 fclean				: clean
-					$(DEL_DIR) $(LIB) $(EXE)
+					$(DEL_DIR) $(LIB) $(EXE) $(LIB_DEBUG) $(EXE_DEBUG)
 
 re					: fclean all
 
 -include			$(DEPS)
 
-.PHONY				: all clean fclean re valgrind exe
+.PHONY				: all clean fclean re valgrind exe debug
 

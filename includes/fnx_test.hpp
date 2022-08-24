@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:15 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/23 15:34:11 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/24 11:17:56 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
 # include <iostream>
 
 # include "fnx.hpp"
+
+# define PRINT_TEST(boolean)	std::cout	<< BLACK_BACK; \
+								if (boolean == true) \
+									std::cout	<< GREEN_TEXT; \
+								else \
+									std::cout	<< RED_TEXT; \
+								std::cout	<< "( " \
+											<< __FILE__ \
+											<< " || l." \
+											<< __LINE__ \
+											<< " ) ==> " BRIGHT UNDERSCORE \
+											<< #boolean \
+											<< RESET \
+											<< std::endl;
 
 namespace fnx_test
 {

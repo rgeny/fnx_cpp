@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/23 17:47:03 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/24 12:39:07 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,17 +460,14 @@
 //}
 //
 
-static void	_print_string	(std::string name,
-							 std::string & str)
-{
-	str.resize(str.size() - 1);
-	std::cout	<< UNDERSCORE
-				<< name
-				<< RESET " = \""
-				<< str
-				<< "\""
-				<< std::endl;
-}
+#define _print_string(str)	str.resize(str.size() - 1); \
+							std::cout	<< UNDERSCORE \
+										<< #str \
+										<< RESET " = \"" \
+										<< str \
+										<< "\"" \
+										<< std::endl;
+
 
 void	fnx_test::WildcardString	(char ** argv)
 {
@@ -496,259 +493,395 @@ void	fnx_test::WildcardString	(char ** argv)
 						esc_short1(fnx::file_to_str(path + "escape_short1")),
 						esc_short2(fnx::file_to_str(path + "escape_short2")),
 						esc_long1(fnx::file_to_str(path + "escape_long1")),
-						esc_long2(fnx::file_to_str(path + "escape_long2"));
+						esc_long2(fnx::file_to_str(path + "escape_long2")),
+						all_sample(fnx::file_to_str(path + "all_wildcard_sample")),
+						all_short1(fnx::file_to_str(path + "all_wildcard_short1")),
+						all_short2(fnx::file_to_str(path + "all_wildcard_short2")),
+						all_long1(fnx::file_to_str(path + "all_wildcard_long1")),
+						all_long2(fnx::file_to_str(path + "all_wildcard_long2")),
+						other1("abc\\?def\n"),
+						other2("abc?def\n"),
+						other3("abc\\*def\n"),
+						other4("abc\\\\def\n"),
+						other5("a*f\n"),
+						other6("abcdef\n"),
+						other7("abcdefg\n");
 	print_category("WildcardString test");
 	std::cout	<< UNDERSCORE "string list : " RESET
 				<< std::endl;
-	_print_string("sample", sample);
-	_print_string("short1", short1);
-	_print_string("short2", short2);
-	_print_string("long1", long1);
-	_print_string("long2", long2);
-	_print_string("ast_sample", ast_sample);
-	_print_string("ast_short1", ast_short1);
-	_print_string("ast_short2", ast_short2);
-	_print_string("ast_long1", ast_long1);
-	_print_string("ast_long2", ast_long2);
-	_print_string("one_sample", one_sample);
-	_print_string("one_short1", one_short1);
-	_print_string("one_short2", one_short2);
-	_print_string("one_long1", one_long1);
-	_print_string("one_long2", one_long2);
+	_print_string(sample);
+	_print_string(short1);
+	_print_string(short2);
+	_print_string(long1);
+	_print_string(long2);
+	_print_string(ast_sample);
+	_print_string(ast_short1);
+	_print_string(ast_short2);
+	_print_string(ast_long1);
+	_print_string(ast_long2);
+	_print_string(one_sample);
+	_print_string(one_short1);
+	_print_string(one_short2);
+	_print_string(one_long1);
+	_print_string(one_long2);
+	_print_string(esc_sample);
+	_print_string(esc_short1);
+	_print_string(esc_short2);
+	_print_string(esc_long1);
+	_print_string(esc_long2);
+	_print_string(all_sample);
+	_print_string(all_short1);
+	_print_string(all_short2);
+	_print_string(all_long1);
+	_print_string(all_long2);
+	_print_string(other1);
+	_print_string(other2);
+	_print_string(other3);
+	_print_string(other4);
+	_print_string(other5);
+	_print_string(other6);
+	_print_string(other7);
 
 
 	print_category("int fnx::Wildcard::compare (fnx::WildcardString const & str) const");
 	{
-		print_test	("sample.compare(sample) == 0",
-					  sample.compare(sample) == 0);
-		print_test	("empty.compare(empty) == 0",
-					  empty.compare(empty) == 0);
-		print_test	("short1.compare(short1) == 0",
-					  short1.compare(short1) == 0);
-		print_test	("short2.compare(short2) == 0",
-					  short2.compare(short2) == 0);
-		print_test	("long1.compare(long1) == 0",
-					  long1.compare(long1) == 0);
-		print_test	("long2.compare(long2) == 0",
-					  long2.compare(long2) == 0);
-		print_test	("ast_sample.compare(ast_sample) == 0",
-					  ast_sample.compare(ast_sample) == 0);
-		print_test	("ast_short1.compare(ast_short1) == 0",
-					  ast_short1.compare(ast_short1) == 0);
-		print_test	("ast_short2.compare(ast_short2) == 0",
-					  ast_short2.compare(ast_short2) == 0);
-		print_test	("ast_long1.compare(ast_long1) == 0",
-					  ast_long1.compare(ast_long1) == 0);
-		print_test	("ast_long2.compare(ast_long2) == 0",
-					  ast_long2.compare(ast_long2) == 0);
-		print_test	("one_sample.compare(one_sample) == 0",
-					  one_sample.compare(one_sample) == 0);
-		print_test	("one_short1.compare(one_short1) == 0",
-					  one_short1.compare(one_short1) == 0);
-		print_test	("one_short2.compare(one_short2) == 0",
-					  one_short2.compare(one_short2) == 0);
-		print_test	("one_long1.compare(one_long1) == 0",
-					  one_long1.compare(one_long1) == 0);
-		print_test	("one_long2.compare(one_long2) == 0",
-					  one_long2.compare(one_long2) == 0);
+		PRINT_TEST	(sample.compare(sample) == 0);
+		PRINT_TEST	(empty.compare(empty) == 0);
+		PRINT_TEST	(short1.compare(short1) == 0);
+		PRINT_TEST	(short2.compare(short2) == 0);
+		PRINT_TEST	(long1.compare(long1) == 0);
+		PRINT_TEST	(long2.compare(long2) == 0);
+		PRINT_TEST	(ast_sample.compare(ast_sample) == 0);
+		PRINT_TEST	(ast_short1.compare(ast_short1) == 0);
+		PRINT_TEST	(ast_short2.compare(ast_short2) == 0);
+		PRINT_TEST	(ast_long1.compare(ast_long1) == 0);
+		PRINT_TEST	(ast_long2.compare(ast_long2) == 0);
+		PRINT_TEST	(one_sample.compare(one_sample) == 0);
+		PRINT_TEST	(one_short1.compare(one_short1) == 0);
+		PRINT_TEST	(one_short2.compare(one_short2) == 0);
+		PRINT_TEST	(one_long1.compare(one_long1) == 0);
+		PRINT_TEST	(one_long2.compare(one_long2) == 0);
+		PRINT_TEST	(esc_sample.compare(esc_sample) == 0);
+		PRINT_TEST	(esc_short1.compare(esc_short1) == 0);
+		PRINT_TEST	(esc_short2.compare(esc_short2) == 0);
+		PRINT_TEST	(esc_long1.compare(esc_long1) == 0);
+		PRINT_TEST	(esc_long2.compare(esc_long2) == 0);
+		PRINT_TEST	(all_sample.compare(all_sample) == 0);
+		PRINT_TEST	(all_short1.compare(all_short1) == 0);
+		PRINT_TEST	(all_short2.compare(all_short2) == 0);
+		PRINT_TEST	(all_long1.compare(all_long1) == 0);
+		PRINT_TEST	(all_long2.compare(all_long2) == 0);
 
-		print_test	("sample.compare(sample.substr(0, sample.size() - 1)) != 0",
-					  sample.compare(sample.substr(0, sample.size() - 1)) != 0);
+		PRINT_TEST	(sample.compare(sample.substr(0, sample.size() - 1)) != 0);
 
-		print_test	("empty.compare(sample) != 0",
-					  empty.compare(sample) != 0);
-		print_test	("empty.compare(short1) != 0",
-					  empty.compare(short1) != 0);
-		print_test	("empty.compare(short2) != 0",
-					  empty.compare(short2) != 0);
-		print_test	("empty.compare(long1) != 0",
-					  empty.compare(long1) != 0);
-		print_test	("empty.compare(long2) != 0",
-					  empty.compare(long2) != 0);
-		print_test	("empty.compare(ast_sample) == 0",
-					  empty.compare(ast_sample) == 0);
-		print_test	("empty.compare(ast_short1) != 0",
-					  empty.compare(ast_short1) != 0);
-		print_test	("empty.compare(ast_long1) != 0",
-					  empty.compare(ast_long1) != 0);
-		print_test	("empty.compare(one_sample) != 0",
-					  empty.compare(one_sample) != 0);
-		print_test	("empty.compare(one_short1) != 0",
-					  empty.compare(one_short1) != 0);
-		print_test	("empty.compare(one_long1) != 0",
-					  empty.compare(one_long1) != 0);
+		PRINT_TEST	(empty.compare(sample) != 0);
+		PRINT_TEST	(empty.compare(short1) != 0);
+		PRINT_TEST	(empty.compare(short2) != 0);
+		PRINT_TEST	(empty.compare(long1) != 0);
+		PRINT_TEST	(empty.compare(long2) != 0);
+		PRINT_TEST	(empty.compare(ast_sample) == 0);
+		PRINT_TEST	(empty.compare(ast_short1) != 0);
+		PRINT_TEST	(empty.compare(ast_long1) != 0);
+		PRINT_TEST	(empty.compare(one_sample) != 0);
+		PRINT_TEST	(empty.compare(one_short1) != 0);
+		PRINT_TEST	(empty.compare(one_long1) != 0);
+		PRINT_TEST	(empty.compare(esc_sample) != 0);
+		PRINT_TEST	(empty.compare(esc_short1) != 0);
+		PRINT_TEST	(empty.compare(esc_long1) != 0);
+		PRINT_TEST	(empty.compare(all_sample) != 0);
+		PRINT_TEST	(empty.compare(all_short1) != 0);
+		PRINT_TEST	(empty.compare(all_long1) != 0);
 
-		print_test	("sample.compare(empty) != 0",
-					  sample.compare(empty) != 0);
-		print_test	("sample.compare(short1) != 0",
-					  sample.compare(short1) != 0);
-		print_test	("sample.compare(short2) != 0",
-					  sample.compare(short2) != 0);
-		print_test	("sample.compare(long1) != 0",
-					  sample.compare(long1) != 0);
-		print_test	("sample.compare(long2) != 0",
-					  sample.compare(long2) != 0);
-		print_test	("sample.compare(ast_sample) == 0",
-					  sample.compare(ast_sample) == 0);
-		print_test	("sample.compare(ast_short1) != 0",
-					  sample.compare(ast_short1) != 0);
-		print_test	("sample.compare(ast_long1) != 0",
-					  sample.compare(ast_long1) != 0);
-		print_test	("sample.compare(one_sample) == 0",
-					  sample.compare(one_sample) == 0);
-		print_test	("sample.compare(one_short1) != 0",
-					  sample.compare(one_short1) != 0);
-		print_test	("sample.compare(one_long1) != 0",
-					  sample.compare(one_long1) != 0);
+		PRINT_TEST	(sample.compare(empty) != 0);
+		PRINT_TEST	(sample.compare(short1) != 0);
+		PRINT_TEST	(sample.compare(short2) != 0);
+		PRINT_TEST	(sample.compare(long1) != 0);
+		PRINT_TEST	(sample.compare(long2) != 0);
+		PRINT_TEST	(sample.compare(ast_sample) == 0);
+		PRINT_TEST	(sample.compare(ast_short1) != 0);
+		PRINT_TEST	(sample.compare(ast_long1) != 0);
+		PRINT_TEST	(sample.compare(one_sample) == 0);
+		PRINT_TEST	(sample.compare(one_short1) != 0);
+		PRINT_TEST	(sample.compare(one_long1) != 0);
+		PRINT_TEST	(sample.compare(esc_sample) == 0);
+		PRINT_TEST	(sample.compare(esc_short1) != 0);
+		PRINT_TEST	(sample.compare(esc_long1) != 0);
+		PRINT_TEST	(sample.compare(all_sample) == 0);
+		PRINT_TEST	(sample.compare(all_short1) != 0);
+		PRINT_TEST	(sample.compare(all_long1) != 0);
 		
-		print_test	("short1.compare(sample) != 0",
-					  short1.compare(sample) != 0);
-		print_test	("short1.compare(empty) != 0",
-					  short1.compare(empty) != 0);
-		print_test	("short1.compare(short2) != 0",
-					  short1.compare(short2) != 0);
-		print_test	("short1.compare(long1) != 0",
-					  short1.compare(long1) != 0);
-		print_test	("short1.compare(long2) != 0",
-					  short1.compare(long2) != 0);
-		print_test	("short1.compare(ast_sample) == 0",
-					  short1.compare(ast_sample) == 0);
-		print_test	("short1.compare(ast_short1) == 0",
-					  short1.compare(ast_short1) == 0);
-		print_test	("short1.compare(ast_long1) != 0",
-					  short1.compare(ast_long1) != 0);
-		print_test	("short1.compare(one_sample) != 0",
-					  short1.compare(one_sample) != 0);
-		print_test	("short1.compare(one_short1) != 0",
-					  short1.compare(one_short1) != 0);
-		print_test	("short1.compare(one_long1) != 0",
-					  short1.compare(one_long1) != 0);
+		PRINT_TEST	(short1.compare(sample) != 0);
+		PRINT_TEST	(short1.compare(empty) != 0);
+		PRINT_TEST	(short1.compare(short2) != 0);
+		PRINT_TEST	(short1.compare(long1) != 0);
+		PRINT_TEST	(short1.compare(long2) != 0);
+		PRINT_TEST	(short1.compare(ast_sample) == 0);
+		PRINT_TEST	(short1.compare(ast_short1) == 0);
+		PRINT_TEST	(short1.compare(ast_long1) != 0);
+		PRINT_TEST	(short1.compare(one_sample) != 0);
+		PRINT_TEST	(short1.compare(one_short1) != 0);
+		PRINT_TEST	(short1.compare(one_long1) != 0);
+		PRINT_TEST	(short1.compare(esc_sample) != 0);
+		PRINT_TEST	(short1.compare(esc_short1) == 0);
+		PRINT_TEST	(short1.compare(esc_long1) != 0);
+		PRINT_TEST	(short1.compare(all_sample) != 0);
+		PRINT_TEST	(short1.compare(all_short1) != 0);
+		PRINT_TEST	(short1.compare(all_long1) != 0);
 
-		print_test	("long1.compare(sample) != 0",
-					  long1.compare(sample) != 0);
-		print_test	("long1.compare(short1) != 0",
-					  long1.compare(short1) != 0);
-		print_test	("long1.compare(short2) != 0",
-					  long1.compare(short2) != 0);
-		print_test	("long1.compare(empty) != 0",
-					  long1.compare(empty) != 0);
-		print_test	("long1.compare(long2) != 0",
-					  long1.compare(long2) != 0);
-		print_test	("long1.compare(ast_sample) == 0",
-					  long1.compare(ast_sample) == 0);
-		print_test	("long1.compare(ast_short1) != 0",
-					  long1.compare(ast_short1) != 0);
-		print_test	("long1.compare(ast_long1) == 0",
-					  long1.compare(ast_long1) == 0);
-		print_test	("long1.compare(one_sample) != 0",
-					  long1.compare(one_sample) != 0);
-		print_test	("long1.compare(one_short1) != 0",
-					  long1.compare(one_short1) != 0);
-		print_test	("long1.compare(one_long1) == 0",
-					  long1.compare(one_long1) == 0);
+		PRINT_TEST	(long1.compare(sample) != 0);
+		PRINT_TEST	(long1.compare(short1) != 0);
+		PRINT_TEST	(long1.compare(short2) != 0);
+		PRINT_TEST	(long1.compare(empty) != 0);
+		PRINT_TEST	(long1.compare(long2) != 0);
+		PRINT_TEST	(long1.compare(ast_sample) == 0);
+		PRINT_TEST	(long1.compare(ast_short1) != 0);
+		PRINT_TEST	(long1.compare(ast_long1) == 0);
+		PRINT_TEST	(long1.compare(one_sample) != 0);
+		PRINT_TEST	(long1.compare(one_short1) != 0);
+		PRINT_TEST	(long1.compare(one_long1) == 0);
+		PRINT_TEST	(long1.compare(esc_sample) != 0);
+		PRINT_TEST	(long1.compare(esc_short1) != 0);
+		PRINT_TEST	(long1.compare(esc_long1) == 0);
+		PRINT_TEST	(long1.compare(all_sample) != 0);
+		PRINT_TEST	(long1.compare(all_short1) != 0);
+		PRINT_TEST	(long1.compare(all_long1) == 0);
 	
-		print_test	("ast_sample.compare(sample) == 0",
-					  ast_sample.compare(sample) == 0);
-		print_test	("ast_sample.compare(short1) == 0",
-					  ast_sample.compare(short1) == 0);
-		print_test	("ast_sample.compare(short2) == 0",
-					  ast_sample.compare(short2) == 0);
-		print_test	("ast_sample.compare(empty) == 0",
-					  ast_sample.compare(empty) == 0);
-		print_test	("ast_sample.compare(long2) == 0",
-					  ast_sample.compare(long2) == 0);
-		print_test	("ast_sample.compare(one_sample) == 0",
-					  ast_sample.compare(one_sample) == 0);
-		print_test	("ast_sample.compare(one_short1) == 0",
-					  ast_sample.compare(one_short1) == 0);
-		print_test	("ast_sample.compare(one_long1) == 0",
-					  ast_sample.compare(one_long1) == 0);
+		PRINT_TEST	(ast_sample.compare(sample) == 0);
+		PRINT_TEST	(ast_sample.compare(short1) == 0);
+		PRINT_TEST	(ast_sample.compare(short2) == 0);
+		PRINT_TEST	(ast_sample.compare(empty) == 0);
+		PRINT_TEST	(ast_sample.compare(long2) == 0);
+		PRINT_TEST	(ast_sample.compare(one_sample) == 0);
+		PRINT_TEST	(ast_sample.compare(one_short1) == 0);
+		PRINT_TEST	(ast_sample.compare(one_long1) == 0);
+		PRINT_TEST	(ast_sample.compare(esc_sample) == 0);
+		PRINT_TEST	(ast_sample.compare(esc_short1) == 0);
+		PRINT_TEST	(ast_sample.compare(esc_long1) == 0);
+		PRINT_TEST	(ast_sample.compare(all_sample) == 0);
+		PRINT_TEST	(ast_sample.compare(all_short1) == 0);
+		PRINT_TEST	(ast_sample.compare(all_long1) == 0);
 
-		print_test	("ast_short1.compare(sample) != 0",
-					  ast_short1.compare(sample) != 0);
-		print_test	("ast_short1.compare(short1) == 0",
-					  ast_short1.compare(short1) == 0);
-		print_test	("ast_short1.compare(short2) != 0",
-					  ast_short1.compare(short2) != 0);
-		print_test	("ast_short1.compare(empty) != 0",
-					  ast_short1.compare(empty) != 0);
-		print_test	("ast_short1.compare(long2) != 0",
-					  ast_short1.compare(long2) != 0);
-		print_test	("ast_short1.compare(one_sample) == 0",
-					  ast_short1.compare(one_sample) == 0);
-		print_test	("ast_short1.compare(one_short1) == 0",
-					  ast_short1.compare(one_short1) == 0);
-		print_test	("ast_short1.compare(one_long1) != 0",
-					  ast_short1.compare(one_long1) != 0);
+		PRINT_TEST	(ast_short1.compare(sample) != 0);
+		PRINT_TEST	(ast_short1.compare(short1) == 0);
+		PRINT_TEST	(ast_short1.compare(short2) != 0);
+		PRINT_TEST	(ast_short1.compare(empty) != 0);
+		PRINT_TEST	(ast_short1.compare(long2) != 0);
+		PRINT_TEST	(ast_short1.compare(one_sample) == 0);
+		PRINT_TEST	(ast_short1.compare(one_short1) == 0);
+		PRINT_TEST	(ast_short1.compare(one_long1) != 0);
+		PRINT_TEST	(ast_short1.compare(esc_sample) != 0);
+		PRINT_TEST	(ast_short1.compare(esc_short1) == 0);
+		PRINT_TEST	(ast_short1.compare(esc_long1) != 0);
+		PRINT_TEST	(ast_short1.compare(all_sample) != 0);
+		PRINT_TEST	(ast_short1.compare(all_short1) == 0);
+		PRINT_TEST	(ast_short1.compare(all_long1) != 0);
 
-		print_test	("ast_long1.compare(sample) != 0",
-					  ast_long1.compare(sample) != 0);
-		print_test	("ast_long1.compare(short1) != 0",
-					  ast_long1.compare(short1) != 0);
-		print_test	("ast_long1.compare(short2) != 0",
-					  ast_long1.compare(short2) != 0);
-		print_test	("ast_long1.compare(empty) != 0",
-					  ast_long1.compare(empty) != 0);
-		print_test	("ast_long1.compare(long2) != 0",
-					  ast_long1.compare(long2) != 0);
-		print_test	("ast_long1.compare(one_sample) != 0",
-					  ast_long1.compare(one_sample) != 0);
-		print_test	("ast_long1.compare(one_short1) != 0",
-					  ast_long1.compare(one_short1) != 0);
-		print_test	("ast_long1.compare(one_long1) == 0",
-					  ast_long1.compare(one_long1) == 0);
+		PRINT_TEST	(ast_long1.compare(sample) != 0);
+		PRINT_TEST	(ast_long1.compare(short1) != 0);
+		PRINT_TEST	(ast_long1.compare(short2) != 0);
+		PRINT_TEST	(ast_long1.compare(empty) != 0);
+		PRINT_TEST	(ast_long1.compare(long2) != 0);
+		PRINT_TEST	(ast_long1.compare(one_sample) != 0);
+		PRINT_TEST	(ast_long1.compare(one_short1) != 0);
+		PRINT_TEST	(ast_long1.compare(one_long1) == 0);
+		PRINT_TEST	(ast_long1.compare(esc_sample) != 0);
+		PRINT_TEST	(ast_long1.compare(esc_short1) != 0);
+		PRINT_TEST	(ast_long1.compare(esc_long1) == 0);
+		PRINT_TEST	(ast_long1.compare(all_sample) != 0);
+		PRINT_TEST	(ast_long1.compare(all_short1) != 0);
+		PRINT_TEST	(ast_long1.compare(all_long1) == 0);
 
-		print_test	("one_sample.compare(sample) == 0",
-					  one_sample.compare(sample) == 0);
-		print_test	("one_sample.compare(short1) != 0",
-					  one_sample.compare(short1) != 0);
-		print_test	("one_sample.compare(short2) != 0",
-					  one_sample.compare(short2) != 0);
-		print_test	("one_sample.compare(empty) != 0",
-					  one_sample.compare(empty) != 0);
-		print_test	("one_sample.compare(long2) != 0",
-					  one_sample.compare(long2) != 0);
-		print_test	("one_sample.compare(ast_sample) == 0",
-					  one_sample.compare(ast_sample) == 0);
-		print_test	("one_sample.compare(ast_short1) == 0",
-					  one_sample.compare(ast_short1) == 0);
-		print_test	("one_sample.compare(ast_long1) != 0",
-					  one_sample.compare(ast_long1) != 0);
+		PRINT_TEST	(one_sample.compare(sample) == 0);
+		PRINT_TEST	(one_sample.compare(short1) != 0);
+		PRINT_TEST	(one_sample.compare(short2) != 0);
+		PRINT_TEST	(one_sample.compare(empty) != 0);
+		PRINT_TEST	(one_sample.compare(long2) != 0);
+		PRINT_TEST	(one_sample.compare(ast_sample) == 0);
+		PRINT_TEST	(one_sample.compare(ast_short1) == 0);
+		PRINT_TEST	(one_sample.compare(ast_long1) != 0);
+		PRINT_TEST	(one_sample.compare(esc_sample) == 0);
+		PRINT_TEST	(one_sample.compare(esc_short1) != 0);
+		PRINT_TEST	(one_sample.compare(esc_long1) != 0);
+		PRINT_TEST	(one_sample.compare(all_sample) == 0);
+		PRINT_TEST	(one_sample.compare(all_short1) == 0);
+		PRINT_TEST	(one_sample.compare(all_long1) != 0);
 	
-		print_test	("one_short1.compare(sample) != 0",
-					  one_short1.compare(sample) != 0);
-		print_test	("one_short1.compare(short1) != 0",
-					  one_short1.compare(short1) != 0);
-		print_test	("one_short1.compare(short2) != 0",
-					  one_short1.compare(short2) != 0);
-		print_test	("one_short1.compare(empty) != 0",
-					  one_short1.compare(empty) != 0);
-		print_test	("one_short1.compare(long2) != 0",
-					  one_short1.compare(long2) != 0);
-		print_test	("one_short1.compare(ast_sample) == 0",
-					  one_short1.compare(ast_sample) == 0);
-		print_test	("one_short1.compare(ast_short1) == 0",
-					  one_short1.compare(ast_short1) == 0);
-		print_test	("one_short1.compare(ast_long1) != 0",
-					  one_short1.compare(ast_long1) != 0);
+		PRINT_TEST	(one_short1.compare(sample) != 0);
+		PRINT_TEST	(one_short1.compare(short1) != 0);
+		PRINT_TEST	(one_short1.compare(short2) != 0);
+		PRINT_TEST	(one_short1.compare(empty) != 0);
+		PRINT_TEST	(one_short1.compare(long2) != 0);
+		PRINT_TEST	(one_short1.compare(ast_sample) == 0);
+		PRINT_TEST	(one_short1.compare(ast_short1) == 0);
+		PRINT_TEST	(one_short1.compare(ast_long1) != 0);
+		PRINT_TEST	(one_short1.compare(esc_sample) != 0);
+		PRINT_TEST	(one_short1.compare(esc_short1) != 0);
+		PRINT_TEST	(one_short1.compare(esc_long1) != 0);
+		PRINT_TEST	(one_short1.compare(all_sample) != 0);
+		PRINT_TEST	(one_short1.compare(all_short1) == 0);
+		PRINT_TEST	(one_short1.compare(all_long1) != 0);
 
-		print_test	("one_long1.compare(sample) != 0",
-					  one_long1.compare(sample) != 0);
-		print_test	("one_long1.compare(short1) != 0",
-					  one_long1.compare(short1) != 0);
-		print_test	("one_long1.compare(short2) != 0",
-					  one_long1.compare(short2) != 0);
-		print_test	("one_long1.compare(empty) != 0",
-					  one_long1.compare(empty) != 0);
-		print_test	("one_long1.compare(long2) != 0",
-					  one_long1.compare(long2) != 0);
-		print_test	("one_long1.compare(ast_sample) == 0",
-					  one_long1.compare(ast_sample) == 0);
-		print_test	("one_long1.compare(ast_short1) != 0",
-					  one_long1.compare(ast_short1) != 0);
-		print_test	("one_long1.compare(ast_long1) == 0",
-					  one_long1.compare(ast_long1) == 0);
+		PRINT_TEST	(one_long1.compare(sample) != 0);
+		PRINT_TEST	(one_long1.compare(short1) != 0);
+		PRINT_TEST	(one_long1.compare(short2) != 0);
+		PRINT_TEST	(one_long1.compare(empty) != 0);
+		PRINT_TEST	(one_long1.compare(long2) != 0);
+		PRINT_TEST	(one_long1.compare(ast_sample) == 0);
+		PRINT_TEST	(one_long1.compare(ast_short1) != 0);
+		PRINT_TEST	(one_long1.compare(ast_long1) == 0);
+		PRINT_TEST	(one_long1.compare(esc_sample) != 0);
+		PRINT_TEST	(one_long1.compare(esc_short1) != 0);
+		PRINT_TEST	(one_long1.compare(esc_long1) == 0);
+		PRINT_TEST	(one_long1.compare(all_sample) != 0);
+		PRINT_TEST	(one_long1.compare(all_short1) != 0);
+		PRINT_TEST	(one_long1.compare(all_long1) == 0);
+
+		PRINT_TEST	(esc_sample.compare(sample) == 0);
+		PRINT_TEST	(esc_sample.compare(short1) != 0);
+		PRINT_TEST	(esc_sample.compare(short2) != 0);
+		PRINT_TEST	(esc_sample.compare(empty) != 0);
+		PRINT_TEST	(esc_sample.compare(long2) != 0);
+		PRINT_TEST	(esc_sample.compare(ast_sample) == 0);
+		PRINT_TEST	(esc_sample.compare(ast_short1) != 0);
+		PRINT_TEST	(esc_sample.compare(ast_long1) != 0);
+		PRINT_TEST	(esc_sample.compare(one_sample) == 0);
+		PRINT_TEST	(esc_sample.compare(one_short1) != 0);
+		PRINT_TEST	(esc_sample.compare(one_long1) != 0);
+		PRINT_TEST	(esc_sample.compare(all_sample) == 0);
+		PRINT_TEST	(esc_sample.compare(all_short1) != 0);
+		PRINT_TEST	(esc_sample.compare(all_long1) != 0);
+	
+		PRINT_TEST	(esc_short1.compare(sample) != 0);
+		PRINT_TEST	(esc_short1.compare(short1) == 0);
+		PRINT_TEST	(esc_short1.compare(short2) != 0);
+		PRINT_TEST	(esc_short1.compare(empty) != 0);
+		PRINT_TEST	(esc_short1.compare(long2) != 0);
+		PRINT_TEST	(esc_short1.compare(ast_sample) == 0);
+		PRINT_TEST	(esc_short1.compare(ast_short1) == 0);
+		PRINT_TEST	(esc_short1.compare(ast_long1) != 0);
+		PRINT_TEST	(esc_short1.compare(one_sample) != 0);
+		PRINT_TEST	(esc_short1.compare(one_short1) != 0);
+		PRINT_TEST	(esc_short1.compare(one_long1) != 0);
+		PRINT_TEST	(esc_short1.compare(all_sample) != 0);
+		PRINT_TEST	(esc_short1.compare(all_short1) != 0);
+		PRINT_TEST	(esc_short1.compare(all_long1) != 0);
+
+		PRINT_TEST	(esc_long1.compare(sample) != 0);
+		PRINT_TEST	(esc_long1.compare(short1) != 0);
+		PRINT_TEST	(esc_long1.compare(short2) != 0);
+		PRINT_TEST	(esc_long1.compare(empty) != 0);
+		PRINT_TEST	(esc_long1.compare(long2) != 0);
+		PRINT_TEST	(esc_long1.compare(ast_sample) == 0);
+		PRINT_TEST	(esc_long1.compare(ast_short1) != 0);
+		PRINT_TEST	(esc_long1.compare(ast_long1) == 0);
+		PRINT_TEST	(esc_long1.compare(one_sample) != 0);
+		PRINT_TEST	(esc_long1.compare(one_short1) != 0);
+		PRINT_TEST	(esc_long1.compare(one_long1) == 0);
+		PRINT_TEST	(esc_long1.compare(all_sample) != 0);
+		PRINT_TEST	(esc_long1.compare(all_short1) != 0);
+		PRINT_TEST	(esc_long1.compare(all_long1) == 0);
+
+		PRINT_TEST	(all_sample.compare(sample) == 0);
+		PRINT_TEST	(all_sample.compare(short1) != 0);
+		PRINT_TEST	(all_sample.compare(short2) != 0);
+		PRINT_TEST	(all_sample.compare(empty) != 0);
+		PRINT_TEST	(all_sample.compare(long2) != 0);
+		PRINT_TEST	(all_sample.compare(ast_sample) == 0);
+		PRINT_TEST	(all_sample.compare(ast_short1) != 0);
+		PRINT_TEST	(all_sample.compare(ast_long1) != 0);
+		PRINT_TEST	(all_sample.compare(one_sample) == 0);
+		PRINT_TEST	(all_sample.compare(one_short1) != 0);
+		PRINT_TEST	(all_sample.compare(one_long1) != 0);
+		PRINT_TEST	(all_sample.compare(esc_sample) == 0);
+		PRINT_TEST	(all_sample.compare(esc_short1) != 0);
+		PRINT_TEST	(all_sample.compare(esc_long1) != 0);
+	
+		PRINT_TEST	(all_short1.compare(sample) != 0);
+		PRINT_TEST	(all_short1.compare(short1) != 0);
+		PRINT_TEST	(all_short1.compare(short2) != 0);
+		PRINT_TEST	(all_short1.compare(empty) != 0);
+		PRINT_TEST	(all_short1.compare(long2) != 0);
+		PRINT_TEST	(all_short1.compare(ast_sample) == 0);
+		PRINT_TEST	(all_short1.compare(ast_short1) == 0);
+		PRINT_TEST	(all_short1.compare(ast_long1) != 0);
+		PRINT_TEST	(all_short1.compare(one_sample) == 0);
+		PRINT_TEST	(all_short1.compare(one_short1) == 0);
+		PRINT_TEST	(all_short1.compare(one_long1) != 0);
+		PRINT_TEST	(all_short1.compare(esc_sample) != 0);
+		PRINT_TEST	(all_short1.compare(esc_short1) != 0);
+		PRINT_TEST	(all_short1.compare(esc_long1) != 0);
+
+		PRINT_TEST	(all_long1.compare(sample) != 0);
+		PRINT_TEST	(all_long1.compare(short1) != 0);
+		PRINT_TEST	(all_long1.compare(short2) != 0);
+		PRINT_TEST	(all_long1.compare(empty) != 0);
+		PRINT_TEST	(all_long1.compare(long2) != 0);
+		PRINT_TEST	(all_long1.compare(ast_sample) == 0);
+		PRINT_TEST	(all_long1.compare(ast_short1) != 0);
+		PRINT_TEST	(all_long1.compare(ast_long1) == 0);
+		PRINT_TEST	(all_long1.compare(one_sample) != 0);
+		PRINT_TEST	(all_long1.compare(one_short1) != 0);
+		PRINT_TEST	(all_long1.compare(one_long1) == 0);
+		PRINT_TEST	(all_long1.compare(esc_sample) != 0);
+		PRINT_TEST	(all_long1.compare(esc_short1) != 0);
+		PRINT_TEST	(all_long1.compare(esc_long1) == 0);
+
+		PRINT_TEST	(other1.compare(other2) == 0);
+		PRINT_TEST	(other1.compare(other3) != 0);
+		PRINT_TEST	(other1.compare(other4) != 0);
+		PRINT_TEST	(other1.compare(other5) == 0);
+		PRINT_TEST	(other1.compare(other6) != 0);
+		PRINT_TEST	(other1.compare(other7) != 0);
+
+		PRINT_TEST	(other2.compare(other1) == 0);
+		PRINT_TEST	(other2.compare(other3) == 0);
+		PRINT_TEST	(other2.compare(other4) == 0);
+		PRINT_TEST	(other2.compare(other5) == 0);
+		PRINT_TEST	(other2.compare(other6) != 0);
+		PRINT_TEST	(other2.compare(other7) != 0);
+
+		PRINT_TEST	(other3.compare(other1) != 0);
+		PRINT_TEST	(other3.compare(other2) == 0);
+		PRINT_TEST	(other3.compare(other4) != 0);
+		PRINT_TEST	(other3.compare(other5) == 0);
+		PRINT_TEST	(other3.compare(other6) != 0);
+		PRINT_TEST	(other3.compare(other7) != 0);
+
+		PRINT_TEST	(other4.compare(other1) != 0);
+		PRINT_TEST	(other4.compare(other2) == 0);
+		PRINT_TEST	(other4.compare(other3) != 0);
+		PRINT_TEST	(other4.compare(other5) == 0);
+		PRINT_TEST	(other4.compare(other6) != 0);
+		PRINT_TEST	(other4.compare(other7) != 0);
+
+		PRINT_TEST	(other5.compare(other1) == 0);
+		PRINT_TEST	(other5.compare(other2) == 0);
+		PRINT_TEST	(other5.compare(other3) == 0);
+		PRINT_TEST	(other5.compare(other4) == 0);
+		PRINT_TEST	(other5.compare(other6) == 0);
+		PRINT_TEST	(other5.compare(other7) != 0);
+
+		PRINT_TEST	(other6.compare(other1) != 0);
+		PRINT_TEST	(other6.compare(other2) != 0);
+		PRINT_TEST	(other6.compare(other3) != 0);
+		PRINT_TEST	(other6.compare(other4) != 0);
+		PRINT_TEST	(other6.compare(other5) == 0);
+		PRINT_TEST	(other6.compare(other7) != 0);
+
+		PRINT_TEST	(other7.compare(other1) != 0);
+		PRINT_TEST	(other7.compare(other2) != 0);
+		PRINT_TEST	(other7.compare(other3) != 0);
+		PRINT_TEST	(other7.compare(other4) != 0);
+		PRINT_TEST	(other7.compare(other5) != 0);
+		PRINT_TEST	(other7.compare(other6) != 0);
 	}
+//						other1("abc\\?def\n"),
+//						other2("abc?def\n"),
+//						other3("abc\\*def\n"),
+//						other4("abc\\\\def\n"),
+//						other5("a*f\n"),
+//						other6("abcdef\n"),
+//						other7("abcdefg\n");
 	
 //	using namespace fnx;
 //

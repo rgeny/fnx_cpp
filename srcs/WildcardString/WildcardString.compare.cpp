@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/23 16:46:59 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/24 11:20:00 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ int	fnx::WildcardString::compare	(size_t pos,
 
 
 	#ifdef FNX_DEBUG
-	if (this->size() <= 15 && str.size() <= 15)
+	if (this->size() <= 45 && str.size() <= 45)
 	{
 		std::cout	<< UNDERSCORE "lookup tab :" RESET
 					<< std::endl;

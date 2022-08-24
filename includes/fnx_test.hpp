@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:15 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/24 11:17:56 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/24 14:43:07 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,41 @@
 
 # include "fnx.hpp"
 
-# define PRINT_TEST(boolean)	std::cout	<< BLACK_BACK; \
-								if (boolean == true) \
-									std::cout	<< GREEN_TEXT; \
-								else \
-									std::cout	<< RED_TEXT; \
-								std::cout	<< "( " \
-											<< __FILE__ \
-											<< " || l." \
-											<< __LINE__ \
-											<< " ) ==> " BRIGHT UNDERSCORE \
-											<< #boolean \
-											<< RESET \
-											<< std::endl;
+# define PRINT_TEST(boolean)	try \
+								{ \
+									std::cout	<< BLACK_BACK; \
+									if (boolean == true) \
+										std::cout	<< GREEN_TEXT; \
+									else \
+										std::cout	<< RED_TEXT; \
+									std::cout	<< "( " \
+												<< __FILE__ \
+												<< " || l." \
+												<< __LINE__ \
+												<< " ) ==> " BRIGHT UNDERSCORE \
+												<< #boolean \
+												<< RESET \
+												<< std::endl; \
+								} \
+								catch (std::exception const & err) \
+								{ \
+									std::cout	<< RED_TEXT \
+												<< "( " \
+												<< __FILE__ \
+												<< " || l." \
+												<< __LINE__ \
+												<< " ) ==> " BRIGHT UNDERSCORE \
+												<< #boolean \
+												<< RESET RED_TEXT \
+												<< std::endl \
+												<< BLACK_BACK "throwing an exception :" \
+												<< RESET \
+												<< std::endl \
+												<< RED_TEXT BLACK_BACK \
+												<< err.what() \
+												<< RESET \
+												<< std::endl; \
+								}
 
 namespace fnx_test
 {

@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:32 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/23 14:59:50 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/24 14:52:33 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	fnx_test::print_category	(std::string const	msg)
 				<< " :"
 				<< RESET
 				<< std::endl;
+	std::cout	<< "\033[0m";
 }
 
 void	fnx_test::print_test	(std::string const msg)

@@ -6,11 +6,12 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/24 11:20:00 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/24 14:50:11 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fnx.hpp"
+#include <stdexcept>
 
 int		fnx::WildcardString::compare	(fnx::WildcardString const & str) const
 {
@@ -30,6 +31,10 @@ int	fnx::WildcardString::compare	(size_t pos,
 									 size_t subpos,
 									 size_t sublen) const
 {
+	if (pos >= this->size())
+		throw (std::out_of_range("fnx::WildcardString::compare (size_t pos, size_t len, fnx::WildcardString const & str, size_t subpos, size_t sublen) const :\npos > this->size()"));
+	else if (subpos >= str.size())
+		throw (std::out_of_range("fnx::WildcardString::compare (size_t pos, size_t len, fnx::WildcardString const & str, size_t subpos, size_t sublen) const :\nsubpos > str->size()"));
 	#ifdef FNX_DEBUG
 	std::cout	<< "len    = "
 				<< len
@@ -206,6 +211,13 @@ int	fnx::WildcardString::compare	(size_t pos,
 					<< "str_esc_n = "
 					<< str_esc_n
 					<< std::endl;
+
+	std::cout	<< "len - ref_esc_n - pos = "
+				<< len - ref_esc_n - pos
+				<< std::endl
+				<< "sublen - str_esc_n - subpos = "
+				<< sublen - str_esc_n - subpos
+				<< std::endl;
 	}
 	#endif
 

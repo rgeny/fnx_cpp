@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:34:59 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/24 14:53:51 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/25 17:23:39 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -544,7 +544,6 @@ void	fnx_test::WildcardString	(char ** argv)
 
 
 	print_category("int fnx::Wildcard::compare (fnx::WildcardString const & str) const");
-	if (0)
 	{
 		PRINT_TEST	(sample.compare(sample) == 0);
 		PRINT_TEST	(empty.compare(empty) == 0);
@@ -882,35 +881,72 @@ void	fnx_test::WildcardString	(char ** argv)
 											  " fnx::WildcardString const & str) const");
 	{
 		PRINT_TEST	(sample.compare(0, sample.size(), sample) == 0);
-//		PRINT_TEST	(empty.compare(0, empty.size(), empty) == 0);
-//		PRINT_TEST	(short1.compare(0, short1.size(), short1) == 0);
-//		PRINT_TEST	(short2.compare(0, short2.size(), short2) == 0);
-//		PRINT_TEST	(long1.compare(0, long1.size(), long1) == 0);
-//		PRINT_TEST	(long2.compare(0, long2.size(), long2) == 0);
-//		PRINT_TEST	(ast_sample.compare(0, ast_sample.size(), ast_sample) == 0);
-//		PRINT_TEST	(ast_short1.compare(0, ast_short1.size(), ast_short1) == 0);
-//		PRINT_TEST	(ast_short2.compare(0, ast_short2.size(), ast_short2) == 0);
-//		PRINT_TEST	(ast_long1.compare(0, ast_long1.size(), ast_long1) == 0);
-//		PRINT_TEST	(ast_long2.compare(0, ast_long2.size(), ast_long2) == 0);
-//		PRINT_TEST	(one_sample.compare(0, one_sample.size(), one_sample) == 0);
-//		PRINT_TEST	(one_short1.compare(0, one_short1.size(), one_short1) == 0);
-//		PRINT_TEST	(one_short2.compare(0, one_short2.size(), one_short2) == 0);
-//		PRINT_TEST	(one_long1.compare(0, one_long1.size(), one_long1) == 0);
-//		PRINT_TEST	(one_long2.compare(0, one_long2.size(), one_long2) == 0);
-//		PRINT_TEST	(esc_sample.compare(0, esc_sample.size(), esc_sample) == 0);
-//		PRINT_TEST	(esc_short1.compare(0, esc_short1.size(), esc_short1) == 0);
-//		PRINT_TEST	(esc_short2.compare(0, esc_short2.size(), esc_short2) == 0);
-//		PRINT_TEST	(esc_long1.compare(0, esc_long1.size(), esc_long1) == 0);
-//		PRINT_TEST	(esc_long2.compare(0, esc_long2.size(), esc_long2) == 0);
-//		PRINT_TEST	(all_sample.compare(0, all_sample.size(), all_sample) == 0);
-//		PRINT_TEST	(all_short1.compare(0, all_short1.size(), all_short1) == 0);
-//		PRINT_TEST	(all_short2.compare(0, all_short2.size(), all_short2) == 0);
-//		PRINT_TEST	(all_long1.compare(0, all_long1.size(), all_long1) == 0);
-//		PRINT_TEST	(all_long2.compare(0, all_long2.size(), all_long2) == 0);
-//
-//		PRINT_TEST	(sample.compare(1, sample.size(), sample) != 0);
+		PRINT_TEST	(empty.compare(0, empty.size(), empty) == 0);
+		PRINT_TEST	(short1.compare(0, short1.size(), short1) == 0);
+		PRINT_TEST	(short2.compare(0, short2.size(), short2) == 0);
+		PRINT_TEST	(long1.compare(0, long1.size(), long1) == 0);
+		PRINT_TEST	(long2.compare(0, long2.size(), long2) == 0);
+		PRINT_TEST	(ast_sample.compare(0, ast_sample.size(), ast_sample) == 0);
+		PRINT_TEST	(ast_short1.compare(0, ast_short1.size(), ast_short1) == 0);
+		PRINT_TEST	(ast_short2.compare(0, ast_short2.size(), ast_short2) == 0);
+		PRINT_TEST	(ast_long1.compare(0, ast_long1.size(), ast_long1) == 0);
+		PRINT_TEST	(ast_long2.compare(0, ast_long2.size(), ast_long2) == 0);
+		PRINT_TEST	(one_sample.compare(0, one_sample.size(), one_sample) == 0);
+		PRINT_TEST	(one_short1.compare(0, one_short1.size(), one_short1) == 0);
+		PRINT_TEST	(one_short2.compare(0, one_short2.size(), one_short2) == 0);
+		PRINT_TEST	(one_long1.compare(0, one_long1.size(), one_long1) == 0);
+		PRINT_TEST	(one_long2.compare(0, one_long2.size(), one_long2) == 0);
+		PRINT_TEST	(esc_sample.compare(0, esc_sample.size(), esc_sample) == 0);
+		PRINT_TEST	(esc_short1.compare(0, esc_short1.size(), esc_short1) == 0);
+		PRINT_TEST	(esc_short2.compare(0, esc_short2.size(), esc_short2) == 0);
+		PRINT_TEST	(esc_long1.compare(0, esc_long1.size(), esc_long1) == 0);
+		PRINT_TEST	(esc_long2.compare(0, esc_long2.size(), esc_long2) == 0);
+		PRINT_TEST	(all_sample.compare(0, all_sample.size(), all_sample) == 0);
+		PRINT_TEST	(all_short1.compare(0, all_short1.size(), all_short1) == 0);
+		PRINT_TEST	(all_short2.compare(0, all_short2.size(), all_short2) == 0);
+		PRINT_TEST	(all_long1.compare(0, all_long1.size(), all_long1) == 0);
+		PRINT_TEST	(all_long2.compare(0, all_long2.size(), all_long2) == 0);
 
-		PRINT_TEST	(empty.compare(1, 0, sample) != 0);
+		PRINT_TEST	(sample.compare(1, sample.size(), sample) != 0);
+		PRINT_FAILING_TEST	(empty.compare(1, 0, sample) != 0);
+	}
+	print_category("int fnx::Wildcard::compare (size_t pos,"
+											  " size_t len,"
+											  " fnx::WildcardString const & str) const,"
+											  " size_t subpos,"
+											  " size_t sublen");
+	{
+		PRINT_TEST	(sample.compare(0, sample.size(), sample, 0, sample.size()) == 0);
+		PRINT_TEST	(empty.compare(0, empty.size(), empty, 0, empty.size()) == 0);
+		PRINT_TEST	(short1.compare(0, short1.size(), short1, 0, short1.size()) == 0);
+		PRINT_TEST	(short2.compare(0, short2.size(), short2, 0, short2.size()) == 0);
+		PRINT_TEST	(long1.compare(0, long1.size(), long1, 0, long1.size()) == 0);
+		PRINT_TEST	(long2.compare(0, long2.size(), long2, 0, long2.size()) == 0);
+		PRINT_TEST	(ast_sample.compare(0, ast_sample.size(), ast_sample, 0, ast_sample.size()) == 0);
+		PRINT_TEST	(ast_short1.compare(0, ast_short1.size(), ast_short1, 0, ast_short1.size()) == 0);
+		PRINT_TEST	(ast_short2.compare(0, ast_short2.size(), ast_short2, 0, ast_short2.size()) == 0);
+		PRINT_TEST	(ast_long1.compare(0, ast_long1.size(), ast_long1, 0, ast_long1.size()) == 0);
+		PRINT_TEST	(ast_long2.compare(0, ast_long2.size(), ast_long2, 0, ast_long2.size()) == 0);
+		PRINT_TEST	(one_sample.compare(0, one_sample.size(), one_sample, 0, one_sample.size()) == 0);
+		PRINT_TEST	(one_short1.compare(0, one_short1.size(), one_short1, 0, one_short1.size()) == 0);
+		PRINT_TEST	(one_short2.compare(0, one_short2.size(), one_short2, 0, one_short2.size()) == 0);
+		PRINT_TEST	(one_long1.compare(0, one_long1.size(), one_long1, 0, one_long1.size()) == 0);
+		PRINT_TEST	(one_long2.compare(0, one_long2.size(), one_long2, 0, one_long2.size()) == 0);
+		PRINT_TEST	(esc_sample.compare(0, esc_sample.size(), esc_sample, 0, esc_sample.size()) == 0);
+		PRINT_TEST	(esc_short1.compare(0, esc_short1.size(), esc_short1, 0, esc_short1.size()) == 0);
+		PRINT_TEST	(esc_short2.compare(0, esc_short2.size(), esc_short2, 0, esc_short2.size()) == 0);
+		PRINT_TEST	(esc_long1.compare(0, esc_long1.size(), esc_long1, 0, esc_long1.size()) == 0);
+		PRINT_TEST	(esc_long2.compare(0, esc_long2.size(), esc_long2, 0, esc_long2.size()) == 0);
+		PRINT_TEST	(all_sample.compare(0, all_sample.size(), all_sample, 0, all_sample.size()) == 0);
+		PRINT_TEST	(all_short1.compare(0, all_short1.size(), all_short1, 0, all_short1.size()) == 0);
+		PRINT_TEST	(all_short2.compare(0, all_short2.size(), all_short2, 0, all_short2.size()) == 0);
+		PRINT_TEST	(all_long1.compare(0, all_long1.size(), all_long1, 0, all_long1.size()) == 0);
+		PRINT_TEST	(all_long2.compare(0, all_long2.size(), all_long2, 0, all_long2.size()) == 0);
+
+		PRINT_TEST	(sample.compare(0, sample.size(), sample, 1, sample.size()) != 0);
+		PRINT_FAILING_TEST	(empty.compare(1, 0, sample) != 0);
+		
+	}
 
 //
 //		PRINT_TEST	(sample.compare(sample.substr(0, sample.size() - 1)) != 0);
@@ -1215,7 +1251,6 @@ void	fnx_test::WildcardString	(char ** argv)
 //		PRINT_TEST	(other7.compare(other4) != 0);
 //		PRINT_TEST	(other7.compare(other5) != 0);
 //		PRINT_TEST	(other7.compare(other6) != 0);
-	}
 
 
 //						other1("abc\\?def\n"),

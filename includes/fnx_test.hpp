@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 10:58:15 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/24 14:43:07 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/25 14:01:28 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 										std::cout	<< GREEN_TEXT; \
 									else \
 										std::cout	<< RED_TEXT; \
-									std::cout	<< "( " \
+									std::cout	<< "SUCCESSFUL TEST ( " \
 												<< __FILE__ \
 												<< " || l." \
 												<< __LINE__ \
@@ -52,6 +52,34 @@
 												<< RESET \
 												<< std::endl; \
 								}
+# define PRINT_FAILING_TEST(boolean)	try \
+										{ \
+											std::cout	<< BLACK_BACK; \
+											if (boolean == true) \
+												std::cout	<< RED_TEXT; \
+											else \
+												std::cout	<< GREEN_TEXT; \
+											std::cout	<< "FAILING TEST ( " \
+														<< __FILE__ \
+														<< " || l." \
+														<< __LINE__ \
+														<< " ) ==> " BRIGHT UNDERSCORE \
+														<< #boolean \
+														<< RESET \
+														<< std::endl; \
+										} \
+										catch (std::exception const & err) \
+										{ \
+											std::cout	<< GREEN_TEXT \
+														<< "FAILING TEST ( " \
+														<< __FILE__ \
+														<< " || l." \
+														<< __LINE__ \
+														<< " ) ==> " BRIGHT UNDERSCORE \
+														<< #boolean \
+														<< RESET \
+														<< std::endl; \
+										}
 
 namespace fnx_test
 {

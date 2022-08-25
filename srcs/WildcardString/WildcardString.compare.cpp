@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/24 14:50:11 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/25 13:54:19 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	fnx::WildcardString::compare	(size_t pos,
 									 size_t subpos,
 									 size_t sublen) const
 {
-	if (pos >= this->size())
+	if (pos > this->size())
 		throw (std::out_of_range("fnx::WildcardString::compare (size_t pos, size_t len, fnx::WildcardString const & str, size_t subpos, size_t sublen) const :\npos > this->size()"));
-	else if (subpos >= str.size())
+	else if (subpos > str.size())
 		throw (std::out_of_range("fnx::WildcardString::compare (size_t pos, size_t len, fnx::WildcardString const & str, size_t subpos, size_t sublen) const :\nsubpos > str->size()"));
 	#ifdef FNX_DEBUG
 	std::cout	<< "len    = "

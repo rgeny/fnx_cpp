@@ -6,7 +6,7 @@
 /*   By: rgeny <rgeny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 01:41:40 by rgeny             #+#    #+#             */
-/*   Updated: 2022/08/25 13:54:19 by rgeny            ###   ########.fr       */
+/*   Updated: 2022/08/25 17:48:31 by rgeny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ int	fnx::WildcardString::compare	(size_t pos,
 
 	len = std::min(len, this->size() - pos);
 	sublen = std::min(sublen, str.size() - subpos);
-	size_t	end = std::min(len + pos, this->size()),
-			subend = std::min(sublen + subpos, str.size());
-	(void)end;
-	(void)subend;
 
 	#ifdef FNX_DEBUG
 	if (this->size() <= 100)
@@ -89,31 +85,17 @@ int	fnx::WildcardString::compare	(size_t pos,
 	#endif
 
 	fnx::WildcardString const & ref = *this;
-	(void)ref;
-	
 	size_t	ref_esc_n = 0,
 			str_esc_n = 0;
 	bool	ref_esc = false,
 			str_esc = false;
-	
-	(void)ref_esc_n;
-	(void)str_esc_n;
-	(void)ref_esc;
-	(void)str_esc;
 
-//	std::cout	<< "previous len = "
-//				<< end + 1 - pos
-//				<< std::endl
-//				<< "previous sublen = "
-//				<< subend + 1 - subpos
-//				<< std::endl
-//				<< std::endl;
-	
 	std::vector< std::vector<bool> >	lookup;
 	lookup.resize(len + 1);
-	for (size_t i = 0; i <= end; i++)
+	for (size_t i = 0; i <= len; i++)
 		lookup[i].resize(sublen + 1);
 	lookup[0][0] = true;
+
 
 	for (size_t i = 1; i <= len; i++)
 		if (ref[i - 1] == INFINITY_WILDCARD)
